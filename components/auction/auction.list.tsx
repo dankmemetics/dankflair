@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
+import { Button } from '../common/common.button';
+import { Flair } from '../common/common.flair';
+
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
 import { FaEthereum } from 'react-icons/fa';
-import { IoMdNavigate } from 'react-icons/io';
 
 
 export const AuctionListStyles = styled.div`
@@ -76,9 +78,11 @@ export const AuctionListStyles = styled.div`
                 }
             
                 .icon {
-                    font-size: 24px;
+                    position: relative;
+                    top: 1px;
+                    font-size: 14px;
                     color: ${Primary};
-                    margin: 0 10px 0 0;
+                    margin: 0 5px 0 0;
                 }
             }
         }
@@ -96,31 +100,6 @@ export const AuctionListStyles = styled.div`
             width: 100%;
             margin: 15px 0 0 0;
         }    
-
-        div.sample-flair {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${Background};
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 10px;
-    
-            img.flair {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            
-            img.nft {
-                position: relative;
-                left: 5px;
-                height: 100%;
-            }
-        }
     }
 `;
 
@@ -128,10 +107,12 @@ export function AuctionList() {
     return(
         <AuctionListStyles>
             <div className="card">
-                <div className="sample-flair">
-                    <img src="/images/flair1.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair1.gif"
+                    nftUrl="/images/sample.png"
+                />
                 <h3>Dank Kitty</h3>
                 <div className="labels">
                     <div className="label">
@@ -167,9 +148,7 @@ export function AuctionList() {
                     </div>
                 </div>
 
-                <a className="button">
-                    View Auction
-                </a>
+                <Button label="View Auction" link="/auction/69" width="100%" height="40px" margin="15px 0 0 0" fontSize="16px"/>
             </div>
         </AuctionListStyles>
     )

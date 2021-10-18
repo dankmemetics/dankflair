@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Background } from '../brand/brand.colors';
+import { Flair } from '../common/common.flair';
 
 export const IndexFeaturedStyles = styled.div`
     div.title {
@@ -31,31 +32,6 @@ export const IndexFeaturedStyles = styled.div`
         padding: 30px;
         width: 100%;
         transform-origin: center;
-
-        div.sample-flair {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${Background};
-            width: 180px;
-            height: 180px;
-            border-radius: 90px;
-            overflow: hidden;
-            margin: 15px;
-
-            img.flair {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-            
-            img.nft {
-                position: relative;
-                left: 5px;
-                height: 100%;
-            }
-        }
     }
 `;
 
@@ -67,42 +43,60 @@ export function IndexFeatured() {
                 <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
             </div>
             <div className="featured">
-                <div className="sample-flair">
-                    <img src="/images/flair1.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair2.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair3.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair4.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair5.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair6.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair7.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair8.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
-                <div className="sample-flair">
-                    <img src="/images/flair9.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair1.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair2.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair3.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair4.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair5.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair6.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair7.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair8.gif"
+                    nftUrl="/images/sample.png"
+                />
+                <Flair
+                    width={180}
+                    height={180}
+                    flairUrl="/images/flair9.gif"
+                    nftUrl="/images/sample.png"
+                />
             </div>
         </IndexFeaturedStyles>
     )

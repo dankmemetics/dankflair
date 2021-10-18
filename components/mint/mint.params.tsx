@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Primary, Background } from '../brand/brand.colors';
+import { Button } from '../common/common.button';
 
 export const MintParamsStyles = styled.div`
     padding: 60px 0 90px 0;
@@ -72,22 +73,14 @@ export function MintParams() {
 
             <p className="label">Mint Style</p>
             <div className="buttons small">
-                <a className="button">
-                    Flair Only
-                </a>
-                <a className="button">
-                    Flair with preview NFT
-                </a>
+                <Button label="Flair Only" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+                <Button label="Flair with preview NFT" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
             </div>
 
             <p className="label">Burn Mechanics (if Flair Only)</p>
             <div className="buttons small">
-                <a className="button">
-                    Burn when minting new NFT
-                </a>
-                <a className="button">
-                    Treat as collectible (No burn)
-                </a>
+                <Button label="Burn when minting new NFT" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+                <Button label="Treat as collectible (No burn)" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
             </div>
             
             <p className="label">Supply</p>
@@ -96,9 +89,7 @@ export function MintParams() {
             <p className="label">Mint to Wallet</p>
             <input type="text" placeholder="Default is Metamask wallet"/>
 
-            <a className="button big">
-                Mint
-            </a>
+            <Button label="Mint" width="calc(100% - 30px)" margin="45px 15px" padding="5px 15px" height="60px" fontSize="24px"/>
         </MintParamsStyles>
     )
 }

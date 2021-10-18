@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Primary, Background } from '../brand/brand.colors';
+import { Button } from '../common/common.button';
+import { Flair } from '../common/common.flair';
 
 export const MintUploadStyles = styled.div`
     display: flex;
@@ -51,29 +53,6 @@ export const MintUploadStyles = styled.div`
             display: flex;
             align-items: center;
             width: 100%;
-
-            &.small {
-                a.button {
-                    font-size: 16px;
-                    font-weight: 600;
-                    padding: 10px 25px;
-                    width: auto;
-                }
-            }
-        }
-
-        a.button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${Primary};
-            padding: 15px;
-            margin: 15px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            width: calc(50% - 30px);
         }
 
         p.label {
@@ -89,10 +68,10 @@ export function MintUpload() {
     return(
         <MintUploadStyles>
             <div className="preview-frame">
-                <div className="frame">
-                    <img src="/images/flair1.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
+                <Flair
+                    flairUrl="/images/flair1.gif"
+                    nftUrl="/images/sample.png"
+                />
             </div>
             <div className="options">
                 <p className="label">
@@ -100,12 +79,8 @@ export function MintUpload() {
                 </p>
 
                 <div className="buttons">
-                    <a className="button">
-                        Select NFT
-                    </a>
-                    <a className="button">
-                        Upload Flair (.gif, .png)
-                    </a>
+                    <Button label="Select NFT" width="calc(50% - 30px)" margin="15px"/>
+                    <Button label="Upload Flair (.gif, .png)" width="calc(50% - 30px)" margin="15px"/>
                 </div>
 
                 <p className="label">
@@ -113,12 +88,8 @@ export function MintUpload() {
                 </p>
 
                 <div className="buttons small">
-                    <a className="button">
-                        Clipped
-                    </a>
-                    <a className="button">
-                        Unclipped
-                    </a>
+                    <Button label="Clipped" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+                    <Button label="Unclipped" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
                 </div>
 
                 <p className="label">
@@ -126,15 +97,9 @@ export function MintUpload() {
                 </p>
 
                 <div className="buttons small">
-                    <a className="button">
-                        Circle
-                    </a>
-                    <a className="button">
-                        Square
-                    </a>
-                    <a className="button">
-                        Rounded
-                    </a>
+                    <Button label="Circle" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+                    <Button label="Square" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+                    <Button label="Rounded" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
                 </div>
             </div>        
         </MintUploadStyles>

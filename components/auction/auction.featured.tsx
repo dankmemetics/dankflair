@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
+import { Badge } from '../common/common.badge';
+import { Button } from '../common/common.button';
+import { Flair } from '../common/common.flair';
+
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
 import { FaEthereum } from 'react-icons/fa';
-import { IoMdNavigate } from 'react-icons/io';
 
 export const AuctionFeaturedStyles = styled.div`
-    padding: 30px 0 30px 0;
+    padding: 30px 0 0 0;
 
     div.card {
         display: flex;
@@ -16,31 +19,6 @@ export const AuctionFeaturedStyles = styled.div`
         width: calc(100% - 30px);
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    div.sample-flair {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: ${Background};
-        width: 256px;
-        height: 256px;
-        border-radius: 128px;
-        overflow: hidden;
-        margin: 15px;
-
-        img.flair {
-            position: absolute;
-            left: 0;
-            top: 0;
-        }
-        
-        img.nft {
-            position: relative;
-            left: 5px;
-            height: 100%;
-        }
     }
 
     div.text {
@@ -102,31 +80,7 @@ export const AuctionFeaturedStyles = styled.div`
         div.button-wrap {
             display: flex;
             justify-content: flex-end;
-
-            a.button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: ${Primary};
-                padding: 10px 15px;
-                border-radius: 5px;
-                font-size: 18px;
-                font-weight: bold;
-                cursor: pointer;
-                width: 240px;
-            }    
         }
-    }
-
-    a.badge {
-        font-size: 12px;
-        font-weight: bold;
-        background: ${Primary};
-        padding: 5px 10px;
-        margin: 0 15px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
     }
 
     .icon {
@@ -134,73 +88,16 @@ export const AuctionFeaturedStyles = styled.div`
         color: ${Primary};
         margin: 0 10px 0 0;
     }
-
-    div.carousel-options {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 45px 0;
-        width: 100%;
-
-        div.selector {
-            background: white;
-            width: 90px;
-            height: 5px;
-            margin: 0 5px;
-            opacity: 0.25;
-            cursor: pointer;
-            &.active {
-                opacity: 1;
-            }
-        }
-
-        a.button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${Primary};
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            margin: 15px;
-            cursor: pointer;
-
-            position: absolute;
-            top: 15px;
-
-            &.left {
-                left: 30px;
-            }
-
-            &.right {
-                right: 0px;
-            }
-
-            .button-icon {
-                position: relative;
-
-                &.left {
-                    left: -1px;
-                    transform: rotate(-90deg);
-                }
-                &.right {
-                    left: 1px;
-                    transform: rotate(90deg);
-                }
-            }
-        }
-    }
 `;
 
 export function AuctionFeatured() {
     return(
         <AuctionFeaturedStyles>
             <div className="card">
-                <div className="sample-flair">
-                    <img src="/images/flair1.gif" className="flair"/>
-                    <img src="/images/sample.png" className="nft"/>
-                </div>
+                <Flair
+                    flairUrl="/images/flair1.gif"
+                    nftUrl="/images/sample.png"
+                />
                 <div className="text">
                     <h2>Dank Kitty</h2>
                     
@@ -210,15 +107,15 @@ export function AuctionFeatured() {
                             <h3>
                                 <BsFillPatchCheckFill className="icon"/>
                                 DF Electric 
-                                <a className="badge">1 of 100</a>
+                                <Badge label="1 of 100"/>
                             </h3>
                         </div>
                         <div className="label">
                             <p>Content NFT</p>
                             <h3>
                                 <BsFillPatchCheckFill className="icon"/>
-                                Kitty #69 
-                                <a className="badge" href="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea">View on OpenSEA</a>
+                                Kitty #69
+                                <Badge label="View on OpenSEA" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
                             </h3>
                         </div>
                         <div className="label">
@@ -247,27 +144,9 @@ export function AuctionFeatured() {
                     </p>
 
                     <div className="button-wrap">
-                        <a className="button">
-                            View Auction
-                        </a>
+                        <Button label="View Auction" link="/auction/69" width="240px"/>
                     </div>
                 </div>
-            </div>
-
-            <div className="carousel-options">
-                <a className="button left">
-                    <IoMdNavigate className="button-icon left"/>
-                </a>
-
-                <div className="selector active"/>
-                <div className="selector"/>
-                <div className="selector"/>
-                <div className="selector"/>
-                <div className="selector"/>
-
-                <a className="button right">
-                    <IoMdNavigate className="button-icon right"/>
-                </a>
             </div>
         </AuctionFeaturedStyles>
     )
