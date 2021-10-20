@@ -48,7 +48,7 @@ export function RoadmapList() {
                 <p>- Full minting and burning mechanics described in <Link href="/mint">mint</Link>.</p>
             </div>
             <div className="section">
-                <h3>2. Secondary Auctions</h3>
+                <h3>2. Dank DAO</h3>
                 <h4>Continuous from November and Beyond</h4>
                 <p>- Based on Community Feedback, design and mint new flair.</p>
                 <p>- DAO voting mechanics for choosing new flair.</p>

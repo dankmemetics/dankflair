@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaRegAddressCard } from 'react-icons/fa';
 import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
-import { RiGalleryFill } from 'react-icons/ri';
+import { MdOutlineGroups } from 'react-icons/md';
 import { Gradient2 } from '../brand/brand.gradients';
 
 export const HeaderStyles = styled.div`
@@ -101,6 +101,12 @@ export function Header({ tab }) {
             <a className={`item ${tab === 'mint' ? 'active' : ''}`}>
               <HiPrinter className="icon"/>
               Mint
+            </a>
+          </Link>
+          <Link href="/dao">
+            <a className={`item ${tab === 'dao' ? 'active' : ''}`}>
+              <MdOutlineGroups className="icon"/>
+              DAO
             </a>
           </Link>
           <Link href="/auction">

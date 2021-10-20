@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Primary, Background, Card } from '../brand/brand.colors';
+import { Primary, Primary3, Background, Card } from '../brand/brand.colors';
 import { IoMdNavigate } from 'react-icons/io';
 
 export const AuctionCarouselStyles = styled.div`
@@ -17,6 +17,8 @@ export const AuctionCarouselStyles = styled.div`
         margin: 0 5px;
         opacity: 0.25;
         cursor: pointer;
+        box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+
         &.active {
             opacity: 1;
         }
@@ -32,9 +34,14 @@ export const AuctionCarouselStyles = styled.div`
         height: 32px;
         margin: 15px;
         cursor: pointer;
+        box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
 
         position: absolute;
         top: 15px;
+
+        &:hover {
+            background: ${Primary3};
+        }
 
         &.left {
             left: 30px;
