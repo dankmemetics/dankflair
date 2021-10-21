@@ -6,7 +6,7 @@ import { Flair } from '../common/common.flair';
 export const MintUploadStyles = styled.div`
     display: flex;
     align-items: center;
-    padding: 90px 0;
+    padding: 90px 15px;
     border-bottom: 2px solid white;
 
     div.preview-frame {

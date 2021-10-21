@@ -3,7 +3,7 @@ import { Primary, Background } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 
 export const MintParamsStyles = styled.div`
-    padding: 60px 0 90px 0;
+    padding: 60px 15px 90px 15px;
 
     div.buttons {
         display: flex;

@@ -16,7 +16,7 @@ export const AuctionFeaturedStyles = styled.div`
         background: ${Card};
         margin: 30px;
         padding: 15px;
-        width: calc(100% - 30px);
+        width: calc(100% - 60px);
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
     }

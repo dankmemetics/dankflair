@@ -48,7 +48,7 @@ export const AuctionCarouselStyles = styled.div`
         }
 
         &.right {
-            right: 0px;
+            right: 30px;
         }
 
         .button-icon {

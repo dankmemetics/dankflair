@@ -28,10 +28,16 @@ export const HeaderStyles = styled.div`
       display: flex;
       align-items: center;
       color: white;
+      height: 100%;
 
       text-decoration: none;
       font-size: 32px;
       letter-spacing: 1px;
+      border-bottom: 5px solid rgba(255, 255, 255, 0.25);
+
+      &.active {
+        border-bottom: 5px solid white;
+      }
 
       h2 {
         font-size: 32px;
@@ -79,7 +85,7 @@ export function Header({ tab }) {
     <HeaderStyles>
       <div className="wrap">
         <Link href="/">
-          <a className="brand">
+          <a className={`brand ${tab === 'index' ? 'active' : ''}`}>
             <h2>Dank Flair</h2>
           </a>
         </Link>
