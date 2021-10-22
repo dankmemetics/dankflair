@@ -22,6 +22,11 @@ export const AuctionCarouselStyles = styled.div`
         &.active {
             opacity: 1;
         }
+
+        @media (max-width: 640px) {
+            width: 30px;
+            margin: 0 2.5px;
+        }
     }
 
     a.button {

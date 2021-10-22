@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { Background } from '../brand/brand.colors';
+import { Gradient2 } from '../brand/brand.gradients';
+
 import { FaRegAddressCard } from 'react-icons/fa';
 import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
 import { MdOutlineGroups } from 'react-icons/md';
-import { Gradient2 } from '../brand/brand.gradients';
+import { CgMenuCake } from 'react-icons/cg';
 
 export const HeaderStyles = styled.div`
   position: relative;
@@ -46,10 +50,40 @@ export const HeaderStyles = styled.div`
       }
     }
 
+    a.menu-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 70px;
+      height: 70px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+
+      @media(max-width: 640px) {
+        display: flex;
+      }
+    }
 
     div.hitems {
       display: flex;
       height: 100%;
+
+      @media(max-width: 640px) {
+        position: absolute;
+        left: 0;
+        top:  70px;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        background: ${Background};
+
+        display: none;
+        &.active {
+          display: flex;
+        }
+      }
 
       a.item {
         display: flex;
@@ -61,6 +95,12 @@ export const HeaderStyles = styled.div`
         font-size: 18px;
         cursor: pointer;
         text-decoration: none;
+
+        @media (max-width: 640px) {
+          justify-content: flex-start;
+          padding: 10px 15px;
+          height: auto;
+        }
 
         .icon {
           margin: 0 10px 0 0;
@@ -81,6 +121,8 @@ export const HeaderStyles = styled.div`
 `;
 
 export function Header({ tab }) {
+  const [menu, setMenu] = useState(false);
+
   return (
     <HeaderStyles>
       <div className="wrap">
@@ -89,8 +131,12 @@ export function Header({ tab }) {
             <h2>Dank Flair</h2>
           </a>
         </Link>
+
+        <a className="menu-button" onClick={e => setMenu(!menu)}>
+          <CgMenuCake/>
+        </a>
         
-        <div className="hitems">
+        <div className={`hitems ${menu ? 'active' : ''}`}>
           <Link href="/roadmap">
             <a className={`item ${tab === 'roadmap' ? 'active' : ''}`}>
               <BiMapPin className="icon" />

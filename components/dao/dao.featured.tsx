@@ -11,6 +11,12 @@ export const DaoFeaturedStyles = styled.div`
     border-radius: 5px;
     box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
+    @media (max-width: 640px) {
+        margin: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
     h2 {
         font-size: 32px;
         font-weight: 400;
@@ -22,14 +28,26 @@ export const DaoFeaturedStyles = styled.div`
         height: 3px;
         background: white;
         margin: 5px 0 30px 0;
+
+        @media (max-width: 640px) {
+            width: 240px;
+        }
     }
 
     div.motion {
         display: flex;
 
+        @media(max-width: 640px) {
+            flex-wrap: wrap;
+        }
+
         div.column {
             width: 50%;
             padding: 15px;
+
+            @media(max-width: 640px) {
+                width: 100%;
+            }
 
             h3 {
                 font-size: 24px;
@@ -44,7 +62,7 @@ export const DaoFeaturedStyles = styled.div`
             div.buttons {
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: flex start;
                 padding: 30px 0;
             }
 
@@ -92,8 +110,8 @@ export function DaoFeatured() {
                     </p>
 
                     <div className="buttons">
-                        <Button label="Vote Yes" width="calc(50% - 30px)"/>
-                        <Button label="Vote No" width="calc(50% - 30px)"/>
+                        <Button label="Vote Yes" width="180px" margin="0 15px 0 0"/>
+                        <Button label="Vote No" width="180px"/>
                     </div>
                 </div>
                 <div className="column vote">

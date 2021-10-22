@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 import { Button } from '../common/common.button';
-import { BiLink, BsFacebook, AiFillTwitterCircle } from 'react-icons/all';
+import { BiLink } from 'react-icons/all';
 
 export const ProfileHeaderStyles = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 45px 15px;
+    padding: 45px 15px 15px 15px;
+
+    @media (max-width: 640px) {
+        flex-direction: column;
+        padding: 45px 15px;   
+    }
 
     h3 {
         font-size: 24px;
@@ -46,21 +51,7 @@ export function ProfileHeader() {
                     width="150px"
                     height="30px"
                     margin="0 7.5px"
-                    label={<>Profile URL <BiLink className="text-icon"/></>}
-                />
-                <Button
-                    fontSize="14px"
-                    width="30px"
-                    height="30px"
-                    margin="0 7.5px"
-                    label={<BsFacebook className="icon"/>}
-                />
-                <Button
-                    fontSize="14px"
-                    width="30px"
-                    height="30px"
-                    margin="0 7.5px"
-                    label={<AiFillTwitterCircle className="icon"/>}
+                    label={<>Share URL <BiLink className="text-icon"/></>}
                 />
             </div>
         </ProfileHeaderStyles>

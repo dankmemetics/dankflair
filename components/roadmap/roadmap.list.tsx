@@ -5,6 +5,10 @@ import { Card } from '../brand/brand.colors';
 export const RoadmapListStyles = styled.div`
     padding: 15px 15px 90px 15px;
 
+    @media (max-width: 640px) {
+        padding: 0 0 90px 0;
+    }
+
     div.section {
         background: ${Card};
         margin: 30px 15px 60px 15px;

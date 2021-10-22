@@ -4,9 +4,7 @@ import { Badge } from '../common/common.badge';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
 
-import { BsFillPatchCheckFill } from 'react-icons/bs';
-import { AiOutlineFire } from 'react-icons/ai';
-import { FaEthereum } from 'react-icons/fa';
+import { BsFillPatchCheckFill, AiOutlineFire, FaEthereum } from 'react-icons/all';
 
 export const AuctionFeaturedStyles = styled.div`
     padding: 30px 0 0 0;
@@ -19,11 +17,22 @@ export const AuctionFeaturedStyles = styled.div`
         width: calc(100% - 60px);
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 640px) {
+            margin: 0;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
     }
 
     div.text {
         padding: 15px;
         width: calc(100% - 300px);
+
+        @media (max-width: 640px) {
+            width: 100%;
+        }
 
         div.labels {
             display: flex;
@@ -32,6 +41,10 @@ export const AuctionFeaturedStyles = styled.div`
             
             div.label {
                 width: calc(100% / 2);
+
+                @media (max-width: 640px) {
+                    width: 100%;
+                }
             }
         }
 
@@ -80,6 +93,11 @@ export const AuctionFeaturedStyles = styled.div`
         div.button-wrap {
             display: flex;
             justify-content: flex-end;
+            padding: 15px;
+
+            @media (max-width: 640px) {
+                justify-content: center;
+            }
         }
     }
 

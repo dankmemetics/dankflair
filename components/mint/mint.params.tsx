@@ -5,10 +5,18 @@ import { Button } from '../common/common.button';
 export const MintParamsStyles = styled.div`
     padding: 60px 15px 90px 15px;
 
+    @media (max-width: 640px) {
+        padding: 30px 0 90px 0;
+    }
+
     div.buttons {
         display: flex;
         align-items: center;
         width: 100%;
+
+        @media (max-width: 640px) {
+            flex-wrap: wrap;
+        }
 
         &.small {
             a.button {
