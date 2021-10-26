@@ -1,14 +1,17 @@
-import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
 import { IndexFeatured } from '../components/index/index.featured';
+import { IndexMint } from '../components/index/index.mint';
+import { IndexDao } from '../components/index/index.dao';
+import { IndexProfile } from '../components/index/index.profile';
 
 export function Index() {
   return (
     <>
       <Header tab="index"/>
-      <PageContainer>
-        <IndexFeatured/>
-      </PageContainer>
+      <IndexFeatured/>
+      <IndexMint/>
+      <IndexDao/>
+      <IndexProfile/>
     </>
   )
 }

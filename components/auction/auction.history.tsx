@@ -18,6 +18,7 @@ export const AuctionHistoryStyles = styled.div`
     div.history {
         div.row {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
 
             div.column {
@@ -26,6 +27,11 @@ export const AuctionHistoryStyles = styled.div`
                 &:nth-child(3) { width: 20%; }
                 &:nth-child(4) { width: 20%; }
                 &:nth-child(5) { width: 20%; }
+
+                @media (max-width: 640px) {
+                    width: 100% !important;
+                    padding: 5px;
+                }
             }
 
             font-size: 12px;

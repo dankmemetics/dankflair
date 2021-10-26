@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
-import { AiOutlineFire } from 'react-icons/all';
+import { AiOutlineFire } from 'react-icons/ai';
 
 export const ProfileStatsStyles = styled.div`
     display: flex;
@@ -9,7 +9,7 @@ export const ProfileStatsStyles = styled.div`
     div.stat {    
         background: ${Card};
         margin: 15px;
-        padding: 30px;
+        padding: 15px 30px;
         width: calc(50% - 30px);
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
@@ -19,19 +19,18 @@ export const ProfileStatsStyles = styled.div`
         }
 
         p {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
         }
 
         h3 {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 400;
 
             &.dank {
                 display: flex;
                 align-items: center;
                 font-size: 32px;
-                padding: 15px 0;
                 width: 100%;
             }
         }

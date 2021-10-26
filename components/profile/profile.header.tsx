@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Button } from '../common/common.button';
-import { BiLink } from 'react-icons/all';
+import { BiLink } from 'react-icons/bi';
 
 export const ProfileHeaderStyles = styled.div`
     display: flex;

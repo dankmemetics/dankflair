@@ -43,7 +43,6 @@ export const DaoFeaturedStyles = styled.div`
 
         div.column {
             width: 50%;
-            padding: 15px;
 
             @media(max-width: 640px) {
                 width: 100%;
@@ -70,13 +69,16 @@ export const DaoFeaturedStyles = styled.div`
                 position: relative;
                 top: -45px;
 
+                @media (max-width: 640px) {
+                    top: 0px;
+                }
+
                 p {
                     position: absolute;
                     font-size: 18px;
                     font-weight: bold;
                     width: 100%;
                     text-align: center;
-                    padding: 0 30px 0 0;
 
                     &.yes {
                         top: calc(50% - 45px);
@@ -117,7 +119,7 @@ export function DaoFeatured() {
                 <div className="column vote">
                     <p className="yes">420 Yes</p>
                     <p className="no">69 No</p>
-                    <ResponsiveContainer width="100%" height={240}>
+                    <ResponsiveContainer width="100%" height={200}>
                         <PieChart>
                             <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={100} innerRadius={70}/>
                         </PieChart>

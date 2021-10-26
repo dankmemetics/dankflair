@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Background } from '../brand/brand.colors';
 import { Gradient2 } from '../brand/brand.gradients';
 
-import { FaRegAddressCard } from 'react-icons/fa';
+import { ImAddressBook } from 'react-icons/im';
 import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
 import { MdOutlineGroups } from 'react-icons/md';
@@ -145,7 +145,7 @@ export function Header({ tab }) {
           </Link>
           <Link href="/profile">
             <a className={`item ${tab === 'profile' ? 'active' : ''}`}>
-              <FaRegAddressCard className="icon"/>
+              <ImAddressBook className="icon"/>
               Profile
             </a>
           </Link>

@@ -1,25 +1,55 @@
 import styled from 'styled-components';
-import { Background } from '../brand/brand.colors';
-import { Flair } from '../common/common.flair';
+import { Card } from '../common/common.card';
+import { Button } from '../common/common.button';
 
 export const IndexFeaturedStyles = styled.div`
-    div.title {
+    background: hsla(0, 0%, 9%, 1);
+    background: radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
+    background: -moz-radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
+    background: -webkit-radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#161616", endColorstr="#212121", GradientType=1 );
+
+    div.wrap {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        padding: 90px 30px 30px 30px;
         width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        min-height: calc(100vh - 70px);
+
+        @media (max-width: 640px) {
+            height: auto;
+            flex-wrap: wrap;
+        }
+    }
+
+    div.title {
+        padding: 15px;
+        width: 50%;
+
+        @media (max-width: 640px) {
+            width: 100%;
+            padding: 90px 15px;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                text-align: center;
+            }
+        }
 
         h2 {
             font-size: 48px;
-            font-weight: 600;
+            font-weight: 500;
             padding: 0 0 5px 0;
         }
 
         p {
             font-size: 24px;
-            font-weight: 500;
+            font-weight: 400;
         }
     }
 
@@ -29,74 +59,90 @@ export const IndexFeaturedStyles = styled.div`
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        padding: 30px;
-        width: 100%;
+        padding: 15px;
+        width: 50%;
         transform-origin: center;
+
+        @media (max-width: 640px) {
+            width: 100%;
+            min-height: 480px;
+            top: 200px;
+            left: -180px;
+        }
+
+        div.card {
+            position: absolute;
+            top: -240px;
+            left: calc(50%);
+            transform: scale(0.8);
+            pointer-events: none;
+            z-index: 3;
+
+            @keyframes floatLeft {
+                0% { transform: scale(0.8) rotate(-15deg) translateY(-15px); }
+                50% { transform: scale(0.8) rotate(-15deg) translateY(-30px); }
+                100% { transform: scale(0.8) rotate(-15deg) translateY(-15px); }
+            }
+
+            @keyframes floatCenter {
+                0% { transform: scale(0.8) rotate(0) translateY(-15px); }
+                50% { transform: scale(0.8) rotate(0) translateY(-30px); }
+                100% { transform: scale(0.8) rotate(0) translateY(-15px); }
+            }
+
+            @keyframes floatRight {
+                0% { transform: scale(0.8) rotate(15deg) translateY(-15px); }
+                50% { transform: scale(0.8) rotate(15deg) translateY(-30px); }
+                100% { transform: scale(0.8) rotate(15deg) translateY(-15px); }
+            }
+
+            &:nth-child(1) {
+                top: -220px;
+                left: calc(50% - 240px);
+                transform: scale(0.8) rotate(-15deg);
+                z-index: 2;
+
+                animation: floatLeft;
+                animation-duration: 2.5s;
+                animation-iteration-count: infinite;
+            }
+
+            &:nth-child(2) {
+                animation: floatCenter;
+                animation-duration: 2.5s;
+                animation-delay: 1s;
+                animation-iteration-count: infinite;
+            }
+
+            &:nth-child(3) {
+                top: -220px;
+                left: calc(50% + 240px);
+                transform: scale(0.8) rotate(15deg);
+                z-index: 2;
+
+                animation: floatRight;
+                animation-duration: 2.5s;
+                animation-delay: 2s;
+                animation-iteration-count: infinite;
+            }
+        }
     }
 `;
 
 export function IndexFeatured() {
     return(
         <IndexFeaturedStyles>
-            <div className="title">
-                <h2>Dank Flair</h2>
-                <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
-            </div>
-            <div className="featured">
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair1.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair2.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair3.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair4.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair5.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair6.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair7.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair8.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <Flair
-                    width={180}
-                    height={180}
-                    flairUrl="/images/flair9.gif"
-                    nftUrl="/images/sample.png"
-                />
+            <div className="wrap">
+                <div className="title">
+                    <h2>Dank Flair</h2>
+                    <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
+                    <Button label="View Auctions" link="/auction" width="280px" margin="30px 0 0 0"/>
+                </div>
+                <div className="featured">
+                    <Card buttonLabel="View NFT"/>
+                    <Card buttonLabel="View NFT"/>
+                    <Card buttonLabel="View NFT"/>
+                </div>
             </div>
         </IndexFeaturedStyles>
     )

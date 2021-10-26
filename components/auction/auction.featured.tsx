@@ -4,7 +4,9 @@ import { Badge } from '../common/common.badge';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
 
-import { BsFillPatchCheckFill, AiOutlineFire, FaEthereum } from 'react-icons/all';
+import { BsFillPatchCheckFill } from 'react-icons/bs';
+import { AiOutlineFire } from 'react-icons/ai';
+import { SiEthereum } from 'react-icons/si';
 
 export const AuctionFeaturedStyles = styled.div`
     padding: 30px 0 0 0;
@@ -149,7 +151,7 @@ export function AuctionFeatured() {
                         <div className="label">
                             <p>Ask Price</p>
                             <h3>
-                                <FaEthereum className="icon"/>
+                                <SiEthereum className="icon"/>
                                 100,000 ETH
                             </h3>
                         </div>

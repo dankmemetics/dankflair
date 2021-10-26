@@ -5,7 +5,7 @@ import { Badge } from '../common/common.badge';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
-import { FaEthereum } from 'react-icons/fa';
+import { SiEthereum } from 'react-icons/si';
 
 export const AuctionCardStyles = styled.div`
     display: flex;
@@ -16,9 +16,24 @@ export const AuctionCardStyles = styled.div`
     border-radius: 5px;
     box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
+    @media (max-width: 640px) {
+        flex-wrap: wrap;
+        margin: 30px 0;
+        width: 100%;
+
+        div.flair {
+            margin: auto !important;
+        }
+    }
+
     div.text {
         padding: 15px;
         width: calc(100% - 300px);
+
+        @media (max-width: 640px) {
+            width: 100%;
+        }
+    
 
         div.labels {
             display: flex;
@@ -27,6 +42,10 @@ export const AuctionCardStyles = styled.div`
             
             div.label {
                 width: calc(100% / 2);
+
+                @media (max-width: 640px) {
+                    width: 100%;
+                }            
             }
         }
 
@@ -125,7 +144,7 @@ export function AuctionCard() {
                     <div className="label">
                         <p>Ask Price</p>
                         <h3>
-                            <FaEthereum className="icon"/>
+                            <SiEthereum className="icon"/>
                             100,000 ETH
                         </h3>
                     </div>
