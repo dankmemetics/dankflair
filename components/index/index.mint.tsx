@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Card } from '../brand/brand.colors';
+import { Background } from '../brand/brand.colors';
 import { Flair } from '../common/common.flair';
 import { Button } from '../common/common.button';
 
@@ -10,6 +10,7 @@ export const IndexMintStyles = styled.div`
     background: -webkit-linear-gradient(225deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 12%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#131313", endColorstr="#1F1F1F", GradientType=1 );
     overflow: hidden;
+    border-bottom: 5px solid ${Background};
 
     div.wrap {
         display: flex;
@@ -35,6 +36,7 @@ export const IndexMintStyles = styled.div`
         transform: translateY(-275px);
 
         @media (max-width: 1158px) {
+            justify-content: center;
             width: 100%;
             height: 420px;
             overflow: hidden;

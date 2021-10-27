@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Background } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Button } from '../common/common.button';
 
@@ -8,6 +9,7 @@ export const IndexFeaturedStyles = styled.div`
     background: -moz-linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
     background: -webkit-linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#111111", endColorstr="#303030", GradientType=1 );
+    border-bottom: 5px solid ${Background};
 
     div.wrap {
         display: flex;

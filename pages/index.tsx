@@ -1,4 +1,5 @@
 import { Header } from '../components/common/common.header';
+import { Footer } from '../components/common/common.footer';
 import { IndexFeatured } from '../components/index/index.featured';
 import { IndexMint } from '../components/index/index.mint';
 import { IndexDao } from '../components/index/index.dao';
@@ -12,6 +13,7 @@ export function Index() {
       <IndexMint/>
       <IndexDao/>
       <IndexProfile/>
+      <Footer/>
     </>
   )
 }

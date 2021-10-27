@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Primary, Card } from '../brand/brand.colors';
+import { Primary, Card, Background } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { BiLink } from 'react-icons/bi';
 import { AiOutlineFire } from 'react-icons/ai';
@@ -10,6 +10,7 @@ export const IndexProfileStyles = styled.div`
     background: -moz-linear-gradient(270deg, hsla(0, 0%, 11%, 1) 0%, hsla(0, 0%, 11%, 1) 100%);
     background: -webkit-linear-gradient(270deg, hsla(0, 0%, 11%, 1) 0%, hsla(0, 0%, 11%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#1C1C1C", endColorstr="#1C1C1C", GradientType=1 );
+    border-bottom: 5px solid ${Background};
 
     div.wrap {
         display: flex;

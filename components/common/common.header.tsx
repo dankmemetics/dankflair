@@ -14,8 +14,9 @@ export const HeaderStyles = styled.div`
   position: relative;
   z-index: 1111;
   background: ${Gradient2};
+  border-bottom: 5px solid ${Background};
   width: 100%;
-  height: 70px;
+  height: 65px;
 
   div.wrap {
     display: flex;
@@ -44,7 +45,7 @@ export const HeaderStyles = styled.div`
       }
 
       h2 {
-        font-size: 32px;
+        font-size: 24px;
         font-weight: 400;
         padding: 2.5px 15px 0 15px;
       }

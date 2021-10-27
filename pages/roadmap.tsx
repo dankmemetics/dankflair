@@ -1,5 +1,6 @@
 import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
+import { Footer } from '../components/common/common.footer';
 import { RoadmapList } from '../components/roadmap/roadmap.list';
 
 export function Roadmap() {
@@ -9,6 +10,7 @@ export function Roadmap() {
       <PageContainer>
         <RoadmapList/>
       </PageContainer>
+      <Footer/>
     </>
   )
 }

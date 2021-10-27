@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ResponsiveContainer, PieChart, Pie } from 'recharts';
-import { Card } from '../brand/brand.colors';
+import { Background, Card } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 
 export const IndexDaoStyles = styled.div`
@@ -9,6 +9,7 @@ export const IndexDaoStyles = styled.div`
     background: -moz-linear-gradient(135deg, hsla(0, 0%, 8%, 1) 0%, hsla(0, 0%, 7%, 1) 100%);
     background: -webkit-linear-gradient(135deg, hsla(0, 0%, 8%, 1) 0%, hsla(0, 0%, 7%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#141414", endColorstr="#131313", GradientType=1 );
+    border-bottom: 5px solid ${Background};
 
     div.wrap {
         display: flex;
