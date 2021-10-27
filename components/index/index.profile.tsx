@@ -19,7 +19,7 @@ export const IndexProfileStyles = styled.div`
         margin: auto;
         min-height: 100vh;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             flex-wrap: wrap;
             flex-direction: column-reverse;
             padding: 0 0 180px 0;
@@ -34,7 +34,7 @@ export const IndexProfileStyles = styled.div`
         border-radius: 15px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: calc(100% - 30px);
             padding: 15px;
         }  
@@ -46,7 +46,7 @@ export const IndexProfileStyles = styled.div`
             width: 100%;
             padding: 15px;
         
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 flex-direction: column;  
             }
         
@@ -86,7 +86,7 @@ export const IndexProfileStyles = styled.div`
                 border-radius: 5px;
                 box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-                @media (max-width: 640px) {
+                @media (max-width: 1158px) {
                     width: calc(100% - 30px);
                 }
 
@@ -141,7 +141,7 @@ export const IndexProfileStyles = styled.div`
         padding: 15px 15px 15px 45px;
         width: 50%;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
             padding: 90px 15px;
             display: flex;
@@ -155,7 +155,7 @@ export const IndexProfileStyles = styled.div`
             font-weight: 500;
             padding: 0 0 5px 0;
 
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 font-size: 24px;
                 text-align: center;
             }
@@ -166,7 +166,7 @@ export const IndexProfileStyles = styled.div`
             font-weight: 400;
             line-height: 2;
 
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 font-size: 14px;
                 text-align: center;
             }

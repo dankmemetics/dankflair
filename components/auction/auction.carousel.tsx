@@ -23,7 +23,7 @@ export const AuctionCarouselStyles = styled.div`
             opacity: 1;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 30px;
             margin: 0 2.5px;
         }

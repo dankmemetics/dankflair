@@ -5,7 +5,7 @@ import { Button } from '../common/common.button';
 export const MintParamsStyles = styled.div`
     padding: 60px 15px 90px 15px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         padding: 30px 0 90px 0;
     }
 
@@ -14,7 +14,7 @@ export const MintParamsStyles = styled.div`
         align-items: center;
         width: 100%;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             flex-wrap: wrap;
         }
 

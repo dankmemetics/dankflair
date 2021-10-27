@@ -16,7 +16,7 @@ export const AuctionCardStyles = styled.div`
     border-radius: 5px;
     box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         flex-wrap: wrap;
         margin: 30px 0;
         width: 100%;
@@ -30,7 +30,7 @@ export const AuctionCardStyles = styled.div`
         padding: 15px;
         width: calc(100% - 300px);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
         }
     
@@ -43,7 +43,7 @@ export const AuctionCardStyles = styled.div`
             div.label {
                 width: calc(100% / 2);
 
-                @media (max-width: 640px) {
+                @media (max-width: 1158px) {
                     width: 100%;
                 }            
             }

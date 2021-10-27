@@ -3,11 +3,11 @@ import { Card } from '../common/common.card';
 import { Button } from '../common/common.button';
 
 export const IndexFeaturedStyles = styled.div`
-    background: hsla(0, 0%, 9%, 1);
-    background: radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
-    background: -moz-radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
-    background: -webkit-radial-gradient(circle, hsla(0, 0%, 9%, 1) 0%, hsla(0, 0%, 13%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#161616", endColorstr="#212121", GradientType=1 );
+    background: hsla(0, 0%, 7%, 1);
+    background: linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
+    background: -moz-linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
+    background: -webkit-linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#111111", endColorstr="#303030", GradientType=1 );
 
     div.wrap {
         display: flex;
@@ -17,9 +17,10 @@ export const IndexFeaturedStyles = styled.div`
         margin: auto;
         min-height: calc(100vh - 70px);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             height: auto;
             flex-wrap: wrap;
+            justify-content: center;
         }
     }
 
@@ -27,7 +28,7 @@ export const IndexFeaturedStyles = styled.div`
         padding: 15px;
         width: 50%;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
             padding: 90px 15px;
             
@@ -42,7 +43,7 @@ export const IndexFeaturedStyles = styled.div`
         }
 
         h2 {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 500;
             padding: 0 0 5px 0;
         }
@@ -63,48 +64,58 @@ export const IndexFeaturedStyles = styled.div`
         width: 50%;
         transform-origin: center;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
-            min-height: 480px;
-            top: 200px;
-            left: -180px;
+            min-height: 420px;
+            top: 0;
+            left: 0;
         }
 
         div.card {
             position: absolute;
             top: -240px;
-            left: calc(50%);
-            transform: scale(0.8);
+            left: 180px;
+            transform: scale(0.6);
             pointer-events: none;
             z-index: 3;
 
+            @media (max-width: 1158px) {
+                top: -120px;
+                left: calc(50% - 170px);
+            }
+
             @keyframes floatLeft {
-                0% { transform: scale(0.8) rotate(-15deg) translateY(-15px); }
-                50% { transform: scale(0.8) rotate(-15deg) translateY(-30px); }
-                100% { transform: scale(0.8) rotate(-15deg) translateY(-15px); }
+                0% { transform: scale(0.6) rotate(-15deg) translateY(-15px); }
+                50% { transform: scale(0.6) rotate(-15deg) translateY(-30px); }
+                100% { transform: scale(0.6) rotate(-15deg) translateY(-15px); }
             }
 
             @keyframes floatCenter {
-                0% { transform: scale(0.8) rotate(0) translateY(-15px); }
-                50% { transform: scale(0.8) rotate(0) translateY(-30px); }
-                100% { transform: scale(0.8) rotate(0) translateY(-15px); }
+                0% { transform: scale(0.6) rotate(0) translateY(-15px); }
+                50% { transform: scale(0.6) rotate(0) translateY(-30px); }
+                100% { transform: scale(0.6) rotate(0) translateY(-15px); }
             }
 
             @keyframes floatRight {
-                0% { transform: scale(0.8) rotate(15deg) translateY(-15px); }
-                50% { transform: scale(0.8) rotate(15deg) translateY(-30px); }
-                100% { transform: scale(0.8) rotate(15deg) translateY(-15px); }
+                0% { transform: scale(0.6) rotate(15deg) translateY(-15px); }
+                50% { transform: scale(0.6) rotate(15deg) translateY(-30px); }
+                100% { transform: scale(0.6) rotate(15deg) translateY(-15px); }
             }
 
             &:nth-child(1) {
                 top: -220px;
-                left: calc(50% - 240px);
-                transform: scale(0.8) rotate(-15deg);
+                left: 30px;
+                transform: scale(0.6) rotate(-15deg);
                 z-index: 2;
 
                 animation: floatLeft;
                 animation-duration: 2.5s;
                 animation-iteration-count: infinite;
+
+                @media (max-width: 1158px) {
+                    top: -100px;
+                    left: calc(50% - 310px);
+                }
             }
 
             &:nth-child(2) {
@@ -116,14 +127,19 @@ export const IndexFeaturedStyles = styled.div`
 
             &:nth-child(3) {
                 top: -220px;
-                left: calc(50% + 240px);
-                transform: scale(0.8) rotate(15deg);
+                left: 330px;
+                transform: scale(0.6) rotate(15deg);
                 z-index: 2;
 
                 animation: floatRight;
                 animation-duration: 2.5s;
                 animation-delay: 2s;
                 animation-iteration-count: infinite;
+
+                @media (max-width: 1158px) {
+                    top: -100px;
+                    left: calc(50% - 10px);
+                }
             }
         }
     }

@@ -9,7 +9,7 @@ export const ProfileHeaderStyles = styled.div`
     width: 100%;
     padding: 45px 15px 15px 15px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         flex-direction: column;
         padding: 45px 15px;   
     }

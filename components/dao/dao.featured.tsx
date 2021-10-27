@@ -11,7 +11,7 @@ export const DaoFeaturedStyles = styled.div`
     border-radius: 5px;
     box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         margin: 0;
         width: 100%;
         padding: 15px;
@@ -29,7 +29,7 @@ export const DaoFeaturedStyles = styled.div`
         background: white;
         margin: 5px 0 30px 0;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 240px;
         }
     }
@@ -37,14 +37,14 @@ export const DaoFeaturedStyles = styled.div`
     div.motion {
         display: flex;
 
-        @media(max-width: 640px) {
+        @media(max-width: 1158px) {
             flex-wrap: wrap;
         }
 
         div.column {
             width: 50%;
 
-            @media(max-width: 640px) {
+            @media(max-width: 1158px) {
                 width: 100%;
             }
 
@@ -69,7 +69,7 @@ export const DaoFeaturedStyles = styled.div`
                 position: relative;
                 top: -45px;
 
-                @media (max-width: 640px) {
+                @media (max-width: 1158px) {
                     top: 0px;
                 }
 

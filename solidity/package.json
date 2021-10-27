@@ -1,0 +1,10 @@
+{
+  "name": "@dankmemetics/dankfalir-sol",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2",
+    "truffle": "^5.4.16"
+  }
+}

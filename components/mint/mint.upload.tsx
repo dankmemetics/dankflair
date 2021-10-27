@@ -14,7 +14,7 @@ export const MintUploadStyles = styled.div`
     background: ${Card};
     
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         padding: 30px 0;
         flex-wrap: wrap;
         flex-direction: column;
@@ -27,7 +27,7 @@ export const MintUploadStyles = styled.div`
         width: 40%;
         height: 100%;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
         }
 
@@ -64,7 +64,7 @@ export const MintUploadStyles = styled.div`
         align-items: center;
         justify-content: center;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
         }
 

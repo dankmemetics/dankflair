@@ -61,7 +61,7 @@ export const HeaderStyles = styled.div`
       justify-content: center;
       font-size: 32px;
 
-      @media(max-width: 640px) {
+      @media(max-width: 1158px) {
         display: flex;
       }
     }
@@ -70,7 +70,7 @@ export const HeaderStyles = styled.div`
       display: flex;
       height: 100%;
 
-      @media(max-width: 640px) {
+      @media(max-width: 1158px) {
         position: absolute;
         left: 0;
         top:  70px;
@@ -96,7 +96,7 @@ export const HeaderStyles = styled.div`
         cursor: pointer;
         text-decoration: none;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
           justify-content: flex-start;
           padding: 10px 15px;
           height: auto;

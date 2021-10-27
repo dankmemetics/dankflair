@@ -14,7 +14,7 @@ export const ProfileStatsStyles = styled.div`
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: calc(100% - 30px);
         }
 

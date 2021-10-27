@@ -18,7 +18,7 @@ export const IndexDaoStyles = styled.div`
         margin: auto;
         min-height: 100vh;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             flex-wrap: wrap;
         }
     }
@@ -31,7 +31,7 @@ export const IndexDaoStyles = styled.div`
         border-radius: 15px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: calc(100% - 30px);
             padding: 15px;
         }  
@@ -48,7 +48,7 @@ export const IndexDaoStyles = styled.div`
             background: white;
             margin: 5px 0 30px 0;
     
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 width: 180px;
             }
         }
@@ -56,14 +56,14 @@ export const IndexDaoStyles = styled.div`
         div.motion {
             display: flex;
     
-            @media(max-width: 640px) {
+            @media(max-width: 1158px) {
                 flex-wrap: wrap;
             }
     
             div.column {
                 width: 50%;
     
-                @media(max-width: 640px) {
+                @media(max-width: 1158px) {
                     width: 100%;
                 }
     
@@ -88,7 +88,7 @@ export const IndexDaoStyles = styled.div`
                     position: relative;
                     top: -45px;
 
-                    @media (max-width: 640px) {
+                    @media (max-width: 1158px) {
                         top: 0px;
                     }
     
@@ -102,7 +102,7 @@ export const IndexDaoStyles = styled.div`
                         &.yes {
                             top: calc(50% - 45px);
 
-                            @media (max-width: 640px) {
+                            @media (max-width: 1158px) {
                                 top: calc(50% - 30px);
                             }
                         }
@@ -120,7 +120,7 @@ export const IndexDaoStyles = styled.div`
         padding: 15px;
         width: 50%;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
             padding: 90px 15px;
             display: flex;
@@ -134,7 +134,7 @@ export const IndexDaoStyles = styled.div`
             font-weight: 500;
             padding: 0 0 5px 0;
 
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 font-size: 24px;
                 text-align: center;
             }
@@ -145,7 +145,7 @@ export const IndexDaoStyles = styled.div`
             font-weight: 400;
             line-height: 2;
 
-            @media (max-width: 640px) {
+            @media (max-width: 1158px) {
                 font-size: 14px;
                 text-align: center;
             }

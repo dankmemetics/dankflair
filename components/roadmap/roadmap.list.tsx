@@ -5,7 +5,7 @@ import { Card } from '../brand/brand.colors';
 export const RoadmapListStyles = styled.div`
     padding: 15px 15px 90px 15px;
 
-    @media (max-width: 640px) {
+    @media (max-width: 1158px) {
         padding: 0 0 90px 0;
     }
 

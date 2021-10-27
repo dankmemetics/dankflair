@@ -11,7 +11,7 @@ export const AuctionBidStyles = styled.div`
         width: calc(35% - 30px);
         margin: 15px;
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
             margin: 15px 0;
         }
@@ -57,7 +57,7 @@ export const AuctionBidStyles = styled.div`
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
-        @media (max-width: 640px) {
+        @media (max-width: 1158px) {
             width: 100%;
             margin: 15px 0;
         }
@@ -77,7 +77,7 @@ export const AuctionBidStyles = styled.div`
                 &:nth-child(3) { width: 20%; }
                 &:nth-child(4) { width: 20%; }
 
-                @media (max-width: 640px) {
+                @media (max-width: 1158px) {
                     width: 100% !important;
                     padding: 5px;
                 }
