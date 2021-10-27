@@ -88,9 +88,10 @@ export function IndexMint() {
             <div className="wrap">
                 <div className="graphic">
                     {
-                        uris.map(uri => {
+                        uris.map((uri, i) => {
                             return(
                                 <Flair
+                                    key={i}
                                     width={120}
                                     height={120}
                                     flairUrl="/images/flair1.gif"

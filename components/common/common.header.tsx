@@ -3,9 +3,10 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Background } from '../brand/brand.colors';
 import { Gradient2 } from '../brand/brand.gradients';
+import { Metamask } from './common.metamask';
 
 import { ImAddressBook } from 'react-icons/im';
-import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
+import { BiStoreAlt } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
 import { MdOutlineGroups } from 'react-icons/md';
 import { CgMenuCake } from 'react-icons/cg';
@@ -138,12 +139,6 @@ export function Header({ tab }) {
         </a>
         
         <div className={`hitems ${menu ? 'active' : ''}`}>
-          <Link href="/roadmap">
-            <a className={`item ${tab === 'roadmap' ? 'active' : ''}`}>
-              <BiMapPin className="icon" />
-              Roadmap
-            </a>
-          </Link>
           <Link href="/profile">
             <a className={`item ${tab === 'profile' ? 'active' : ''}`}>
               <ImAddressBook className="icon"/>
@@ -168,6 +163,7 @@ export function Header({ tab }) {
               Auctions
             </a>
           </Link>
+          <Metamask/>
         </div>        
       </div>
     </HeaderStyles>
