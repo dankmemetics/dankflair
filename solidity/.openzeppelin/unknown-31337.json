@@ -3,14 +3,14 @@
   "proxies": [
     {
       "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
-      "txHash": "0xd423d647fde07d97d029df4ee1b0815d81a486ab9ffde653cb4b9d02009a5f88",
+      "txHash": "0xc5c202c8c230bd798e78bb775b013b487a77f4132372205422777ccc83659b77",
       "kind": "uups"
     }
   ],
   "impls": {
-    "9b3caa9a61dcda9e07c592381b76c7131505c5aee9e204dcdc3f934eef7c6128": {
+    "24a30fb8b6c41de27a7d4bd239a727865b3219c8aecbbb4e6e3b74fbec875f7f": {
       "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-      "txHash": "0x437e895c6853b1a979439a01e27150c8f546a6b6aaf98b55b6de79ff852f91ea",
+      "txHash": "0x309be12b386b7aa5081f7d677d8fdeafd8df4683a5c2f98a377039baeb08fc95",
       "layout": {
         "storage": [
           {
@@ -80,6 +80,12 @@
             "src": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol:418"
           },
           {
+            "contract": "ERC721BurnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721BurnableUpgradeable.sol:34"
+          },
+          {
             "contract": "OwnableUpgradeable",
             "label": "_owner",
             "type": "t_address",
@@ -106,12 +112,12 @@
           {
             "contract": "DankFlair",
             "label": "_tokenIdCounter",
-            "type": "t_struct(Counter)1991_storage",
-            "src": "contracts/DankFlair.sol:13"
+            "type": "t_struct(Counter)2049_storage",
+            "src": "contracts/DankFlair.sol:14"
           }
         ],
         "types": {
-          "t_struct(Counter)1991_storage": {
+          "t_struct(Counter)2049_storage": {
             "label": "struct CountersUpgradeable.Counter",
             "members": [
               {

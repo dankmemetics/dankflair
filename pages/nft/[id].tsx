@@ -1,18 +1,18 @@
 import { PageContainer } from "../../components/brand/brand.app";
 import { Header } from '../../components/common/common.header';
 import { Footer } from '../../components/common/common.footer';
-import { AuctionCard } from '../../components/auction/auction.card';
-import { AuctionBid } from '../../components/auction/auction.bid';
-import { AuctionHistory } from '../../components/auction/auction.history';
+import { NftFeature } from '../../components/nft/nft.feature';
+import { NftBid } from '../../components/nft/nft.bid';
+import { NftHistory } from '../../components/nft/nft.history';
 
 export function Auction() {
   return (
     <>
-      <Header tab="auction"/>
+      <Header/>
       <PageContainer>
-        <AuctionCard/>
-        <AuctionBid/>
-        <AuctionHistory/>
+        <NftFeature/>
+        <NftBid/>
+        <NftHistory/>
       </PageContainer>
       <Footer/>
     </>

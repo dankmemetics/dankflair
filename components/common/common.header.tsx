@@ -10,6 +10,7 @@ import { BiStoreAlt } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
 import { MdOutlineGroups } from 'react-icons/md';
 import { CgMenuCake } from 'react-icons/cg';
+import { GiOpenBook } from 'react-icons/gi';
 
 export const HeaderStyles = styled.div`
   position: relative;
@@ -65,6 +66,7 @@ export const HeaderStyles = styled.div`
 
       @media(max-width: 1158px) {
         display: flex;
+        padding: 0 0 15px 0;
       }
     }
 
@@ -75,13 +77,15 @@ export const HeaderStyles = styled.div`
       @media(max-width: 1158px) {
         position: absolute;
         left: 0;
-        top:  70px;
+        top:  60px;
         width: 100%;
         height: auto;
         flex-direction: column;
         background: ${Background};
 
         display: none;
+        padding: 15px 0 0 0;
+
         &.active {
           display: flex;
         }
@@ -122,7 +126,7 @@ export const HeaderStyles = styled.div`
   }
 `;
 
-export function Header({ tab }) {
+export function Header({ tab = '' }) {
   const [menu, setMenu] = useState(false);
 
   return (
@@ -143,6 +147,12 @@ export function Header({ tab }) {
             <a className={`item ${tab === 'profile' ? 'active' : ''}`}>
               <ImAddressBook className="icon"/>
               Profile
+            </a>
+          </Link>          
+          <Link href="/flairpedia">
+            <a className={`item ${tab === 'flairpedia' ? 'active' : ''}`}>
+              <GiOpenBook className="icon"/>
+              Flairpedia
             </a>
           </Link>
           <Link href="/mint">

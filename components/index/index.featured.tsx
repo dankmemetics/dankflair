@@ -77,7 +77,6 @@ export const IndexFeaturedStyles = styled.div`
             position: absolute;
             top: -240px;
             left: 180px;
-            transform: scale(0.6);
             pointer-events: none;
             z-index: 3;
 
@@ -107,7 +106,7 @@ export const IndexFeaturedStyles = styled.div`
             &:nth-child(1) {
                 top: -220px;
                 left: 30px;
-                transform: scale(0.6) rotate(-15deg);
+                transform: scale(0.6) rotate(-15deg) translateY(-15px);
                 z-index: 2;
 
                 animation: floatLeft;
@@ -121,6 +120,8 @@ export const IndexFeaturedStyles = styled.div`
             }
 
             &:nth-child(2) {
+                transform: scale(0.6) rotate(0deg) translateY(-15px);
+
                 animation: floatCenter;
                 animation-duration: 2.5s;
                 animation-delay: 1s;
@@ -130,7 +131,7 @@ export const IndexFeaturedStyles = styled.div`
             &:nth-child(3) {
                 top: -220px;
                 left: 330px;
-                transform: scale(0.6) rotate(15deg);
+                transform: scale(0.6) rotate(15deg) translateY(-15px);
                 z-index: 2;
 
                 animation: floatRight;
@@ -157,9 +158,9 @@ export function IndexFeatured() {
                     <Button label="View Auctions" link="/auction" width="280px" margin="30px 0 0 0"/>
                 </div>
                 <div className="featured">
-                    <Card buttonLabel="View NFT"/>
-                    <Card buttonLabel="View NFT"/>
-                    <Card buttonLabel="View NFT"/>
+                    <Card id={0} type="feature"/>
+                    <Card id={1} type="feature"/>
+                    <Card id={2} type="feature"/>
                 </div>
             </div>
         </IndexFeaturedStyles>

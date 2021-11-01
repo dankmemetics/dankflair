@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Primary, Background, Card } from '../brand/brand.colors';
+import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
+import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
@@ -9,32 +10,48 @@ import { AiOutlineFire } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 
 export const AuctionFeaturedStyles = styled.div`
-    padding: 30px 0 0 0;
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    padding: 15px;
+    width: calc(100% - 60px);
 
-    div.card {
-        display: flex;
-        background: ${Card};
-        margin: 30px;
-        padding: 15px;
-        width: calc(100% - 60px);
-        border-radius: 5px;
-        box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
+    @media (max-width: 1158px) {
+        flex-wrap: wrap;
+        margin: 30px 0;
+        width: 100%;
+    }
 
+    div.card-wrap {
         @media (max-width: 1158px) {
-            margin: 0;
             width: 100%;
+            display: flex;
             justify-content: center;
-            flex-wrap: wrap;
         }
+
+        transform: translateY(0px);
+
+        animation: float;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+
+        @keyframes float {
+            0% { transform: translateY(-0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(-0px); }
+        }
+
     }
 
     div.text {
-        padding: 15px;
-        width: calc(100% - 300px);
+        padding: 15px 15px 15px 60px;
+        width: calc(100% - 320px);
 
         @media (max-width: 1158px) {
             width: 100%;
+            padding: 15px;
         }
+
 
         div.labels {
             display: flex;
@@ -44,9 +61,13 @@ export const AuctionFeaturedStyles = styled.div`
             div.label {
                 width: calc(100% / 2);
 
-                @media (max-width: 1158px) {
+                &.full {
                     width: 100%;
                 }
+
+                @media (max-width: 1158px) {
+                    width: 100%;
+                }            
             }
         }
 
@@ -95,11 +116,6 @@ export const AuctionFeaturedStyles = styled.div`
         div.button-wrap {
             display: flex;
             justify-content: flex-end;
-            padding: 15px;
-
-            @media (max-width: 1158px) {
-                justify-content: center;
-            }
         }
     }
 
@@ -113,59 +129,54 @@ export const AuctionFeaturedStyles = styled.div`
 export function AuctionFeatured() {
     return(
         <AuctionFeaturedStyles>
-            <div className="card">
-                <Flair
-                    flairUrl="/images/flair1.gif"
-                    nftUrl="/images/sample.png"
-                />
-                <div className="text">
-                    <h2>Dank Kitty</h2>
-                    
-                    <div className="labels">
-                        <div className="label">
-                            <p>Flair NFT</p>
-                            <h3>
-                                <BsFillPatchCheckFill className="icon"/>
-                                DF Electric 
-                                <Badge label="1 of 100"/>
-                            </h3>
-                        </div>
-                        <div className="label">
-                            <p>Content NFT</p>
-                            <h3>
-                                <BsFillPatchCheckFill className="icon"/>
-                                Kitty #69
-                                <Badge label="View on OpenSEA" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
-                            </h3>
-                        </div>
-                        <div className="label">
-                            <p>Dank Meter</p>
-                            <h3>
-                                <AiOutlineFire className="icon"/>
-                                Lit
-                                <div className="meter">
-                                    <div className="meter-inner"/>
-                                </div>
-                            </h3>
-                        </div>
-                        <div className="label">
-                            <p>Ask Price</p>
-                            <h3>
-                                <SiEthereum className="icon"/>
-                                100,000 ETH
-                            </h3>
-                        </div>
+                        <div className="card-wrap">
+                <Card type="feature"/>
+            </div>
+            <div className="text">
+                <h2>Dank Kitty</h2>
+                
+                <div className="labels">
+                    <div className="label">
+                        <p>Flair NFT</p>
+                        <h3>
+                            <BsFillPatchCheckFill className="icon"/>
+                            DF Electric 
+                            <Badge label="1 of 100"/>
+                        </h3>
                     </div>
-
-                    <p className="description">
-                        One of the rarest, dankest exotic kitties on the blockchain.
-                        We've added the Electric Dank Flair to make it even more rare,
-                        dank and exotic. Limited edition, 1 of 100 of this Dank Kitty.
-                    </p>
-
-                    <div className="button-wrap">
-                        <Button label="View Auction" link="/auction/69" width="240px"/>
+                    <div className="label">
+                        <p>Content NFT</p>
+                        <h3>
+                            <BsFillPatchCheckFill className="icon"/>
+                            Kitty #69
+                            <Badge label="View on OpenSEA" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
+                        </h3>
                     </div>
+                    <div className="label">
+                        <p>Ask Price</p>
+                        <h3>
+                            <SiEthereum className="icon"/>
+                            100,000 ETH
+                        </h3>
+                    </div>
+                    <div className="label">
+                        <p>Highest Bid</p>
+                        <h3>
+                            <SiEthereum className="icon"/>
+                            1,000 ETH
+                        </h3>
+                    </div>
+                </div>
+
+                <p>Description</p>
+                <p className="description">
+                    One of the rarest, dankest exotic kitties on the blockchain.
+                    We've added the Electric Dank Flair to make it even more rare,
+                    dank and exotic. Limited edition, 1 of 100 of this Dank Kitty.
+                </p>
+
+                <div className="button-wrap">
+                    <Button label="View Auction" link="/nft/69" width="240px"/>
                 </div>
             </div>
         </AuctionFeaturedStyles>

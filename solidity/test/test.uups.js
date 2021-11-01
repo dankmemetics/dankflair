@@ -18,4 +18,8 @@ describe('UUPS Upgrades Tests', () => {
     it('deploys the upgrade', async () => {
         await upgrades.upgradeProxy(globals.contract, globals.DankFlair);
     });
+
+    it('gets the symbol', async () => {
+        console.log(globals.DankFlair);
+    });
 });

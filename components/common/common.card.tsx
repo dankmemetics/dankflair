@@ -16,6 +16,7 @@ export const CardStyles = styled.div`
     margin: 15px;
     width: 320px;
     max-width: calc(100% - 30px);
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,8 +26,23 @@ export const CardStyles = styled.div`
     h3 {
         font-size: 24px;
         font-weight: 500;
-        padding: 0 0 15px 0;
+        padding: 0 0 5px 0;
     }
+
+    div.badge {
+        position: absolute;
+        right: 0px;
+        top: 15px;
+        font-size: 14px;
+        font-weight: bold;
+        background: ${Primary};
+        padding: 5px 10px;
+        margin: 0 15px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
 
     div.labels {
         display: flex;
@@ -34,10 +50,21 @@ export const CardStyles = styled.div`
 
         div.label {
             width: 50%;
-            padding: 0 0 5px;
+            padding: 0 0 2.5px;
+
+            &.full {
+                width: 100%;
+
+                &.owner {
+                    h3 {
+                        font-size: 10px;
+                        width: 100%;
+                    }
+                }
+            }
 
             div.meter {
-                width: 60px;
+                width: calc(100% - 90px);
                 height: 15px;
                 border: 2px solid white;
                 border-radius: 8px;
@@ -65,17 +92,6 @@ export const CardStyles = styled.div`
                 padding: 5px 0;
             }
 
-            a.badge {
-                font-size: 12px;
-                font-weight: bold;
-                background: ${Primary};
-                padding: 5px 10px;
-                margin: 0 15px;
-                border-radius: 5px;
-                color: white;
-                text-decoration: none;
-            }
-        
             .icon {
                 position: relative;
                 top: 1px;
@@ -88,13 +104,21 @@ export const CardStyles = styled.div`
 `;
 
 export function Card({
-    buttonLabel = 'View Auction'
+    type = 'generic',
+    buttonLabel = '',
+    account = '0x311544BD01996727084951af2154E64fD5006537',
+    id = 0,
+    url = '/nft/69',
 }) {
     return(
-        <CardStyles className="card">
+        <CardStyles className={`card ${type}`}>
+            <div className="badge">
+                #{id}
+            </div>
             <Flair
                 width={180}
                 height={180}
+                margin="0 0 10px 0"
                 flairUrl="/images/flair1.gif"
                 nftUrl="/images/sample.png"
             />
@@ -114,26 +138,37 @@ export function Card({
                         Kitty #69 
                     </h3>
                 </div>
-                <div className="label">
+                <div className={`label ${type === 'feature' ? 'full' : ''}`}>
                     <p>Dank Meter</p>
                     <h3>
-                        <AiOutlineFire className="icon"/>
-                        Lit
+                        <div className="meter-label">
+                            <AiOutlineFire className="icon"/>
+                            Lit
+                        </div>                        
                         <div className="meter">
                             <div className="meter-inner"/>
                         </div>
                     </h3>
                 </div>
-                <div className="label">
-                    <p>Ask Price</p>
+                {
+                    type !== 'feature' ?
+                    <div className="label">
+                        <p>Ask Price</p>
+                        <h3>
+                            <SiEthereum className="icon"/>
+                            100,000 ETH
+                        </h3>
+                    </div> : ''
+                }
+                <div className="label full owner">
+                    <p>Owner</p>
                     <h3>
-                        <SiEthereum className="icon"/>
-                        100,000 ETH
+                        {account}
                     </h3>
                 </div>
             </div>
 
-            <Button label={buttonLabel} link="/auction/69" width="100%" height="40px" margin="15px 0 0 0" fontSize="16px"/>
+            {buttonLabel ? <Button label={buttonLabel} link={url} width="100%" height="40px" margin="15px 0 0 0" fontSize="16px"/> : ''}
         </CardStyles>
     )
 }

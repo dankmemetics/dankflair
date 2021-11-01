@@ -8,6 +8,7 @@ import { FaDiscord } from 'react-icons/fa';
 import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
 import { MdOutlineGroups } from 'react-icons/md';
+import { GiOpenBook } from 'react-icons/gi';
 
 export const FooterStyles = styled.div`
     position: relative;
@@ -20,7 +21,7 @@ export const FooterStyles = styled.div`
         max-width: 1200px;
         margin: auto;
         height: 100%;
-        padding: 0 0 90px 0;    
+        padding: 45px 0 90px 0;    
 
         @media (max-width: 1158px) {
             padding: 15px 15px 90px 15px;
@@ -47,8 +48,6 @@ export const FooterStyles = styled.div`
     div.links {
         display: flex;
         flex-wrap: wrap;
-
-
 
         a.link {
             display: flex;
@@ -110,8 +109,14 @@ export function Footer() {
                     </Link>
                     <Link href="/mint">
                         <a className="link">
-                            <HiPrinter className="icon"/>
-                            Mint
+                        <HiPrinter className="icon"/>
+                        Mint
+                        </a>
+                    </Link>
+                    <Link href="/flairpedia">
+                        <a className="link">
+                            <GiOpenBook className="icon"/>
+                            Flairpedia
                         </a>
                     </Link>
                     <Link href="/auction">

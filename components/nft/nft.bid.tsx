@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 
-export const AuctionBidStyles = styled.div`
+export const NftBidStyles = styled.div`
     padding: 0 15px 15px 15px;
     display: flex;
     flex-wrap: wrap;
@@ -51,11 +51,18 @@ export const AuctionBidStyles = styled.div`
 
     div.bids {
         background: ${Card};
+        padding: 15px;
         margin: 15px;
         width: calc(65% - 30px);
         height: 420px;
         border-radius: 5px;
         box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
+
+        h3 {
+            font-size: 24px;
+            font-weight: 400;
+            padding: 0 0 15px 0;
+        }
 
         @media (max-width: 1158px) {
             width: 100%;
@@ -97,9 +104,9 @@ export const AuctionBidStyles = styled.div`
     }
 `;
 
-export function AuctionBid() {
+export function NftBid() {
     return(
-        <AuctionBidStyles>
+        <NftBidStyles>
             <div className="form">
                 <div className="form-wrap">
                     <h4>100,000 ETH</h4>
@@ -112,6 +119,9 @@ export function AuctionBid() {
                 </div>
             </div>
             <div className="bids">
+                <div className="bid-heading">
+                    <h3>Current Bids</h3>
+                </div>
                 <div className="bid header">
                     <div className="bid-column">Address</div>
                     <div className="bid-column">Amount</div>
@@ -137,6 +147,6 @@ export function AuctionBid() {
                     <div className="bid-column">In 6.9 days</div>
                 </div>
             </div>
-        </AuctionBidStyles>
+        </NftBidStyles>
     )
 }

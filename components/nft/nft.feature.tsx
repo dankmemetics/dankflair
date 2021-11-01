@@ -1,20 +1,18 @@
 import styled from 'styled-components';
-import { Primary, Background, Card } from '../brand/brand.colors';
-import { Flair } from '../common/common.flair';
+import { Primary, Background, Card as CardBg } from '../brand/brand.colors';
+import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 
-export const AuctionCardStyles = styled.div`
+export const NftFeatureStyles = styled.div`
     display: flex;
-    background: ${Card};
+    align-items: center;
     margin: 30px;
     padding: 15px;
     width: calc(100% - 60px);
-    border-radius: 5px;
-    box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
 
     @media (max-width: 1158px) {
         flex-wrap: wrap;
@@ -26,12 +24,34 @@ export const AuctionCardStyles = styled.div`
         }
     }
 
+    div.card-wrap {
+        @media (max-width: 1158px) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        transform: translateY(0px);
+
+        animation: float;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+
+        @keyframes float {
+            0% { transform: translateY(-0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(-0px); }
+        }
+
+    }
+
     div.text {
-        padding: 15px;
-        width: calc(100% - 300px);
+        padding: 15px 15px 15px 60px;
+        width: calc(100% - 320px);
 
         @media (max-width: 1158px) {
             width: 100%;
+            padding: 15px;
         }
     
 
@@ -42,6 +62,10 @@ export const AuctionCardStyles = styled.div`
             
             div.label {
                 width: calc(100% / 2);
+
+                &.full {
+                    width: 100%;
+                }
 
                 @media (max-width: 1158px) {
                     width: 100%;
@@ -90,11 +114,6 @@ export const AuctionCardStyles = styled.div`
             font-size: 18px;
             padding: 0 0 15px 0;
         }
-
-        div.button-wrap {
-            display: flex;
-            justify-content: flex-end;
-        }
     }
 
     .icon {
@@ -104,13 +123,12 @@ export const AuctionCardStyles = styled.div`
     }
 `;
 
-export function AuctionCard() {
+export function NftFeature() {
     return(
-        <AuctionCardStyles>
-            <Flair
-                flairUrl="/images/flair1.gif"
-                nftUrl="/images/sample.png"
-            />
+        <NftFeatureStyles>
+            <div className="card-wrap">
+                <Card type="feature"/>
+            </div>
             <div className="text">
                 <h2>Dank Kitty</h2>
                 
@@ -148,14 +166,21 @@ export function AuctionCard() {
                             100,000 ETH
                         </h3>
                     </div>
+                    <div className="label full">
+                        <p>Owner</p>
+                        <h3>
+                            0x311544BD01996727084951af2154E64fD5006537
+                        </h3>
+                    </div>
                 </div>
 
+                <p>Description</p>
                 <p className="description">
                     One of the rarest, dankest exotic kitties on the blockchain.
                     We've added the Electric Dank Flair to make it even more rare,
                     dank and exotic. Limited edition, 1 of 100 of this Dank Kitty.
                 </p>
             </div>
-        </AuctionCardStyles>
+        </NftFeatureStyles>
     )
 }

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
 
-export const AuctionHistoryStyles = styled.div`
+export const NftHistoryStyles = styled.div`
     background: ${Card};
     margin: 15px 15px 90px 15px;
     padding: 15px;
@@ -49,9 +49,9 @@ export const AuctionHistoryStyles = styled.div`
     }
 `;
 
-export function AuctionHistory() {
+export function NftHistory() {
     return(
-        <AuctionHistoryStyles>
+        <NftHistoryStyles>
             <h3>NFT History</h3>
             <div className="history">
                 <div className="row header">
@@ -76,6 +76,6 @@ export function AuctionHistory() {
                     <div className="column">69 Minutes Ago</div>
                 </div>
             </div>
-        </AuctionHistoryStyles>
+        </NftHistoryStyles>
     )
 }

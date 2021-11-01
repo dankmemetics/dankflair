@@ -1,14 +1,16 @@
 {
-  "name": "@dankmemetics/dankfalir-sol",
+  "name": "@dankmemetics/dankflair-solidity",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts": "^4.3.2",
     "@openzeppelin/contracts-upgradeable": "^4.3.2",
     "@openzeppelin/hardhat-upgrades": "^1.11.0",
     "ethers": "^5.5.1",
+    "fs-jetpack": "^4.2.0",
     "hardhat": "^2.6.7",
     "truffle": "^5.4.16"
   }
