@@ -1,3 +1,4 @@
+import { useState, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { Background } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
@@ -73,12 +74,14 @@ export const IndexFeaturedStyles = styled.div`
             left: 0;
         }
 
-        div.card {
+        div.card-wrap {
             position: absolute;
             top: -240px;
             left: 180px;
             pointer-events: none;
             z-index: 3;
+            transform: translateZ(0);
+            backface-visibility: hidden;
 
             @media (max-width: 1158px) {
                 top: -120px;
@@ -110,6 +113,7 @@ export const IndexFeaturedStyles = styled.div`
                 z-index: 2;
 
                 animation: floatLeft;
+                animation-delay: 0.25s;
                 animation-duration: 2.5s;
                 animation-iteration-count: infinite;
 
@@ -121,6 +125,7 @@ export const IndexFeaturedStyles = styled.div`
 
             &:nth-child(2) {
                 transform: scale(0.6) rotate(0deg) translateY(-15px);
+                z-index: 3;
 
                 animation: floatCenter;
                 animation-duration: 2.5s;
@@ -136,7 +141,7 @@ export const IndexFeaturedStyles = styled.div`
 
                 animation: floatRight;
                 animation-duration: 2.5s;
-                animation-delay: 2s;
+                animation-delay: 1.5s;
                 animation-iteration-count: infinite;
 
                 @media (max-width: 1158px) {
@@ -149,6 +154,14 @@ export const IndexFeaturedStyles = styled.div`
 `;
 
 export function IndexFeatured() {
+    const [preload, setPreload] = useState(0);
+    
+    useLayoutEffect(() => {
+        setTimeout(() => {
+            setPreload(1);
+        }, 1600);
+    }, []);
+
     return(
         <IndexFeaturedStyles>
             <div className="wrap">
@@ -157,10 +170,16 @@ export function IndexFeatured() {
                     <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
                     <Button label="View Auctions" link="/auction" width="280px" margin="30px 0 0 0"/>
                 </div>
-                <div className="featured">
-                    <Card id={0} type="feature"/>
-                    <Card id={1} type="feature"/>
-                    <Card id={2} type="feature"/>
+                <div className="featured" style={{ opacity: preload }}>
+                    <div className="card-wrap">
+                        <Card id={0} type="feature"/>
+                    </div>
+                    <div className="card-wrap">
+                        <Card id={1} type="feature"/>
+                    </div>
+                    <div className="card-wrap">
+                        <Card id={2} type="feature"/>
+                    </div>
                 </div>
             </div>
         </IndexFeaturedStyles>

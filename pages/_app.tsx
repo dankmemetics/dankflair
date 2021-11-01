@@ -1,4 +1,4 @@
-import '../components/brand/reset.css';
+import Head from 'next/head';
 import App, { AppContext, AppInitialProps } from 'next/app';
 import { wrapper } from '../redux/redux.store';
 import { AppContainer } from '../components/brand/brand.app';
@@ -17,6 +17,10 @@ export class AppComponent extends App<AppInitialProps> {
     const { Component, pageProps } = this.props;
     return (
       <AppContainer>
+        <Head>
+          <title>Dank Flair</title>
+          <link rel="stylesheet" href="/css/reset.css"/>
+        </Head>
         <Component {...pageProps}/>
       </AppContainer>
     )

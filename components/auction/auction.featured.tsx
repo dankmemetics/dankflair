@@ -23,6 +23,9 @@ export const AuctionFeaturedStyles = styled.div`
     }
 
     div.card-wrap {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+
         @media (max-width: 1158px) {
             width: 100%;
             display: flex;

@@ -1,0 +1,255 @@
+{
+  "contracts": {
+    "DankFlair": {
+      "address": "0x38d82B5EE6613C4D0Ed70B4B537dB638F5ecc78D",
+      "constructorCode": "60a06040523060601b60805234801561001757600080fd5b50600054610100900460ff1680610031575060005460ff16155b6100985760405162461bcd60e51b815260206004820152602e60248201527f496e697469616c697a61626c653a20636f6e747261637420697320616c72656160448201526d191e481a5b9a5d1a585b1a5e995960921b606482015260840160405180910390fd5b600054610100900460ff161580156100c3576000805460ff1961ff0019909116610100171660011790555b80156100d5576000805461ff00191690555b5060805160601c61241e610109600039600081816106da0152818161071a0152818161088101526108c1015261241e6000f3fe",
+      "bodyBytecodeHash": "9b6e6569978888b3fb69f846ce72970bc32b7182a18410d1f80a9e54a9220f1c",
+      "localBytecodeHash": "cc5f0d0198226b4427274b768e5ccc1fef025fa1e3551ace3ba777e7a096563e",
+      "deployedBytecodeHash": "cc5f0d0198226b4427274b768e5ccc1fef025fa1e3551ace3ba777e7a096563e",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_string": {
+          "id": "t_string",
+          "kind": "elementary",
+          "label": "string"
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        },
+        "t_mapping<t_address>": {
+          "id": "t_mapping<t_address>",
+          "valueType": "t_address",
+          "label": "mapping(key => address)",
+          "kind": "mapping"
+        },
+        "t_mapping<t_uint256>": {
+          "id": "t_mapping<t_uint256>",
+          "valueType": "t_uint256",
+          "label": "mapping(key => uint256)",
+          "kind": "mapping"
+        },
+        "t_mapping<t_bool>": {
+          "id": "t_mapping<t_bool>",
+          "valueType": "t_bool",
+          "label": "mapping(key => bool)",
+          "kind": "mapping"
+        },
+        "t_array:44<t_uint256>": {
+          "id": "t_array:44<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "44",
+          "kind": "array",
+          "label": "uint256[44]"
+        },
+        "t_array:49<t_uint256>": {
+          "id": "t_array:49<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "49",
+          "kind": "array",
+          "label": "uint256[49]"
+        },
+        "t_struct<CountersUpgradeable.Counter>": {
+          "id": "t_struct<CountersUpgradeable.Counter>",
+          "kind": "struct",
+          "label": "CountersUpgradeable.Counter",
+          "members": [
+            {
+              "label": "_value",
+              "astId": 2048,
+              "type": "t_uint256",
+              "src": "743:14:12"
+            }
+          ]
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+          "label": "_initialized",
+          "astId": 538,
+          "type": "t_bool",
+          "src": "1109:25:3"
+        },
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+          "label": "_initializing",
+          "astId": 541,
+          "type": "t_bool",
+          "src": "1237:26:3"
+        },
+        {
+          "contract": "ContextUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+          "label": "__gap",
+          "astId": 2042,
+          "type": "t_array:50<t_uint256>",
+          "src": "1029:25:11"
+        },
+        {
+          "contract": "ERC165Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+          "label": "__gap",
+          "astId": 2425,
+          "type": "t_array:50<t_uint256>",
+          "src": "1190:25:15"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_name",
+          "astId": 718,
+          "type": "t_string",
+          "src": "917:20:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_symbol",
+          "astId": 720,
+          "type": "t_string",
+          "src": "964:22:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_owners",
+          "astId": 724,
+          "type": "t_mapping<t_address>",
+          "src": "1039:43:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_balances",
+          "astId": 728,
+          "type": "t_mapping<t_uint256>",
+          "src": "1133:45:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_tokenApprovals",
+          "astId": 732,
+          "type": "t_mapping<t_address>",
+          "src": "1234:51:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "_operatorApprovals",
+          "astId": 738,
+          "type": "t_mapping<t_bool>",
+          "src": "1340:71:5"
+        },
+        {
+          "contract": "ERC721Upgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+          "label": "__gap",
+          "astId": 1534,
+          "type": "t_array:44<t_uint256>",
+          "src": "13857:25:5"
+        },
+        {
+          "contract": "ERC721BurnableUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721BurnableUpgradeable.sol",
+          "label": "__gap",
+          "astId": 1726,
+          "type": "t_array:50<t_uint256>",
+          "src": "1073:25:8"
+        },
+        {
+          "contract": "OwnableUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+          "label": "_owner",
+          "astId": 10,
+          "type": "t_address",
+          "src": "719:22:0"
+        },
+        {
+          "contract": "OwnableUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+          "label": "__gap",
+          "astId": 123,
+          "type": "t_array:49<t_uint256>",
+          "src": "2481:25:0"
+        },
+        {
+          "contract": "ERC1967UpgradeUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol",
+          "label": "__gap",
+          "astId": 521,
+          "type": "t_array:50<t_uint256>",
+          "src": "7707:25:1"
+        },
+        {
+          "contract": "UUPSUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+          "label": "__self",
+          "astId": 612,
+          "type": "t_address",
+          "src": "1197:48:4"
+        },
+        {
+          "contract": "UUPSUpgradeable",
+          "path": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+          "label": "__gap",
+          "astId": 688,
+          "type": "t_array:50<t_uint256>",
+          "src": "3312:25:4"
+        },
+        {
+          "contract": "DankFlair",
+          "path": "project:/contracts/DankFlair.sol",
+          "label": "_tokenIdCounter",
+          "astId": 2463,
+          "type": "t_struct<CountersUpgradeable.Counter>",
+          "src": "734:51:17"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": true,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": true,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": []
+      }
+    }
+  },
+  "solidityLibs": {},
+  "proxies": {
+    "dankflair/DankFlair": [
+      {
+        "address": "0x8DbBdAF769131beDd20102815f259d2C3D297E91",
+        "version": "1.0.0",
+        "implementation": "0x38d82B5EE6613C4D0Ed70B4B537dB638F5ecc78D",
+        "admin": "0xDbED8F7801728121035B8e33a12B710E39208e49",
+        "kind": "Upgradeable"
+      }
+    ]
+  },
+  "manifestVersion": "2.2",
+  "version": "1.0.0",
+  "proxyAdmin": {
+    "address": "0xDbED8F7801728121035B8e33a12B710E39208e49"
+  }
+}
