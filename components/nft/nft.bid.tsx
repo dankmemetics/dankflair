@@ -109,7 +109,7 @@ export function NftBid() {
         <NftBidStyles>
             <div className="form">
                 <div className="form-wrap">
-                    <h4>100,000 ETH</h4>
+                    <h4>420 ETH</h4>
                     <Button label="Buy Now" width="100%" height="40px"/>
                 </div>
                 <div className="form-wrap">
@@ -130,19 +130,19 @@ export function NftBid() {
                 </div>
                 <div className="bid">
                     <div className="bid-column">0x42069</div>
-                    <div className="bid-column">100,000 ETH</div>
+                    <div className="bid-column">69 ETH</div>
                     <div className="bid-column">69 minutes ago</div>
                     <div className="bid-column">In 6.9 days</div>
                 </div>
                 <div className="bid">
                     <div className="bid-column">0x42069</div>
-                    <div className="bid-column">100,000 ETH</div>
+                    <div className="bid-column">69 ETH</div>
                     <div className="bid-column">69 minutes ago</div>
                     <div className="bid-column">In 6.9 days</div>
                 </div>
                 <div className="bid">
                     <div className="bid-column">0x42069</div>
-                    <div className="bid-column">100,000 ETH</div>
+                    <div className="bid-column">69 ETH</div>
                     <div className="bid-column">69 minutes ago</div>
                     <div className="bid-column">In 6.9 days</div>
                 </div>

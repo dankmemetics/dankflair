@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
+import { FlairpediaI } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
@@ -68,7 +69,7 @@ export const CardStyles = styled.div`
                 height: 15px;
                 border: 2px solid white;
                 border-radius: 8px;
-                margin: 0 10px;
+                margin: 2.5px 0 0 10px;
                 overflow: hidden;
 
                 div.meter-inner {
@@ -106,47 +107,56 @@ export const CardStyles = styled.div`
 export function Card({
     type = 'generic',
     buttonLabel = '',
-    account = '0x311544BD01996727084951af2154E64fD5006537',
-    id = 0,
-    url = '/nft/69',
-}) {
+    url = '',
+    nft = null,
+    owner = '0xC2dB8e84c45659a9517e9C89c5B8ad0C520Bc9b9',
+}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft: FlairpediaI }) {
     return(
         <CardStyles className={`card ${type}`}>
             <div className="badge">
-                #{id}
+                #{nft.id}
             </div>
             <Flair
                 width={180}
                 height={180}
                 margin="0 0 10px 0"
-                flairUrl="/images/flair1.gif"
-                nftUrl="/images/sample.png"
+                flairUrl={`/flair/${nft.flair.id}${nft.flair.suffix}`}
+                nftUrl={nft.content.uri}
             />
-            <h3>Dank Kitty</h3>
+            <h3>{nft.name}</h3>
             <div className="labels">
                 <div className="label">
                     <p>Flair NFT</p>
                     <h3>
                         <BsFillPatchCheckFill className="icon"/>
-                        DF Electric 
+                        {nft.flair.name || nft.name} 
                     </h3>
                 </div>
                 <div className="label">
                     <p>Content NFT</p>
-                    <h3>
-                        <BsFillPatchCheckFill className="icon"/>
-                        Kitty #69 
-                    </h3>
+                    {nft.content.name ? 
+                        <h3>                        
+                            <BsFillPatchCheckFill className="icon"/>
+                            {nft.content.name}
+                        </h3>
+                        : ''
+                    }
+
+                    {!nft.content.name ? <h3>None</h3>: ''}
                 </div>
                 <div className={`label ${type === 'feature' ? 'full' : ''}`}>
                     <p>Dank Meter</p>
                     <h3>
                         <div className="meter-label">
                             <AiOutlineFire className="icon"/>
-                            Lit
+                            {nft.dankRank === 1 ? 'Meh' : ''}
+                            {nft.dankRank === 2 ? 'Cool' : ''}
+                            {nft.dankRank === 3 ? 'Yooo' : ''}
+                            {nft.dankRank === 4 ? 'Lit' : ''}
+                            {nft.dankRank === 5 ? 'Dank' : ''}
                         </div>                        
                         <div className="meter">
-                            <div className="meter-inner"/>
+                            <div className="meter-inner" style={{ width: `${nft.dankRank * 20}%` }}/>
                         </div>
                     </h3>
                 </div>
@@ -156,14 +166,14 @@ export function Card({
                         <p>Ask Price</p>
                         <h3>
                             <SiEthereum className="icon"/>
-                            100,000 ETH
+                            420 ETH
                         </h3>
                     </div> : ''
                 }
                 <div className="label full owner">
                     <p>Owner</p>
                     <h3>
-                        {account}
+                        {owner}
                     </h3>
                 </div>
             </div>

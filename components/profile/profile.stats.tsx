@@ -80,7 +80,7 @@ export function ProfileStats() {
                 <h3>69,000 ETH</h3>
             </div>
             <div className="stat">
-                <p>Average Dankness</p>
+                <p>Dank Meter</p>
                 <h3 className="dank">
                     <div className="label">
                         <AiOutlineFire className="icon"/>

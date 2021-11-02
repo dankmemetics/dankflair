@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { flairpedia } from '../../flairpedia';
 import { Card } from '../common/common.card';
 
 export const ProfileListStyles = styled.div`
@@ -15,7 +16,7 @@ export const ProfileListStyles = styled.div`
 export function ProfileList() {
     return(
         <ProfileListStyles>
-            <Card buttonLabel="View NFT"/>
+            <Card buttonLabel="View NFT" nft={flairpedia[0]}/>
         </ProfileListStyles>
     )
 }

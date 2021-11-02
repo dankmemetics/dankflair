@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { flairpedia } from '../../flairpedia';
 import { Card } from '../common/common.card';
 
 export const AuctionListStyles = styled.div`
@@ -15,7 +16,7 @@ export const AuctionListStyles = styled.div`
 export function AuctionList() {
     return(
         <AuctionListStyles>
-            <Card buttonLabel="View Auction"/>
+            <Card buttonLabel="View Auction" nft={flairpedia[0]}/>
         </AuctionListStyles>
     )
 }

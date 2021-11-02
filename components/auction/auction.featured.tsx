@@ -3,10 +3,9 @@ import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { Button } from '../common/common.button';
-import { Flair } from '../common/common.flair';
+import { flairpedia } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
-import { AiOutlineFire } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 
 export const AuctionFeaturedStyles = styled.div`
@@ -130,52 +129,56 @@ export const AuctionFeaturedStyles = styled.div`
 `;
 
 export function AuctionFeatured() {
+    const nft = flairpedia[0];
+
     return(
         <AuctionFeaturedStyles>
-                        <div className="card-wrap">
-                <Card type="feature"/>
+            <div className="card-wrap">
+                <Card type="feature" nft={flairpedia[0]}/>
             </div>
             <div className="text">
-                <h2>Dank Kitty</h2>
+                <h2>{nft.name}</h2>
                 
                 <div className="labels">
                     <div className="label">
                         <p>Flair NFT</p>
                         <h3>
                             <BsFillPatchCheckFill className="icon"/>
-                            DF Electric 
-                            <Badge label="1 of 100"/>
+                            {nft.flair.name || nft.name} 
+                            <Badge label={`#${nft.id}`}/>
                         </h3>
                     </div>
                     <div className="label">
                         <p>Content NFT</p>
-                        <h3>
+                        {nft.content.name ?
+                        <h3>                            
                             <BsFillPatchCheckFill className="icon"/>
                             Kitty #69
-                            <Badge label="View on OpenSEA" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
+                            <Badge label="View NFT" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
                         </h3>
+                        : ''}
+
+                        {!nft.content.name ? 'None' : ''}
                     </div>
                     <div className="label">
                         <p>Ask Price</p>
                         <h3>
                             <SiEthereum className="icon"/>
-                            100,000 ETH
+                            420 ETH
                         </h3>
                     </div>
                     <div className="label">
                         <p>Highest Bid</p>
                         <h3>
                             <SiEthereum className="icon"/>
-                            1,000 ETH
+                            69 ETH
                         </h3>
                     </div>
                 </div>
 
                 <p>Description</p>
                 <p className="description">
-                    One of the rarest, dankest exotic kitties on the blockchain.
-                    We've added the Electric Dank Flair to make it even more rare,
-                    dank and exotic. Limited edition, 1 of 100 of this Dank Kitty.
+                    {nft.description}
                 </p>
 
                 <div className="button-wrap">

@@ -39,7 +39,8 @@ export function Flair({
     return(
         <FlairStyles className="flair" style={{ width, height, margin, borderRadius }}>
             <img src={flairUrl} className="flair"/>
-            <img src={nftUrl} className="nft"/>
+            {nftUrl ? <img src={nftUrl} className="nft"/> : ''}
+            
         </FlairStyles>
     )
 }

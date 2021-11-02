@@ -4,6 +4,8 @@ import { Background } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Button } from '../common/common.button';
 
+import { flairpedia } from '../../flairpedia';
+
 export const IndexFeaturedStyles = styled.div`
     background: hsla(0, 0%, 7%, 1);
     background: linear-gradient(315deg, hsla(0, 0%, 7%, 1) 0%, hsla(0, 0%, 19%, 1) 100%);
@@ -172,13 +174,13 @@ export function IndexFeatured() {
                 </div>
                 <div className="featured" style={{ opacity: preload }}>
                     <div className="card-wrap">
-                        <Card id={0} type="feature"/>
+                        <Card type="feature" nft={flairpedia[0]}/>
                     </div>
                     <div className="card-wrap">
-                        <Card id={1} type="feature"/>
+                        <Card type="feature" nft={flairpedia[0]}/>
                     </div>
                     <div className="card-wrap">
-                        <Card id={2} type="feature"/>
+                        <Card type="feature" nft={flairpedia[0]}/>
                     </div>
                 </div>
             </div>

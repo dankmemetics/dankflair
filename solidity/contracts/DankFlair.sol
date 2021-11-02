@@ -26,7 +26,7 @@ contract DankFlair is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeabl
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "http://dankflair.cloud/nft-metadata/";
+        return "https://dankflair.cloud/api/nft/";
     }
 
     function safeMint(address to) public onlyOwner {
@@ -34,13 +34,15 @@ contract DankFlair is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeabl
         _tokenIdCounter.increment();
     }
 
-    function safeMintFlairOwner(address to) public onlyOwner {
-        _safeMint(to, _tokenIdCounter.current());
-        _tokenIdCounter.increment();
+    function safeMintBatch(address to, uint64 iterations) public onlyOwner {
+        for (uint64 i = 0; i < iterations; i++) {
+            _safeMint(to, _tokenIdCounter.current());
+            _tokenIdCounter.increment();
+        }
     }
 
     function safeMintFlair(address to) public payable {
-        if (msg.value < 1000000000000000000) {
+        if (msg.value < 100000000000000000) {
             revert();
         }
 
