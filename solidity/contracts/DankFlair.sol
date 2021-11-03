@@ -13,13 +13,11 @@ contract DankFlair is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeabl
 
     CountersUpgradeable.Counter private _tokenIdCounter;
 
-    address constant private banker = 0xC2dB8e84c45659a9517e9C89c5B8ad0C520Bc9b9;
-
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() initializer {}
 
     function initialize() initializer public {
-        __ERC721_init("DankFlair", "DANK");
+        __ERC721_init("Dank Flair", "DANK");
         __ERC721Burnable_init();
         __Ownable_init();
         __UUPSUpgradeable_init();
@@ -39,17 +37,6 @@ contract DankFlair is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeabl
             _safeMint(to, _tokenIdCounter.current());
             _tokenIdCounter.increment();
         }
-    }
-
-    function safeMintFlair(address to) public payable {
-        if (msg.value < 100000000000000000) {
-            revert();
-        }
-
-        _safeMint(to, _tokenIdCounter.current());
-        _tokenIdCounter.increment();
-
-        banker.transfer(msg.value);
     }
 
     function _authorizeUpgrade(address newImplementation)
