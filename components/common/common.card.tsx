@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
-import { FlairpediaI } from '../../flairpedia';
+import { FlairI, FusionI } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
@@ -109,8 +109,9 @@ export function Card({
     buttonLabel = '',
     url = '',
     nft = null,
+    fusion = null,
     owner = '0xC2dB8e84c45659a9517e9C89c5B8ad0C520Bc9b9',
-}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft: FlairpediaI }) {
+}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft?: FlairI | null, fusion?: FusionI | null }) {
     return(
         <CardStyles className={`card ${type}`}>
             <div className="badge">
@@ -120,8 +121,8 @@ export function Card({
                 width={180}
                 height={180}
                 margin="0 0 10px 0"
-                flairUrl={`/flair/${nft.flair.id}${nft.flair.suffix}`}
-                nftUrl={nft.content.uri}
+                flairUrl={`/flair/${nft.id}${nft.suffix}`}
+                nftUrl={null}
             />
             <h3>{nft.name}</h3>
             <div className="labels">
@@ -129,20 +130,12 @@ export function Card({
                     <p>Flair NFT</p>
                     <h3>
                         <BsFillPatchCheckFill className="icon"/>
-                        {nft.flair.name || nft.name} 
+                        {nft.name} 
                     </h3>
                 </div>
                 <div className="label">
                     <p>Content NFT</p>
-                    {nft.content.name ? 
-                        <h3>                        
-                            <BsFillPatchCheckFill className="icon"/>
-                            {nft.content.name}
-                        </h3>
-                        : ''
-                    }
-
-                    {!nft.content.name ? <h3>None</h3>: ''}
+                    <h3>None</h3>
                 </div>
                 <div className={`label ${type === 'feature' ? 'full' : ''}`}>
                     <p>Dank Meter</p>

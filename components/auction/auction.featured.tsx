@@ -42,7 +42,6 @@ export const AuctionFeaturedStyles = styled.div`
             50% { transform: translateY(-15px); }
             100% { transform: translateY(-0px); }
         }
-
     }
 
     div.text {
@@ -144,21 +143,13 @@ export function AuctionFeatured() {
                         <p>Flair NFT</p>
                         <h3>
                             <BsFillPatchCheckFill className="icon"/>
-                            {nft.flair.name || nft.name} 
+                            {nft.name} 
                             <Badge label={`#${nft.id}`}/>
                         </h3>
                     </div>
                     <div className="label">
                         <p>Content NFT</p>
-                        {nft.content.name ?
-                        <h3>                            
-                            <BsFillPatchCheckFill className="icon"/>
-                            Kitty #69
-                            <Badge label="View NFT" url="https://opensea.io/assets/0x06012c8cf97bead5deae237070f9587f8e7a266d/1790644" target="opensea"/>
-                        </h3>
-                        : ''}
-
-                        {!nft.content.name ? 'None' : ''}
+                        <h3>None</h3>
                     </div>
                     <div className="label">
                         <p>Ask Price</p>

@@ -1,50 +1,38 @@
-export interface FlairpediaI {
+export interface FlairI {
+    id: number;
     name: string;
     description: string;
     dankRank: number;
+    suffix: string;
+    borderRadius: string;
+    clipStyle: number; // 0 clipped (overflow: hidden;), 1 unclipped (overflow: visible;)
+}
+
+export interface FusionI {
     id: number;
-    isFlair: boolean;
-    burned: boolean;
-    flair: {
-        name?: string;
-        id: number;
-        suffix: string;
-        clipStyle: number; // 0 - clipped, 1 - unclipped
-        borderRadius: string; // 50% - circle
-        burnable: boolean;
-    }
+    name: string;
+    description: string;
+
+    flair: FlairI;
+
     content: {
-        name: string | null,
-        contract: string | null;
-        id: number | null;
-        uri: string | null;
-        offsetX: string | null;
-        offsetY: string | null;
+        id: number;
+        contract: string;
+        url: string;
+        offsetX: string;
+        offsetY: string;
+        clipStyle: number;
     }
 }
 
-export const flairpedia: FlairpediaI[] = [
+export const flairpedia: FlairI[] = [
     {
+        id: 0,
         name: 'Electric Flair',
         description: 'An electrifying flair that is sure to shock anyone that looks at it long enough. Electric Flair is one of the Dankest of the Dank Flairs when it comes to being rare, dank and exotic.',
         dankRank: 5,
-        id: 0,
-        isFlair: true,
-        burned: false,
-        flair: {
-            id: 0,
-            suffix: '.gif',
-            clipStyle: 1,
-            borderRadius: '50%',
-            burnable: false,
-        },
-        content: {
-            name: null,
-            contract: null,
-            id: null,
-            uri: null,
-            offsetX: null,
-            offsetY: null,
-        },
+        suffix: '.gif',
+        borderRadius: '50%',
+        clipStyle: 0,
     }
 ]

@@ -17,15 +17,6 @@ export const MintParamsStyles = styled.div`
         @media (max-width: 1158px) {
             flex-wrap: wrap;
         }
-
-        &.small {
-            a.button {
-                font-size: 16px;
-                font-weight: 600;
-                padding: 10px 25px;
-                width: auto;
-            }
-        }
     }
 
     p.label {
@@ -48,55 +39,45 @@ export const MintParamsStyles = styled.div`
         padding: 15px;
     }
 
-    a.button {
+    div.inputs {
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: ${Primary};
-        padding: 15px;
-        margin: 15px;
-        border-radius: 5px;
-        font-size: 18px;
-        font-weight: bold;
-        cursor: pointer;
-        width: calc(50% - 30px);
-
-        &.big {
-            font-size: 24px;
-            margin: 45px 15px;
-            width: calc(100% - 30px);
-            height: 70px;
-        }
     }
 `;
 
 export function MintParams() {
     return(
         <MintParamsStyles>
+            <p className="label">NFTs</p>
+            <div className="buttons">
+                <Button label="Select Dank Flair" width="240px" margin="15px"/>
+                <Button label="Select ERC721" width="240px" margin="15px"/>
+            </div>
+
             <p className="label">Name</p>
-            <input type="text" placeholder="Name of NFT"/>
+            <input type="text" placeholder="Name of new Dank Fusion NFT"/>
 
             <p className="label">Description</p>
-            <textarea placeholder="Say something awesome about your flair bro"/>
+            <textarea placeholder="Say something awesome about your new Fusion NFT bro"/>
 
-            <p className="label">Mint Style</p>
-            <div className="buttons small">
-                <Button label="Flair Only" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                <Button label="Flair with preview NFT" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+            <p className="label">ERC721 Position</p>
+            <div className="inputs">
+                <div className="input">
+                    <p className="label">X</p>
+                    <input type="text" placeholder="can use CSS rules"/>
+                </div>
+                <div className="input">
+                    <p className="label">Y</p>
+                    <input type="text" placeholder="can use CSS rules"/>
+                </div>
             </div>
 
-            <p className="label">Burn Mechanics (if Flair Only)</p>
-            <div className="buttons small">
-                <Button label="Burn when minting new NFT" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                <Button label="Treat as collectible (No burn)" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
+            <p className="label">Clip Style</p>
+            <div className="buttons">
+                <Button label="Clipped" width="180px" height="40px" fontSize="14px" margin="15px"/>
+                <Button label="Unclipped" width="180px" height="40px" fontSize="14px" margin="15px"/>
             </div>
-            
-            <p className="label">Supply</p>
-            <input type="number" placeholder="# of NFTs to Mint" min={1}/>
-
-            <p className="label">Mint to Wallet</p>
-            <input type="text" placeholder="Default is Metamask wallet"/>
-
+       
             <Button label="Mint" width="calc(100% - 30px)" margin="45px 15px" padding="5px 15px" height="60px" fontSize="24px"/>
         </MintParamsStyles>
     )

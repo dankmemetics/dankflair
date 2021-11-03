@@ -1,127 +1,163 @@
 import styled from 'styled-components';
-import { Background, Card } from '../brand/brand.colors';
+import { Background, Primary} from '../brand/brand.colors';
 import { Button } from '../common/common.button';
-import { Flair } from '../common/common.flair';
+import { Card } from '../common/common.card';
+import { Badge } from '../common/common.badge';
+import { flairpedia } from '../../flairpedia';
+
+import { BsFillPatchCheckFill } from 'react-icons/bs';
+import { SiEthereum } from 'react-icons/si';
 
 export const MintUploadStyles = styled.div`
     display: flex;
     align-items: center;
-    margin: 60px 15px;
-    padding: 30px;
-    
-    border-radius: 5px;
-    box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
-    background: ${Card};
-    
+    margin: 30px;
+    padding: 15px;
+    width: calc(100% - 60px);
 
     @media (max-width: 1158px) {
-        padding: 30px 0;
         flex-wrap: wrap;
-        flex-direction: column;
+        margin: 30px 0;
+        width: 100%;
     }
-
-    div.preview-frame {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40%;
-        height: 100%;
+    
+    div.card-wrap {
+        -webkit-transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
 
         @media (max-width: 1158px) {
             width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
-        div.frame {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${Background};
-            width: 256px;
-            height: 256px;
-            border-radius: 180px;
-            overflow: hidden;
-            margin: 15px;
+        transform: translateY(0px);
 
-            img.flair {
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
+        animation: float;
+        animation-duration: 2.5s;
+        animation-iteration-count: infinite;
+
+        @keyframes float {
+            0% { transform: translateY(-0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(-0px); }
+        }
+    }
+
+    div.text {
+        padding: 15px 15px 15px 60px;
+        width: calc(100% - 320px);
+
+        @media (max-width: 1158px) {
+            width: 100%;
+            padding: 15px;
+        }
+
+
+        div.labels {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px 5px;
             
-            img.nft {
-                position: relative;
-                left: 5px;
+            div.label {
+                width: calc(100% / 2);
+
+                &.full {
+                    width: 100%;
+                }
+
+                @media (max-width: 1158px) {
+                    width: 100%;
+                }            
+            }
+        }
+
+        div.meter {
+            width: 120px;
+            height: 15px;
+            border: 2px solid white;
+            border-radius: 8px;
+            margin: 0 10px;
+            overflow: hidden;
+
+            div.meter-inner {
+                background: ${Primary};
+                width: 60%;
                 height: 100%;
             }
         }
-    }
 
-    div.options {
-        width: 60%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        @media (max-width: 1158px) {
-            width: 100%;
+        h2 {
+            font-size: 32px;
+            font-weight: 300;
+            padding: 0 0 5px 0;
         }
 
-        div.buttons {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            width: 100%;
-        }
-
-        p.label {
+        p {
             font-size: 14px;
             font-weight: bold;
-            width: 100%;
-            padding: 5px 15px;
+            padding: 5px 0;
         }
+
+        p.description {
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 2;
+            padding: 0 0 15px 0;
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            font-weight: 400;
+            font-size: 18px;
+            padding: 0 0 15px 0;
+        }
+
+        div.button-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+
+    .icon {
+        font-size: 24px;
+        color: ${Primary};
+        margin: 0 10px 0 0;
     }
 `;
 
 export function MintUpload() {
+    const nft = flairpedia[0];
+
     return(
         <MintUploadStyles>
-            <div className="preview-frame">
-                <Flair
-                    flairUrl="/images/flair1.gif"
-                    nftUrl="/images/sample.png"
-                />
+            <div className="card-wrap">
+                <Card type="feature" nft={flairpedia[0]}/>
             </div>
-            <div className="options">
-                <p className="label">
-                    Image Content
-                </p>
-
-                <div className="buttons">
-                    <Button label="Select NFT" width="280px" margin="15px"/>
-                    <Button label="Upload Flair (.gif, .png)" width="280px" margin="15px"/>
+            <div className="text">
+                <h2>{nft.name}</h2>
+                
+                <div className="labels">
+                    <div className="label">
+                        <p>Flair NFT</p>
+                        <h3>
+                            <BsFillPatchCheckFill className="icon"/>
+                            {nft.name} 
+                            <Badge label={`#${nft.id}`}/>
+                        </h3>
+                    </div>
+                    <div className="label">
+                        <p>Content NFT</p>
+                        <h3>None</h3>
+                    </div>
                 </div>
 
-                <p className="label">
-                    Clip Style (Overflow)
+                <p>Description</p>
+                <p className="description">
+                    {nft.description}
                 </p>
-
-                <div className="buttons small">
-                    <Button label="Clipped" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                    <Button label="Unclipped" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                </div>
-
-                <p className="label">
-                    Border Style (if Clipped)
-                </p>
-
-                <div className="buttons small">
-                    <Button label="Circle" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                    <Button label="Square" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                    <Button label="Rounded" width="auto" margin="15px" padding="5px 15px" height="40px" fontSize="14px"/>
-                </div>
-            </div>        
+            </div>
         </MintUploadStyles>
     )
 }
