@@ -4,6 +4,7 @@ export interface FlairI {
     description: string;
     dankRank: number;
     suffix: string;
+    contentType: string;
     borderRadius: string;
     clipStyle: number; // 0 clipped (overflow: hidden;), 1 unclipped (overflow: visible;)
 }
@@ -32,6 +33,7 @@ export const flairpedia: FlairI[] = [
         description: 'An electrifying flair that is sure to shock anyone that looks at it long enough. Electric Flair is one of the Dankest of the Dank Flairs when it comes to being rare, dank and exotic.',
         dankRank: 5,
         suffix: '.gif',
+        contentType: 'image/gif',
         borderRadius: '50%',
         clipStyle: 0,
     }
