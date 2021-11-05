@@ -1,0 +1,23 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+  provider        = "mongodb"
+  url             = env("DATABASE_URL")
+}
+
+model DankFusion {
+  id              String @id @default(uuid()) @map("_id") @db.String
+  nftId           Int
+  name            String
+  description     String
+  dankId          Int
+  fusionUrl       String
+  fusionContract  String
+  fusionId        Int
+  fusionX         String
+  fusionY         String
+  fusionClip      Int
+}

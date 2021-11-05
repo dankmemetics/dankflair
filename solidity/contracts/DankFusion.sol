@@ -65,11 +65,18 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
     }
 
     /*
+        Get the reference index for a newly minted NFT
+    */
+    function fusionIndex() public view virtual returns (uint256) {
+        return _tokenIdCounter.current();
+    }
+
+    /*
         fusionInfo() displays info about the Fusion NFT.
         It will return the following:
 
         1. Fusion contract address
-        2. Dank Flair NFT id
+        2. Dank Flair NFT ID
         3. Fusion NFT ID
     */
     function fusionInfo(uint256 tokenId) public view virtual returns (ERC721, uint256, uint256) {
