@@ -144,7 +144,7 @@ export function Card({
                             <AiOutlineFire className="icon"/>
                             {nft.dankRank === 1 ? 'Meh' : ''}
                             {nft.dankRank === 2 ? 'Cool' : ''}
-                            {nft.dankRank === 3 ? 'Yooo' : ''}
+                            {nft.dankRank === 3 ? 'Bomb' : ''}
                             {nft.dankRank === 4 ? 'Lit' : ''}
                             {nft.dankRank === 5 ? 'Dank' : ''}
                         </div>                        

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
@@ -104,20 +105,64 @@ export const NftBidStyles = styled.div`
     }
 `;
 
-export function NftBid() {
+export function NftBid({ contract, activeNft, accounts }) {
+    const [transfer, setTransfer] = useState('');
+
+    let owned = false;
+    let connected = false;
+
+    if (accounts.length > 0) {
+        owned = activeNft.owner === accounts[0];
+        connected = true;
+    }
+
     return(
         <NftBidStyles>
-            <div className="form">
-                <div className="form-wrap">
-                    <h4>420 ETH</h4>
-                    <Button label="Buy Now" width="100%" height="40px"/>
+            {
+                connected && !owned ?
+                <div className="form">
+                    <div className="form-wrap">
+                        <h4>420 ETH</h4>
+                        <Button label="Buy Now" width="100%" height="40px"/>
+                    </div>
+                    <div className="form-wrap">
+                        <h3>Make a Bid</h3>
+                        <input type="number" placeholder="in ETH" min={0}/>
+                        <Button label="Make Bid" width="100%" height="40px"/>
+                    </div>
                 </div>
-                <div className="form-wrap">
-                    <h3>Make a Bid</h3>
-                    <input type="number" placeholder="in ETH" min={0}/>
-                    <Button label="Make Bid" width="100%" height="40px"/>
+                : ''
+            }
+            {
+                connected && owned ?
+                <div className="form">
+                    <div className="form-wrap">
+                        <h3>Transfer NFT</h3>
+                        <input type="text" placeholder="Address" value={transfer} onChange={e => setTransfer(e.target.value)}/>
+                        <div onClick={async e => {
+                            await contract.methods.safeTransferFrom(activeNft.owner, transfer, activeNft.id).send({ from: activeNft.owner });
+                            setTransfer('');
+
+                            setTimeout(() => {
+                                window.location.reload();
+                            }, 1000);
+                        }}>
+                            <Button label="Transfer" width="100%" height="40px"/>
+                        </div>                        
+                    </div>
                 </div>
-            </div>
+                : ''
+            }
+            {
+                !connected ?
+                <div className="form">
+                    <div className="form-wrap">
+                        <h4>420 ETH</h4>
+                        <Button label="Buy Now" width="100%" height="40px"/>
+                    </div>
+                </div>
+                : ''
+            }
             <div className="bids">
                 <div className="bid-heading">
                     <h3>Current Bids</h3>

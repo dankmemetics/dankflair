@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const initialState = {
   accounts: [] as string[],
+  dankflair: [] as any[],
+  dankfusion: [] as any[],
 }
 
 export const profileSlice = createSlice({
@@ -11,7 +13,13 @@ export const profileSlice = createSlice({
     setAccounts(state, action) {
       state.accounts = action.payload ?? [];
     },
+    setDankflair(state, action) {
+      state.dankflair = action.payload ?? [];
+    },
+    setDankfusion(state, action) {
+      state.dankfusion = action.payload ?? [];
+    }
   }
 });
 
-export const { setAccounts } = profileSlice.actions;
+export const { setAccounts, setDankflair, setDankfusion } = profileSlice.actions;

@@ -5,6 +5,11 @@ module.exports = {
       port: 7545,
       network_id: "*", // Match any network id
       gas: 5000000
+    },
+    rinkeby: {
+      host: "https://rinkeby.infura.io/v3/a98fb9412dcc41048e32586addfe3d29",
+      network_id: "*",
+      gas: 5000000
     }
   },
   compilers: {

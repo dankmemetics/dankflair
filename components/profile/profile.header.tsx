@@ -15,7 +15,7 @@ export const ProfileHeaderStyles = styled.div`
     }
 
     h3 {
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 400;
     }
 
@@ -31,6 +31,7 @@ export const ProfileHeaderStyles = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        padding: 0 0 15px 0;
     }
 
     .text-icon {
@@ -38,11 +39,11 @@ export const ProfileHeaderStyles = styled.div`
     }
 `;
 
-export function ProfileHeader() {
+export function ProfileHeader({ address }) {
     return(
         <ProfileHeaderStyles>
             <div className="address">
-                <h3>0x42069</h3>
+                <h3>{address}</h3>
                 <div className="accent"/>
             </div>
             <div className="links">

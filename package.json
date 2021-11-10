@@ -4,13 +4,15 @@
   "description": "Dank Flairs for your NFTs bro",
   "repository": "https://github.com/dankmemetics/dankflair.git",
   "author": "Dank Memetics",
-  "license": "GPL",
+  "license": "MIT",
   "scripts": {
     "dev": "next --port 4200",
     "build": "next build",
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx,js,jsx}",
-    "tsc": "tsc --outDir dist"
+    "tsc": "tsc --outDir dist",
+    "build:prisma": "tsc --project tsconfig.prisma.json",
+    "start:prisma": "npm run build:prisma && node dist/prisma/prisma.js"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",
@@ -22,8 +24,10 @@
     "babel-plugin-styled-components": "^1.13.2"
   },
   "dependencies": {
-    "@prisma/client": "^3.4.1",
+    "@prisma/client": "^3.4.2",
     "@reduxjs/toolkit": "^1.6.1",
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
     "next": "^11.1.2",
     "next-redux-wrapper": "^7.0.4",
     "prisma": "^3.4.1",

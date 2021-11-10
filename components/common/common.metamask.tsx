@@ -1,11 +1,14 @@
+import { get } from 'superagent';
+import Link from 'next/link';
 import Web3 from 'web3';
 import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { ContractABI, ContractAddress } from '../../dankflair';
-import { setAccounts } from '../../redux/redux.profile';
+import { ConfigureContract } from '../../dankflair';
+import { setAccounts, setDankflair, setDankfusion } from '../../redux/redux.profile';
 import { setContract } from '../../redux/redux.contract';
 
+declare const window;
 declare const ethereum;
 declare let web3;
 
@@ -15,7 +18,6 @@ export const MetamaskStyles = styled.a`
     justify-content: center;
     font-size: 18px;
     height: 100%;
-    padding: 0 15px 5px 15px;
     cursor: pointer;
 
     @media(max-width: 1158px) {
@@ -30,31 +32,44 @@ export const MetamaskStyles = styled.a`
         height: 24px;
         margin: 0 10px 0 0;
     }
+
+    a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0 15px 5px 15px;
+    }
 `;
 
 export interface MetamaskI {
     accounts: string[];
     setAccounts(payload: string[]): void;
     setContract(payload: any): void;
+    setDankflair(payload: any): void;
+    setDankfusion(payload: any): void;
 }
 
-export function MetamaskComponent({ accounts, setAccounts, setContract }: MetamaskI) {
+export function MetamaskComponent({ accounts, setAccounts, setContract, setDankflair, setDankfusion }: MetamaskI) {
     useLayoutEffect(() => {
         (async () => {
             if (typeof ethereum !== 'undefined') {
-                web3 = new Web3(ethereum);
-                const web3Accounts = await web3.eth.getAccounts();
-                setAccounts(web3Accounts);
-
                 try {
-                    const Contract = new web3.eth.Contract(ContractABI, ContractAddress);
-                    Contract.setProvider(ethereum);
+                    web3 = new Web3(ethereum);
+                    window.web3 = web3;
+                    const web3Accounts = await web3.eth.getAccounts();
+                    setAccounts(web3Accounts);
+
+                    const Contract = ConfigureContract(web3, ethereum);
                     setContract(Contract);
-    
-                    console.log('Contract', Contract);
-    
-                    const result = await Contract.methods.owner().call();
-                    console.log(result);
+
+                    const account = web3Accounts[0];
+                    const payload = await get(`/api/profile/${account}`);
+
+                    setDankflair(payload.body);
                 } catch (error) {
                     console.error(error);
                 }
@@ -79,12 +94,20 @@ export function MetamaskComponent({ accounts, setAccounts, setContract }: Metama
                     console.error(error);
                 }
           }}>
-            <img src="/images/metamask.png"/>
             {
-            accounts.length > 0 ?
-                `${accounts[0].slice(0,3)}...${accounts[0].slice(accounts[0].length - 3, accounts[0].length)}`
+                accounts.length > 0 ?
+                <Link href="/profile">
+                    <a>
+                        <img src="/images/metamask.png"/>
+                        {accounts[0].slice(0,5)}...{accounts[0].slice(accounts[0].length - 3, accounts[0].length)}
+                    </a>
+                    
+                </Link>
                 :
-                'Connect'
+                <a>
+                    <img src="/images/metamask.png"/>
+                    Connect
+                </a>
             }
         </MetamaskStyles>
     )
@@ -94,4 +117,4 @@ export const MetamaskState = state => ({
     accounts: state.profile.accounts,
 });
 
-export const Metamask = connect(MetamaskState, { setAccounts, setContract })(MetamaskComponent);
+export const Metamask = connect(MetamaskState, { setAccounts, setContract, setDankflair, setDankfusion })(MetamaskComponent);

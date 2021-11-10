@@ -13,10 +13,15 @@ export const ProfileListStyles = styled.div`
     }
 `;
 
-export function ProfileList() {
+export function ProfileList({ dankflair, dankfusion }) {
     return(
         <ProfileListStyles>
-            <Card buttonLabel="View NFT" nft={flairpedia[0]}/>
+            {
+                dankflair.map(flair => {
+                    return(<Card buttonLabel="View NFT" type="feature" url={`/nft/${flair.id}`} nft={flairpedia[flair.id]}/>)
+                })
+            }
+            
         </ProfileListStyles>
     )
 }

@@ -142,13 +142,7 @@ export function Header({ tab = '' }) {
           <CgMenuCake/>
         </a>
         
-        <div className={`hitems ${menu ? 'active' : ''}`}>
-          <Link href="/profile">
-            <a className={`item ${tab === 'profile' ? 'active' : ''}`}>
-              <ImAddressBook className="icon"/>
-              Profile
-            </a>
-          </Link>          
+        <div className={`hitems ${menu ? 'active' : ''}`}>      
           <Link href="/flairpedia">
             <a className={`item ${tab === 'flairpedia' ? 'active' : ''}`}>
               <GiOpenBook className="icon"/>
@@ -159,12 +153,6 @@ export function Header({ tab = '' }) {
             <a className={`item ${tab === 'mint' ? 'active' : ''}`}>
               <HiPrinter className="icon"/>
               Mint
-            </a>
-          </Link>
-          <Link href="/dao">
-            <a className={`item ${tab === 'dao' ? 'active' : ''}`}>
-              <MdOutlineGroups className="icon"/>
-              DAO
             </a>
           </Link>
           <Link href="/auction">

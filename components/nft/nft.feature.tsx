@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { Primary, Background, Card as CardBg } from '../brand/brand.colors';
+import { Primary } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { flairpedia } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
-import { AiOutlineFire } from 'react-icons/ai';
 import { SiEthereum } from 'react-icons/si';
 
 export const NftFeatureStyles = styled.div`
@@ -127,13 +126,13 @@ export const NftFeatureStyles = styled.div`
     }
 `;
 
-export function NftFeature() {
-    const nft = flairpedia[0];
+export function NftFeature({ activeNft }) {
+    const nft = flairpedia[activeNft.id || 0];
 
     return(
         <NftFeatureStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={flairpedia[0]}/>
+                <Card type="feature" nft={flairpedia[activeNft.id || 0]} owner={activeNft.owner}/>
             </div>
             <div className="text">
                 <h2>{nft.name}</h2>
@@ -168,7 +167,7 @@ export function NftFeature() {
                     <div className="label full">
                         <p>Owner</p>
                         <h3>
-                            0x311544BD01996727084951af2154E64fD5006537
+                            {activeNft.owner}
                         </h3>
                     </div>
                 </div>

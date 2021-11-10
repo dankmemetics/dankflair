@@ -2,8 +2,9 @@ import prisma from '../../prisma/prisma';
 
 export default async function MintNFT(req, res) {
     const {
-        nftId,
+        id,
         name,
+        owner,
         description,
         dankId,
         fusionUrl,
@@ -16,8 +17,9 @@ export default async function MintNFT(req, res) {
 
     const result = await prisma.dankFusion.create({
         data: {
-            nftId,
+            id,
             name,
+            owner,
             description,
             dankId,
             fusionUrl,

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
 import { AiOutlineFire } from 'react-icons/ai';
+import { flairpedia } from '../../flairpedia';
 
 export const ProfileStatsStyles = styled.div`
     display: flex;
@@ -44,11 +45,11 @@ export const ProfileStatsStyles = styled.div`
         div.label {
             display: flex;
             align-items: center;
-            width: 90px;
+            width: 150px;
         }
 
         div.meter {
-            width: calc(100% - 90px);
+            width: calc(100% - 150px);
             height: 25px;
             border: 2px solid white;
             border-radius: 12px;
@@ -64,30 +65,43 @@ export const ProfileStatsStyles = styled.div`
     }
 `;
 
-export function ProfileStats() {
+export function ProfileStats({ dankflair, dankfusion }) {
+    let dankRank = 0;
+    
+    let totalDank = 0;
+    for (let i = 0; i < dankflair.length; i++) {
+        totalDank += flairpedia[dankflair[i].id].dankRank;
+    }
+
+    dankRank = Math.floor(totalDank / dankflair.length);
+
     return(
         <ProfileStatsStyles>
             <div className="stat">
                 <p>DAO Tokens Owned</p>
-                <h3>69,000 DANK</h3>
+                <h3>0 DANK</h3>
             </div>
             <div className="stat">
                 <p># of NFTs owned</p>
-                <h3>69</h3>
+                <h3>{dankflair.length + dankfusion.length}</h3>
             </div>
             <div className="stat">
                 <p>Estimated Profile Value</p>
-                <h3>69,000 ETH</h3>
+                <h3>{(dankflair.length + dankfusion.length) * 420} ETH</h3>
             </div>
             <div className="stat">
                 <p>Dank Meter</p>
                 <h3 className="dank">
                     <div className="label">
                         <AiOutlineFire className="icon"/>
-                        Lit
-                    </div>
+                        {dankRank === 1 || dankRank === 0 ? 'Meh' : ''}
+                        {dankRank === 2 ? 'Cool' : ''}
+                        {dankRank === 3 ? 'Bomb' : ''}
+                        {dankRank === 4 ? 'Lit' : ''}
+                        {dankRank === 5 ? 'Dank' : ''}
+                    </div>                        
                     <div className="meter">
-                        <div className="meter-inner"/>
+                        <div className="meter-inner" style={{ width: `${dankRank * 20}%` }}/>
                     </div>
                 </h3>
             </div>

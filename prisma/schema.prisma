@@ -8,9 +8,14 @@ datasource db {
   url             = env("DATABASE_URL")
 }
 
+model DankFlair {
+  id              Int @id @map("_id")
+  owner           String
+}
+
 model DankFusion {
-  id              String @id @default(uuid()) @map("_id") @db.String
-  nftId           Int
+  id              Int @id @map("_id")
+  owner           String
   name            String
   description     String
   dankId          Int

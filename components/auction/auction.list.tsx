@@ -16,7 +16,7 @@ export const AuctionListStyles = styled.div`
 export function AuctionList() {
     return(
         <AuctionListStyles>
-            <Card buttonLabel="View Auction" nft={flairpedia[0]}/>
+            <Card buttonLabel="View Auction" nft={flairpedia[0]} url="/nft/0"/>
         </AuctionListStyles>
     )
 }

@@ -173,7 +173,7 @@ export function AuctionFeatured() {
                 </p>
 
                 <div className="button-wrap">
-                    <Button label="View Auction" link="/nft/69" width="240px"/>
+                    <Button label="View Auction" link="/nft/0" width="100%"/>
                 </div>
             </div>
         </AuctionFeaturedStyles>
