@@ -174,13 +174,13 @@ export function IndexFeatured() {
                 </div>
                 <div className="featured" style={{ opacity: preload }}>
                     <div className="card-wrap">
-                        <Card type="feature" nft={flairpedia[0]}/>
+                        <Card type="feature" nft={flairpedia[0]} owner={`0x7872Bf26D679a2dC08eD0D2c3618C1E681b50CC2`}/>
                     </div>
                     <div className="card-wrap">
-                        <Card type="feature" nft={flairpedia[0]}/>
+                        <Card type="feature" nft={flairpedia[0]} owner={`0x7872Bf26D679a2dC08eD0D2c3618C1E681b50CC2`}/>
                     </div>
                     <div className="card-wrap">
-                        <Card type="feature" nft={flairpedia[0]}/>
+                        <Card type="feature" nft={flairpedia[0]} owner={`0x7872Bf26D679a2dC08eD0D2c3618C1E681b50CC2`}/>
                     </div>
                 </div>
             </div>

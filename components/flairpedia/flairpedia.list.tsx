@@ -21,7 +21,7 @@ export function FlairpediaList() {
             {
                 flairpedia.map(flair => {
                     return(
-                        <Card buttonLabel="View NFT" type="feature" nft={flair}/>
+                        <Card buttonLabel="View NFT" type="feature" nft={flair} url={`/nft/${flair.id}`}/>
                     )
                 })
             }

@@ -11,8 +11,7 @@
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx,js,jsx}",
     "tsc": "tsc --outDir dist",
-    "build:prisma": "tsc --project tsconfig.prisma.json",
-    "start:prisma": "npm run build:prisma && node dist/prisma/prisma.js"
+    "start:prisma": "npx ts-node prisma/prisma.cache.ts"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

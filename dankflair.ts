@@ -1,13 +1,13 @@
 import Web3 from 'web3';
-import DankFlair from './solidity/build/contracts/DankFlair.json';
-import DankFusion from './solidity/build/contracts/DankFusion.json';
+import DankFlair from './abi/dankflair.abi.json';
+import DankFusion from './abi/dankfusion.abi.json';
 
 export const web3Provider = new Web3.providers.WebsocketProvider(process.env.PROVIDER || 'ws://localhost:7545');
 
-export const ContractAddress = `0x8DbBdAF769131beDd20102815f259d2C3D297E91`;
+export const ContractAddress = process.env.DANKCONTRACT || `0xe98eD67295F0158107e7501dd86118Daf7B12154`;
 export const ContractABI = DankFlair.abi;
 
-export const FusionAddress = ``;
+export const FusionAddress = process.env.FUSIONCONTRACT || ``;
 export const FusionABI = DankFusion.abi;
 
 export function ConfigureContract(web3, provider) {

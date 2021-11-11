@@ -110,7 +110,7 @@ export function Card({
     url = '',
     nft = null,
     fusion = null,
-    owner = '0xC2dB8e84c45659a9517e9C89c5B8ad0C520Bc9b9',
+    owner = '',
 }: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft?: FlairI | null, fusion?: FusionI | null }) {
     return(
         <CardStyles className={`card ${type}`}>
@@ -163,12 +163,17 @@ export function Card({
                         </h3>
                     </div> : ''
                 }
-                <div className="label full owner">
-                    <p>Owner</p>
-                    <h3>
-                        {owner}
-                    </h3>
-                </div>
+
+                {
+                    owner ?
+                    <div className="label full owner">
+                        <p>Owner</p>
+                        <h3>
+                            {owner}
+                        </h3>
+                    </div>
+                    : ''
+                }
             </div>
 
             {buttonLabel ? <Button label={buttonLabel} link={url} width="100%" height="40px" margin="15px 0 0 0" fontSize="16px"/> : ''}

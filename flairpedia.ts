@@ -36,5 +36,25 @@ export const flairpedia: FlairI[] = [
         contentType: 'image/gif',
         borderRadius: '50%',
         clipStyle: 0,
+    },
+    {
+        id: 1,
+        name: 'Electric Flair',
+        description: 'An electrifying flair that is sure to shock anyone that looks at it long enough. Electric Flair is one of the Dankest of the Dank Flairs when it comes to being rare, dank and exotic.',
+        dankRank: 5,
+        suffix: '.gif',
+        contentType: 'image/gif',
+        borderRadius: '50%',
+        clipStyle: 0,
+    },
+    {
+        id: 2,
+        name: 'Electric Flair',
+        description: 'An electrifying flair that is sure to shock anyone that looks at it long enough. Electric Flair is one of the Dankest of the Dank Flairs when it comes to being rare, dank and exotic.',
+        dankRank: 5,
+        suffix: '.gif',
+        contentType: 'image/gif',
+        borderRadius: '50%',
+        clipStyle: 0,
     }
 ]

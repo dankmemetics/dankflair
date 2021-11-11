@@ -513,12 +513,268 @@
           "layoutVersion": "1.1"
         }
       },
+      "ERC721": {
+        "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:18",
+        "version": {
+          "withMetadata": "b0dd619dbaf8e17a1a6202d3cc13b39f7fd9c2a8ee32d92ed0a1c003ffb9e561",
+          "withoutMetadata": "2ccd76f4c5ce03ed882002d611cb02f9f30f51bccdc54aa4c53da23295df37cf",
+          "linkedWithoutMetadata": "2ccd76f4c5ce03ed882002d611cb02f9f30f51bccdc54aa4c53da23295df37cf"
+        },
+        "inherit": [
+          "IERC721Metadata",
+          "IERC721",
+          "ERC165",
+          "IERC165",
+          "Context"
+        ],
+        "libraries": [
+          "Address",
+          "Strings"
+        ],
+        "methods": [
+          "(string,string)",
+          "supportsInterface(bytes4)",
+          "balanceOf(address)",
+          "ownerOf(uint256)",
+          "name()",
+          "symbol()",
+          "tokenURI(uint256)",
+          "approve(address,uint256)",
+          "getApproved(uint256)",
+          "setApprovalForAll(address,bool)",
+          "isApprovedForAll(address,address)",
+          "transferFrom(address,address,uint256)",
+          "safeTransferFrom(address,address,uint256)",
+          "safeTransferFrom(address,address,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC721",
+            "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:43"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "ERC721",
+              "label": "_name",
+              "type": "t_string_storage",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:23"
+            },
+            {
+              "contract": "ERC721",
+              "label": "_symbol",
+              "type": "t_string_storage",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:26"
+            },
+            {
+              "contract": "ERC721",
+              "label": "_owners",
+              "type": "t_mapping(t_uint256,t_address)",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:29"
+            },
+            {
+              "contract": "ERC721",
+              "label": "_balances",
+              "type": "t_mapping(t_address,t_uint256)",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:32"
+            },
+            {
+              "contract": "ERC721",
+              "label": "_tokenApprovals",
+              "type": "t_mapping(t_uint256,t_address)",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:35"
+            },
+            {
+              "contract": "ERC721",
+              "label": "_operatorApprovals",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_bool))",
+              "src": "@openzeppelin/contracts/token/ERC721/ERC721.sol:38"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            },
+            "t_mapping(t_uint256,t_address)": {
+              "label": "mapping(uint256 => address)"
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
+            "t_address": {
+              "label": "address"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_bool))": {
+              "label": "mapping(address => mapping(address => bool))"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)"
+            },
+            "t_bool": {
+              "label": "bool"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC721": {
+        "src": "@openzeppelin/contracts/token/ERC721/IERC721.sol:10",
+        "inherit": [
+          "IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "balanceOf(address)",
+          "ownerOf(uint256)",
+          "safeTransferFrom(address,address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "approve(address,uint256)",
+          "getApproved(uint256)",
+          "setApprovalForAll(address,bool)",
+          "isApprovedForAll(address,address)",
+          "safeTransferFrom(address,address,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC721Receiver": {
+        "src": "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol:10",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "onERC721Received(address,address,uint256,bytes)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC721Metadata": {
+        "src": "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol:11",
+        "inherit": [
+          "IERC721",
+          "IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "tokenURI(uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Address": {
+        "src": "@openzeppelin/contracts/utils/Address.sol:8",
+        "version": {
+          "withMetadata": "26611e32a15a00144207b601573c8db0b03bac6851e9edb16d9974217ed40294",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin/contracts/utils/Address.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Context": {
+        "src": "@openzeppelin/contracts/utils/Context.sol:15",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "Strings": {
+        "src": "@openzeppelin/contracts/utils/Strings.sol:8",
+        "version": {
+          "withMetadata": "45f8d5e7b12e84abff31e4576589cf16a98bd479b8e759043b0b91eda6644ea0",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "ERC165": {
+        "src": "@openzeppelin/contracts/utils/introspection/ERC165.sol:21",
+        "inherit": [
+          "IERC165"
+        ],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
+      "IERC165": {
+        "src": "@openzeppelin/contracts/utils/introspection/IERC165.sol:14",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "supportsInterface(bytes4)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.1"
+        }
+      },
       "DankFlair": {
         "src": "contracts/DankFlair.sol:11",
         "version": {
-          "withMetadata": "c5a0d5e09fb0d9d12a1c0ab33fe90d9821ef260618ccc2f24848220d129dd651",
-          "withoutMetadata": "24a30fb8b6c41de27a7d4bd239a727865b3219c8aecbbb4e6e3b74fbec875f7f",
-          "linkedWithoutMetadata": "24a30fb8b6c41de27a7d4bd239a727865b3219c8aecbbb4e6e3b74fbec875f7f"
+          "withMetadata": "c86ec0ee0f7d54e919baabf94c0efad76c684450023ca24b8e830212d80b3eab",
+          "withoutMetadata": "b055a2525cd2f6c4dd3c25f9f9f787bbba0570cfa81243e2689239c9879a8bdd",
+          "linkedWithoutMetadata": "b055a2525cd2f6c4dd3c25f9f9f787bbba0570cfa81243e2689239c9879a8bdd"
         },
         "inherit": [
           "UUPSUpgradeable",
@@ -539,7 +795,8 @@
         "methods": [
           "()",
           "initialize()",
-          "safeMint(address)"
+          "safeMint(address)",
+          "safeMintBatch(address,uint64)"
         ],
         "linkReferences": [],
         "errors": [],
@@ -569,51 +826,220 @@
           "layoutVersion": "1.1"
         }
       },
-      "Migrations": {
-        "src": "contracts/Migrations.sol:4",
+      "DankFusion": {
+        "src": "contracts/DankFusion.sol:12",
         "version": {
-          "withMetadata": "3ed8e458bd14e43bc417e708a716d572cd508889fd205d58686ba28f28f198c4",
-          "withoutMetadata": "914ab0ddaae306ed851c9336c6fd1fd86fd286cb80089a96bc055edbb9543985",
-          "linkedWithoutMetadata": "914ab0ddaae306ed851c9336c6fd1fd86fd286cb80089a96bc055edbb9543985"
+          "withMetadata": "9a6841e3433533195f19d04d909e91634b300eb7cd62de2aeaa4c5986d5164a5",
+          "withoutMetadata": "19eb8a4ea0d0b9ea4a9f5e8e97bd199b20b10effa1e4256846f669539ef1b0c3",
+          "linkedWithoutMetadata": "19eb8a4ea0d0b9ea4a9f5e8e97bd199b20b10effa1e4256846f669539ef1b0c3"
         },
-        "inherit": [],
-        "libraries": [],
+        "inherit": [
+          "UUPSUpgradeable",
+          "ERC1967UpgradeUpgradeable",
+          "OwnableUpgradeable",
+          "ERC721BurnableUpgradeable",
+          "ERC721Upgradeable",
+          "IERC721MetadataUpgradeable",
+          "IERC721Upgradeable",
+          "ERC165Upgradeable",
+          "IERC165Upgradeable",
+          "ContextUpgradeable",
+          "Initializable"
+        ],
+        "libraries": [
+          "CountersUpgradeable"
+        ],
         "methods": [
           "()",
-          "setCompleted(uint256)",
-          "upgrade(address)"
+          "initialize(address)",
+          "safeMint(address,address,uint256,uint256)",
+          "safeMintFusion(address,address,uint256,uint256)",
+          "fusionIndex()",
+          "fusionInfo(uint256)"
         ],
         "linkReferences": [],
-        "errors": [
-          {
-            "kind": "constructor",
-            "contract": "Migrations",
-            "src": "contracts/Migrations.sol:12"
-          }
-        ],
+        "errors": [],
         "layout": {
           "storage": [
             {
-              "contract": "Migrations",
-              "label": "owner",
-              "type": "t_address",
-              "src": "contracts/Migrations.sol:5"
+              "contract": "DankFusion",
+              "label": "_tokenIdCounter",
+              "type": "t_struct(Counter)2049_storage",
+              "src": "contracts/DankFusion.sol:15"
             },
             {
-              "contract": "Migrations",
-              "label": "last_completed_migration",
-              "type": "t_uint256",
-              "src": "contracts/Migrations.sol:6"
+              "contract": "DankFusion",
+              "label": "banker",
+              "type": "t_address",
+              "src": "contracts/DankFusion.sol:17"
+            },
+            {
+              "contract": "DankFusion",
+              "label": "_dankContract",
+              "type": "t_contract(ERC721)3254",
+              "src": "contracts/DankFusion.sol:18"
+            },
+            {
+              "contract": "DankFusion",
+              "label": "_fusionContract",
+              "type": "t_mapping(t_uint256,t_contract(ERC721)3254)",
+              "src": "contracts/DankFusion.sol:21"
+            },
+            {
+              "contract": "DankFusion",
+              "label": "_dankId",
+              "type": "t_mapping(t_uint256,t_uint256)",
+              "src": "contracts/DankFusion.sol:23"
+            },
+            {
+              "contract": "DankFusion",
+              "label": "_fusionId",
+              "type": "t_mapping(t_uint256,t_uint256)",
+              "src": "contracts/DankFusion.sol:25"
             }
           ],
           "types": {
+            "t_struct(Counter)2049_storage": {
+              "label": "struct CountersUpgradeable.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256"
+                }
+              ]
+            },
+            "t_uint256": {
+              "label": "uint256"
+            },
             "t_address": {
               "label": "address"
+            },
+            "t_contract(ERC721)3254": {
+              "label": "contract ERC721"
+            },
+            "t_mapping(t_uint256,t_contract(ERC721)3254)": {
+              "label": "mapping(uint256 => contract ERC721)"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "DankTest": {
+        "src": "contracts/DankTest.sol:11",
+        "version": {
+          "withMetadata": "ff4185506502f2afad3d4bf42ce3217e8a68dcee7b17f7743f83765e9d6c0cb7",
+          "withoutMetadata": "4fc27fd6b3f13d9639acd1ce38d6eb9a4d483993b7cc6d2119c92108a1162689",
+          "linkedWithoutMetadata": "4fc27fd6b3f13d9639acd1ce38d6eb9a4d483993b7cc6d2119c92108a1162689"
+        },
+        "inherit": [
+          "UUPSUpgradeable",
+          "ERC1967UpgradeUpgradeable",
+          "OwnableUpgradeable",
+          "ERC721BurnableUpgradeable",
+          "ERC721Upgradeable",
+          "IERC721MetadataUpgradeable",
+          "IERC721Upgradeable",
+          "ERC165Upgradeable",
+          "IERC165Upgradeable",
+          "ContextUpgradeable",
+          "Initializable"
+        ],
+        "libraries": [
+          "CountersUpgradeable"
+        ],
+        "methods": [
+          "()",
+          "initialize()",
+          "safeMint(address)",
+          "safeMintBatch(address,uint64)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "contract": "DankTest",
+              "label": "_tokenIdCounter",
+              "type": "t_struct(Counter)2049_storage",
+              "src": "contracts/DankTest.sol:14"
+            }
+          ],
+          "types": {
+            "t_struct(Counter)2049_storage": {
+              "label": "struct CountersUpgradeable.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256"
+                }
+              ]
             },
             "t_uint256": {
               "label": "uint256"
             }
           },
+          "layoutVersion": "1.1"
+        }
+      },
+      "Greeter": {
+        "src": "contracts/Greeter.sol:6",
+        "version": {
+          "withMetadata": "bd61275871696750877258241feb971e37ff96a99b41910bf1476eddce94f664",
+          "withoutMetadata": "bd61275871696750877258241feb971e37ff96a99b41910bf1476eddce94f664",
+          "linkedWithoutMetadata": "bd61275871696750877258241feb971e37ff96a99b41910bf1476eddce94f664"
+        },
+        "inherit": [],
+        "libraries": [
+          "console"
+        ],
+        "methods": [
+          "(string)",
+          "greet()",
+          "setGreeting(string)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Greeter",
+            "src": "contracts/Greeter.sol:9"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "contract": "Greeter",
+              "label": "greeting",
+              "type": "t_string_storage",
+              "src": "contracts/Greeter.sol:7"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string"
+            }
+          },
+          "layoutVersion": "1.1"
+        }
+      },
+      "console": {
+        "src": "hardhat/console.sol:4",
+        "version": {
+          "withMetadata": "4b02c7c4618a233d529627e6230f71daa785f734dd01e5338467cd7b2d43fbf0",
+          "withoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff",
+          "linkedWithoutMetadata": "08d24783a787f8a51dea0c166bb6f91a4f0865e02d03d749f102d332e6ead0ff"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
           "layoutVersion": "1.1"
         }
       }
