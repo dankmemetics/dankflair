@@ -4,9 +4,9 @@ import Web3 from 'web3';
 import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { ConfigureContract } from '../../dankflair';
+import { ConfigureContract, ConfigureFusion } from '../../dankflair';
 import { setAccounts, setDankflair, setDankfusion } from '../../redux/redux.profile';
-import { setContract } from '../../redux/redux.contract';
+import { setContract, setFusionContract } from '../../redux/redux.contract';
 
 declare const window;
 declare const ethereum;
@@ -49,11 +49,12 @@ export interface MetamaskI {
     accounts: string[];
     setAccounts(payload: string[]): void;
     setContract(payload: any): void;
+    setFusionContract(payload: any): void;
     setDankflair(payload: any): void;
     setDankfusion(payload: any): void;
 }
 
-export function MetamaskComponent({ accounts, setAccounts, setContract, setDankflair, setDankfusion }: MetamaskI) {
+export function MetamaskComponent({ accounts, setAccounts, setContract, setFusionContract, setDankflair, setDankfusion }: MetamaskI) {
     useLayoutEffect(() => {
         (async () => {
             if (typeof ethereum !== 'undefined') {
@@ -65,6 +66,11 @@ export function MetamaskComponent({ accounts, setAccounts, setContract, setDankf
 
                     const Contract = ConfigureContract(web3, ethereum);
                     setContract(Contract);
+
+                    const FusionContract = ConfigureFusion(web3, ethereum);
+                    setFusionContract(FusionContract);
+
+                    console.log(`Fusion Contract`, FusionContract);
 
                     const account = web3Accounts[0];
                     const payload = await get(`/api/profile/${account}`);
@@ -117,4 +123,4 @@ export const MetamaskState = state => ({
     accounts: state.profile.accounts,
 });
 
-export const Metamask = connect(MetamaskState, { setAccounts, setContract, setDankflair, setDankfusion })(MetamaskComponent);
+export const Metamask = connect(MetamaskState, { setAccounts, setContract, setFusionContract, setDankflair, setDankfusion })(MetamaskComponent);

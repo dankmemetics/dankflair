@@ -55,6 +55,7 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
     }
 
     function safeMintFusion(address to, ERC721 fusionContract, uint256 dankId, uint256 fusionId) public payable {
+        // 0.01 ETH
         if (msg.value < 10000000000000000) {
             revert();
         }

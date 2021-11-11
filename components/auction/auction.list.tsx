@@ -6,7 +6,7 @@ export const AuctionListStyles = styled.div`
     padding: 15px 15px 90px 15px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 
     @media (max-width: 1158px) {
         justify-content: center;

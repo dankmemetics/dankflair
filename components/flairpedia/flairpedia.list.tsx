@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { flairpedia } from '../../flairpedia';
 import { Card } from '../common/common.card';
@@ -13,18 +14,34 @@ export const FlairpediaListStyles = styled.div`
     }
 `;
 
-export const LOAD_FIRST = 12;
+export function FlairpediaListComponent({ ownership }) {
+    function matchOwner(id: number) {
+        for (let i = 0; i < ownership.length; i++) {
+            if (ownership[i].id === id) {
+                return ownership[i].owner;
+            }
+        }
 
-export function FlairpediaList() {
+        return '';
+    }
+
     return(
         <FlairpediaListStyles>
             {
                 flairpedia.map(flair => {
+                    const owner = matchOwner(flair.id);
+
                     return(
-                        <Card buttonLabel="View NFT" type="feature" nft={flair} url={`/nft/${flair.id}`}/>
+                        <Card buttonLabel="View NFT" type="feature" nft={flair} url={`/nft/${flair.id}`} owner={owner}/>
                     )
                 })
             }
         </FlairpediaListStyles>
     )
 }
+
+export const FlairpediaListState = state => ({
+    ownership: state.contract.ownership,
+})
+
+export const FlairpediaList = connect(FlairpediaListState)(FlairpediaListComponent);

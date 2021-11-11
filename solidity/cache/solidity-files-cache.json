@@ -714,8 +714,8 @@
       ]
     },
     "/home/fortytwo/Projects/dankflair/solidity/contracts/DankFusion.sol": {
-      "lastModificationDate": 1636645481457,
-      "contentHash": "e4cdbb207c7e9bcd8f4e7ceb28e1a5b7",
+      "lastModificationDate": 1636652083357,
+      "contentHash": "5e21319a64f94de0d9ce9b230207eaf6",
       "sourceName": "contracts/DankFusion.sol",
       "solcConfig": {
         "version": "0.8.2",
@@ -1083,43 +1083,6 @@
       ],
       "artifacts": [
         "IERC165"
-      ]
-    },
-    "/home/fortytwo/Projects/dankflair/solidity/contracts/Greeter.sol": {
-      "lastModificationDate": 1636644872208,
-      "contentHash": "54c28c84e5277b35b8c8329ce9755dae",
-      "sourceName": "contracts/Greeter.sol",
-      "solcConfig": {
-        "version": "0.8.2",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "hardhat/console.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Greeter"
       ]
     },
     "/home/fortytwo/Projects/dankflair/solidity/node_modules/hardhat/console.sol": {

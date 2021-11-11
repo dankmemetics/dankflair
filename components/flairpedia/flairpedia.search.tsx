@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Primary, Background } from '../brand/brand.colors';
 
 export const FlairpediaSearchStyles = styled.div`
-    padding: 30px;
+    padding: 60px 30px;
     
     input {
         width: 100%;

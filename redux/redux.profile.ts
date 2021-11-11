@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { FlairOwnership } from './redux.contract';
 
 export const initialState = {
   accounts: [] as string[],
-  dankflair: [] as any[],
+  dankflair: [] as FlairOwnership[],
   dankfusion: [] as any[],
 }
 
