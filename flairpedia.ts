@@ -9,23 +9,6 @@ export interface FlairI {
     clipStyle: number; // 0 clipped (overflow: hidden;), 1 unclipped (overflow: visible;)
 }
 
-export interface FusionI {
-    id: number;
-    name: string;
-    description: string;
-
-    flair: FlairI;
-
-    content: {
-        id: number;
-        contract: string;
-        url: string;
-        offsetX: string;
-        offsetY: string;
-        clipStyle: number;
-    }
-}
-
 export const flairpedia: FlairI[] = [
     {
         id: 0,

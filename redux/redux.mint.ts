@@ -4,9 +4,9 @@ export const initialState = {
     name: '',
     description: '',
     dankId: 0,
-    fusionUrl: '',
-    fusionContract: '',
-    fusionId: 0,
+    mintUrl: '',
+    mintContract: '',
+    mintId: 0,
     fusionX: '',
     fusionY: '',
     fusionClip: 0,
@@ -25,14 +25,14 @@ export const mintSlice = createSlice({
     setDankId(state, action) {
         state.dankId = action.payload ?? 0;
     },
-    setFusionUrl(state, action) {
-        state.fusionUrl = action.payload ?? '';
+    setMintUrl(state, action) {
+        state.mintUrl = action.payload ?? '';
     },
-    setFusionContract(state, action) {
-        state.fusionContract = action.payload ?? '';
+    setMintContract(state, action) {
+        state.mintContract = action.payload ?? '';
     },
-    setFusionId(state, action) {
-        state.fusionId = action.payload ?? 0;
+    setMintId(state, action) {
+        state.mintId = action.payload ?? 0;
     },
     setFusionX(state, action) {
         state.fusionX = action.payload ?? '';
@@ -53,9 +53,9 @@ export const {
     setName,
     setDescription,
     setDankId,
-    setFusionUrl,
-    setFusionContract,
-    setFusionId,
+    setMintUrl,
+    setMintContract,
+    setMintId,
     setFusionX,
     setFusionY,
     setFusionClip,

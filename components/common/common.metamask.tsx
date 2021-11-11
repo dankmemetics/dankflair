@@ -55,6 +55,13 @@ export interface MetamaskI {
 }
 
 export function MetamaskComponent({ accounts, setAccounts, setContract, setFusionContract, setDankflair, setDankfusion }: MetamaskI) {
+    async function updateAccount(accounts) {
+        const account = accounts[0];
+        const payload = await get(`/api/profile/${account}`);
+
+        setDankflair(payload.body);
+    }
+
     useLayoutEffect(() => {
         (async () => {
             if (typeof ethereum !== 'undefined') {
@@ -70,12 +77,7 @@ export function MetamaskComponent({ accounts, setAccounts, setContract, setFusio
                     const FusionContract = ConfigureFusion(web3, ethereum);
                     setFusionContract(FusionContract);
 
-                    console.log(`Fusion Contract`, FusionContract);
-
-                    const account = web3Accounts[0];
-                    const payload = await get(`/api/profile/${account}`);
-
-                    setDankflair(payload.body);
+                    await updateAccount(web3Accounts);
                 } catch (error) {
                     console.error(error);
                 }
@@ -83,6 +85,7 @@ export function MetamaskComponent({ accounts, setAccounts, setContract, setFusio
                 ethereum.on('accountsChanged', async error => {
                     const web3Accounts = await web3.eth.getAccounts();
                     setAccounts(web3Accounts);
+                    await updateAccount(web3Accounts);
                 });
             }
         })();

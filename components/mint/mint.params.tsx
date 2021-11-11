@@ -6,14 +6,15 @@ import {
     setName,
     setDescription,
     setDankId,
-    setFusionUrl,
-    setFusionContract,
-    setFusionId,
+    setMintUrl,
+    setMintContract,
+    setMintId,
     setFusionX,
     setFusionY,
     setFusionClip,
     resetForm,
 } from '../../redux/redux.mint';
+import { MintFlair } from './mint.flair';
 
 export const MintParamsStyles = styled.div`
     padding: 60px 15px 90px 15px;
@@ -55,6 +56,13 @@ export const MintParamsStyles = styled.div`
     div.inputs {
         display: flex;
         align-items: center;
+
+        div.input.address {
+            width: calc(100% - 240px);
+        }
+        div.input.id {
+            width: 240px;
+        }
     }
 `;
 
@@ -62,9 +70,9 @@ export interface MintParamsI {
     name: string,
     description: string,
     dankId: number,
-    fusionUrl: string,
-    fusionContract: string,
-    fusionId: number,
+    mintUrl: string,
+    mintContract: string,
+    mintId: number,
     fusionX: string,
     fusionY: string,
     fusionClip: number,
@@ -72,9 +80,9 @@ export interface MintParamsI {
     setName(payload: string): void,
     setDescription(payload: string): void,
     setDankId(payload: number): void,
-    setFusionUrl(payload: string): void,
-    setFusionContract(payload: string): void,
-    setFusionId(payload: number): void,
+    setMintUrl(payload: string): void,
+    setMintContract(payload: string): void,
+    setMintId(payload: number): void,
     setFusionX(payload: string): void,
     setFusionY(payload: string): void,
     setFusionClip(payload: number): void,
@@ -86,9 +94,9 @@ export function MintParamsComponent(
         name,
         description,
         dankId,
-        fusionUrl,
-        fusionContract,
-        fusionId,
+        mintUrl,
+        mintContract,
+        mintId,
         fusionX,
         fusionY,
         fusionClip,
@@ -96,9 +104,9 @@ export function MintParamsComponent(
         setName,
         setDescription,
         setDankId,
-        setFusionUrl,
-        setFusionContract,
-        setFusionId,
+        setMintUrl,
+        setMintContract,
+        setMintId,
         setFusionX,
         setFusionY,
         setFusionClip,
@@ -106,22 +114,45 @@ export function MintParamsComponent(
     }
     : MintParamsI
 ) {
+    function retrieveUri() {
+
+    }
+
     return(
         <MintParamsStyles>
-            <p className="label">NFTs</p>
-            <div className="buttons">
-                <Button label="Select Dank Flair" width="240px" margin="15px"/>
-                <Button label="Select ERC721" width="240px" margin="15px"/>
-            </div>
-
             <p className="label">Name</p>
-            <input type="text" placeholder="Name of new Dank Fusion NFT" value={name} onChange={e => setName(e.target.value)}/>
+            <input
+                type="text"
+                placeholder="Name of new Dank Fusion NFT"
+                value={name}
+                onChange={e => setName(e.target.value)}
+            />
 
             <p className="label">Description</p>
             <textarea
                 placeholder="Say something awesome about your new Fusion NFT bro"
-                value={description} onChange={e => setDescription(e.target.value)}
+                value={description}
+                onChange={e => setDescription(e.target.value)}
             />
+
+            <p className="label">Configure Flair NFT</p>
+            <MintFlair/>
+
+            <p className="label">Configure Content NFT</p>
+            <div className="inputs">
+                <div className="input address">
+                    <p className="label">Contract Address</p>
+                    <input type="text" placeholder="Address" value={mintContract} onChange={e => {
+                        setMintContract(e.target.value);
+                    }}/>
+                </div>
+                <div className="input id">
+                    <p className="label">Token ID</p>
+                    <input type="number" placeholder="Token ID" value={mintId} min={0} onChange={e => {
+                        setMintId(parseInt(e.target.value));
+                    }}/>
+                </div>
+            </div>
 
             <p className="label">ERC721 Position</p>
             <div className="inputs">
@@ -173,9 +204,9 @@ export const MintParamsState = state => ({
     name: state.mint.name,
     description: state.mint.description,
     dankId: state.mint.dankId,
-    fusionUrl: state.mint.fusionUrl,
-    fusionContract: state.mint.fusionContract,
-    fusionId: state.mint.fusionId,
+    mintUrl: state.mint.mintUrl,
+    mintContract: state.mint.mintContract,
+    mintId: state.mint.mintId,
     fusionX: state.mint.fusionX,
     fusionY: state.mint.fusionY,
     fusionClip: state.mint.fusionClip,
@@ -185,9 +216,9 @@ export const MintParams = connect(MintParamsState, {
     setName,
     setDescription,
     setDankId,
-    setFusionUrl,
-    setFusionContract,
-    setFusionId,
+    setMintUrl,
+    setMintContract,
+    setMintId,
     setFusionX,
     setFusionY,
     setFusionClip,

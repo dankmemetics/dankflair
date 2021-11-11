@@ -1,7 +1,7 @@
 import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
 import { Footer } from '../components/common/common.footer';
-import { MintUpload } from '../components/mint/mint.upload';
+import { MintPreview } from '../components/mint/mint.preview';
 import { MintParams } from '../components/mint/mint.params';
 
 export function Mint() {
@@ -9,7 +9,7 @@ export function Mint() {
     <>
       <Header tab="mint"/>
       <PageContainer>
-        <MintUpload/>
+        <MintPreview/>
         <MintParams/>
       </PageContainer>
       <Footer/>

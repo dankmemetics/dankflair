@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
+import { Primary, Card as CardBg } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
-import { FlairI, FusionI } from '../../flairpedia';
+import { FlairI } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { AiOutlineFire } from 'react-icons/ai';
@@ -111,26 +111,36 @@ export function Card({
     nft = null,
     fusion = null,
     owner = '',
-}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft?: FlairI | null, fusion?: FusionI | null }) {
+}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft?: FlairI | null, fusion?: any | null }) {
     return(
         <CardStyles className={`card ${type}`}>
-            <div className="badge">
-                #{nft.id}
-            </div>
+            {
+                nft ? 
+                <div className="badge">
+                    #{nft?.id}
+                </div>
+                : ''
+            }
             <Flair
                 width={180}
                 height={180}
                 margin="0 0 10px 0"
-                flairUrl={`/flair/${nft.id}${nft.suffix}`}
+                flairUrl={`/flair/${nft?.id}${nft?.suffix}`}
                 nftUrl={null}
             />
-            <h3>{nft.name}</h3>
+            <h3>{nft?.name || '~'}</h3>
             <div className="labels">
                 <div className="label">
                     <p>Flair NFT</p>
                     <h3>
-                        <BsFillPatchCheckFill className="icon"/>
-                        {nft.name} 
+                        {nft ? 
+                            <>
+                                <BsFillPatchCheckFill className="icon"/>
+                                {nft?.name} 
+                            </>
+                            :
+                            'None'
+                        }
                     </h3>
                 </div>
                 <div className="label">
@@ -142,14 +152,14 @@ export function Card({
                     <h3>
                         <div className="meter-label">
                             <AiOutlineFire className="icon"/>
-                            {nft.dankRank === 1 ? 'Meh' : ''}
-                            {nft.dankRank === 2 ? 'Cool' : ''}
-                            {nft.dankRank === 3 ? 'Bomb' : ''}
-                            {nft.dankRank === 4 ? 'Lit' : ''}
-                            {nft.dankRank === 5 ? 'Dank' : ''}
+                            {nft?.dankRank === 1 ? 'Meh' : ''}
+                            {nft?.dankRank === 2 ? 'Cool' : ''}
+                            {nft?.dankRank === 3 ? 'Bomb' : ''}
+                            {nft?.dankRank === 4 ? 'Lit' : ''}
+                            {nft?.dankRank === 5 ? 'Dank' : ''}
                         </div>                        
                         <div className="meter">
-                            <div className="meter-inner" style={{ width: `${nft.dankRank * 20}%` }}/>
+                            <div className="meter-inner" style={{ width: `${nft?.dankRank * 20}%` }}/>
                         </div>
                     </h3>
                 </div>

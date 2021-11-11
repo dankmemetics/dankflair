@@ -1,18 +1,15 @@
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Background, Primary} from '../brand/brand.colors';
-import { Button } from '../common/common.button';
+import { Primary } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { flairpedia } from '../../flairpedia';
-
 import { BsFillPatchCheckFill } from 'react-icons/bs';
-import { SiEthereum } from 'react-icons/si';
 
-export const MintUploadStyles = styled.div`
+export const MintPreviewStyles = styled.div`
     display: flex;
     align-items: center;
-    margin: 30px;
-    padding: 15px;
+    padding: 60px 15px 0 15px;
     width: calc(100% - 60px);
 
     @media (max-width: 1158px) {
@@ -127,24 +124,45 @@ export const MintUploadStyles = styled.div`
     }
 `;
 
-export function MintUpload() {
-    const nft = flairpedia[0];
+export interface MintPreviewI {
+    name: string,
+    description: string,
+    dankId: number,
+    fusionUrl: string,
+    fusionContract: string,
+    fusionId: number,
+    accounts: string[],
+}
+
+export function MintPreviewComponent({ name, description, dankId, fusionUrl, fusionContract, fusionId, accounts }: MintPreviewI) {
+    const nft = flairpedia[dankId || 0];
+    let owner = '';
+
+    if (accounts.length > 0) {
+        owner = accounts[0];
+    }
 
     return(
-        <MintUploadStyles>
+        <MintPreviewStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={flairpedia[0]}/>
+                <Card type="feature" nft={dankId ? nft : null} owner={owner} />
             </div>
             <div className="text">
-                <h2>{nft.name}</h2>
+                <h2>{name ? name : 'No Name'}</h2>
                 
                 <div className="labels">
                     <div className="label">
                         <p>Flair NFT</p>
                         <h3>
-                            <BsFillPatchCheckFill className="icon"/>
-                            {nft.name} 
-                            <Badge label={`#${nft.id}`}/>
+                            {
+                                dankId ?
+                                <>
+                                    <BsFillPatchCheckFill className="icon"/>
+                                    {nft.name} 
+                                    <Badge label={`#${nft.id}`}/>
+                                </> : 'None'
+                            }
+                            
                         </h3>
                     </div>
                     <div className="label">
@@ -155,9 +173,21 @@ export function MintUpload() {
 
                 <p>Description</p>
                 <p className="description">
-                    {nft.description}
+                    {description ? description : 'Please add a description'}
                 </p>
             </div>
-        </MintUploadStyles>
+        </MintPreviewStyles>
     )
 }
+
+export const MintPreviewState = state => ({
+    name: state.mint.name,
+    description: state.mint.description,
+    dankId: state.mint.dankId,
+    fusionUrl: state.mint.fusionUrl,
+    fusionContract: state.mint.fusionContract,
+    fusionId: state.mint.fusionId,
+    accounts: state.profile.accounts,
+});
+
+export const MintPreview = connect(MintPreviewState)(MintPreviewComponent);
