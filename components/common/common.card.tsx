@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Primary, Card as CardBg } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
+import { Badge } from '../common/common.badge';
 import { FlairI } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
@@ -104,14 +105,27 @@ export const CardStyles = styled.div`
     }
 `;
 
-export function Card({
-    type = 'generic',
-    buttonLabel = '',
-    url = '',
-    nft = null,
-    fusion = null,
-    owner = '',
-}: { type?: string, buttonLabel?: string, url?: string, owner?: string, nft?: FlairI | null, fusion?: any | null }) {
+export function Card(
+    {
+        type = 'generic',
+        buttonLabel = '',
+        url = '',
+        owner = '',
+        nft = null,
+        flairImage = '',
+        flairName = '',
+    }
+    :
+    {
+        type?: string,
+        buttonLabel?: string,
+        url?: string,
+        owner?: string,
+        nft?: FlairI | null,
+        flairImage?: string,
+        flairName?: string
+    }
+) {
     return(
         <CardStyles className={`card ${type}`}>
             {
@@ -126,7 +140,7 @@ export function Card({
                 height={180}
                 margin="0 0 10px 0"
                 flairUrl={`/flair/${nft?.id}${nft?.suffix}`}
-                nftUrl={null}
+                nftUrl={flairImage}
             />
             <h3>{nft?.name || '~'}</h3>
             <div className="labels">
@@ -136,7 +150,7 @@ export function Card({
                         {nft ? 
                             <>
                                 <BsFillPatchCheckFill className="icon"/>
-                                {nft?.name} 
+                                {nft?.name}
                             </>
                             :
                             'None'
@@ -145,7 +159,14 @@ export function Card({
                 </div>
                 <div className="label">
                     <p>Content NFT</p>
-                    <h3>None</h3>
+                    <h3>{  flairName ?
+                            <>
+                                <BsFillPatchCheckFill className="icon"/>
+                                {flairName}
+                            </>
+                            : ''
+                        }
+                    </h3>
                 </div>
                 <div className={`label ${type === 'feature' ? 'full' : ''}`}>
                     <p>Dank Meter</p>

@@ -7,7 +7,7 @@ import { FiTwitter } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
 import { BiStoreAlt, BiMapPin } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
-import { MdOutlineGroups } from 'react-icons/md';
+import { MdOutlineGroups, MdLibraryBooks } from 'react-icons/md';
 import { GiOpenBook } from 'react-icons/gi';
 
 export const FooterStyles = styled.div`
@@ -99,6 +99,12 @@ export function Footer() {
                         <a className="link">
                             <BiMapPin className="icon"/>
                             Roadmap
+                        </a>
+                    </Link>
+                    <Link href="/documentation">
+                        <a className="link">
+                            <MdLibraryBooks className="icon"/>
+                            Documentation
                         </a>
                     </Link>
                     <Link href="/dao">

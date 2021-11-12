@@ -128,13 +128,31 @@ export interface MintPreviewI {
     name: string,
     description: string,
     dankId: number,
-    fusionUrl: string,
-    fusionContract: string,
-    fusionId: number,
+    mintUrl: string,
+    mintContract: string,
+    mintName: string,
+    mintId: number,
+    mintKey: string,
+    fusionX: string,
+    fusionY: string,
+    fusionClip: number,
     accounts: string[],
 }
 
-export function MintPreviewComponent({ name, description, dankId, fusionUrl, fusionContract, fusionId, accounts }: MintPreviewI) {
+export function MintPreviewComponent({ 
+    name,
+    description,
+    dankId,
+    mintUrl,
+    mintContract,
+    mintName,
+    mintId,
+    mintKey,
+    fusionX,
+    fusionY,
+    fusionClip,
+    accounts,
+}: MintPreviewI) {
     const nft = flairpedia[dankId || 0];
     let owner = '';
 
@@ -145,7 +163,7 @@ export function MintPreviewComponent({ name, description, dankId, fusionUrl, fus
     return(
         <MintPreviewStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={dankId ? nft : null} owner={owner} />
+                <Card type="feature" nft={dankId ? nft : null} owner={owner} flairImage={mintUrl} flairName={mintName} />
             </div>
             <div className="text">
                 <h2>{name ? name : 'No Name'}</h2>
@@ -167,7 +185,14 @@ export function MintPreviewComponent({ name, description, dankId, fusionUrl, fus
                     </div>
                     <div className="label">
                         <p>Content NFT</p>
-                        <h3>None</h3>
+                        <h3>{
+                                mintName ?
+                                <>
+                                    <BsFillPatchCheckFill className="icon"/>
+                                    {mintName} 
+                                    <Badge label={`#${mintId}`}/>
+                                </> : ''
+                            }</h3>
                     </div>
                 </div>
 
@@ -184,9 +209,14 @@ export const MintPreviewState = state => ({
     name: state.mint.name,
     description: state.mint.description,
     dankId: state.mint.dankId,
-    fusionUrl: state.mint.fusionUrl,
-    fusionContract: state.mint.fusionContract,
-    fusionId: state.mint.fusionId,
+    mintUrl: state.mint.mintUrl,
+    mintContract: state.mint.mintContract,
+    mintName: state.mint.mintName,
+    mintKey: state.mint.mintKey,
+    mintId: state.mint.mintId,
+    fusionX: state.mint.fusionX,
+    fusionY: state.mint.fusionY,
+    fusionClip: state.mint.fusionClip,
     accounts: state.profile.accounts,
 });
 
