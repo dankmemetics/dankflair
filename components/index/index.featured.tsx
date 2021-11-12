@@ -48,9 +48,18 @@ export const IndexFeaturedStyles = styled.div`
         }
 
         h2 {
+            display: flex;
+            align-items: center;
+            font-family: Arvo;
             font-size: 42px;
-            font-weight: 500;
-            padding: 0 0 5px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 0 0 15px 0;
+
+            img {
+                height: 64px;
+                margin: 0 15px 0 0;
+            }
         }
 
         p {
@@ -168,7 +177,10 @@ export function IndexFeatured() {
         <IndexFeaturedStyles>
             <div className="wrap">
                 <div className="title">
-                    <h2>Dank Flair</h2>
+                    <h2>
+                        <img src="/images/logo.png"/>
+                        Dank Flair
+                    </h2>
                     <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
                     <Button label="View Auctions" link="/auction" width="280px" margin="30px 0 0 0"/>
                 </div>

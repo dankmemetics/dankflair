@@ -1,6 +1,7 @@
 import { get } from 'superagent';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Metadata } from '../components/common/common.metadata';
 import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
 import { Footer } from '../components/common/common.footer';
@@ -20,6 +21,7 @@ export function FlairpediaComponent({ setOwnership }) {
 
   return (
     <>
+        <Metadata/>
         <Header tab="flairpedia"/>
         <PageContainer>
             <FlairpediaSearch/>

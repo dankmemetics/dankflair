@@ -12,7 +12,7 @@ declare const window;
 declare const ethereum;
 declare let web3;
 
-export const MetamaskStyles = styled.a`
+export const MetamaskStyles = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;

@@ -2,6 +2,7 @@ import { get } from 'superagent';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Metadata } from '../../components/common/common.metadata';
 import { PageContainer } from "../../components/brand/brand.app";
 import { Header } from '../../components/common/common.header';
 import { Footer } from '../../components/common/common.footer';
@@ -32,7 +33,8 @@ export function NFTComponent({ contract, activeNft, accounts, setActiveNft }: NF
   }, [id])
 
   return (
-    <>
+    <> 
+      <Metadata/>
       <Header/>
       <PageContainer>
         <NftFeature activeNft={activeNft}/>

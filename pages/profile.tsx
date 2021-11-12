@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Metadata } from '../components/common/common.metadata';
 import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
 import { Footer } from '../components/common/common.footer';
@@ -16,6 +17,7 @@ export interface ProfileI {
 export function ProfileComponent({ accounts, dankflair, dankfusion }: ProfileI) {
   return (
     <>
+      <Metadata/>
       <Header tab="profile"/>
       <PageContainer>
         <ProfileHeader address={accounts[0]}/>

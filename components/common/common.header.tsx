@@ -5,10 +5,8 @@ import { Background } from '../brand/brand.colors';
 import { Gradient2 } from '../brand/brand.gradients';
 import { Metamask } from './common.metamask';
 
-import { ImAddressBook } from 'react-icons/im';
 import { BiStoreAlt } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
-import { MdOutlineGroups } from 'react-icons/md';
 import { CgMenuCake } from 'react-icons/cg';
 import { GiOpenBook } from 'react-icons/gi';
 
@@ -19,6 +17,7 @@ export const HeaderStyles = styled.div`
   border-bottom: 5px solid ${Background};
   width: 100%;
   height: 65px;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
 
   div.wrap {
     display: flex;
@@ -42,14 +41,20 @@ export const HeaderStyles = styled.div`
       letter-spacing: 1px;
       border-bottom: 5px solid rgba(255, 255, 255, 0.25);
 
-      &.active {
+      &.active, &:hover {
         border-bottom: 5px solid white;
       }
 
+      img {
+        height: 32px;
+        margin: 0 5px;
+      }
+
       h2 {
+        font-family: Arvo;
         font-size: 24px;
         font-weight: 400;
-        padding: 2.5px 15px 0 15px;
+        padding: 2.5px 15px 2.5px 10px;
       }
     }
 
@@ -134,6 +139,7 @@ export function Header({ tab = '' }) {
       <div className="wrap">
         <Link href="/">
           <a className={`brand ${tab === 'index' ? 'active' : ''}`}>
+            <img src="/images/logo.png"/>
             <h2>Dank Flair</h2>
           </a>
         </Link>

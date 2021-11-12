@@ -141,7 +141,7 @@ export function MintParamsComponent(
                         const name = await Contract.methods.name().call();
                         console.log('Name', name);
                         setMintName(name);
-                        const payload = await get(`/api/test/0`); //@TODO: Make sure to remove after successful build and deploy
+                        const payload = await get(uri);
                         console.log('data', payload.body);
 
                         if (mintKey) {

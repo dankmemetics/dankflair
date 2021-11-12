@@ -64,7 +64,7 @@ export function MintFlairComponent({ dankflair, setDankId }) {
                     const nft = flairpedia[flair.id];
 
                     return(
-                        <div className="flair">
+                        <div className="flair" key={flair.id}>
                             <div className="badge">
                                 #{nft.id}
                             </div>

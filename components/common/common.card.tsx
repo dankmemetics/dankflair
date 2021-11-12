@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Primary, Card as CardBg } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
 import { Flair } from '../common/common.flair';
-import { Badge } from '../common/common.badge';
 import { FlairI } from '../../flairpedia';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
@@ -14,7 +13,7 @@ import { SiEthereum } from 'react-icons/si';
 export const CardStyles = styled.div`
     background: ${CardBg};
     border-radius: 15px;
-    box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.25);
     margin: 15px;
     width: 320px;
     max-width: calc(100% - 30px);
@@ -164,7 +163,7 @@ export function Card(
                                 <BsFillPatchCheckFill className="icon"/>
                                 {flairName}
                             </>
-                            : ''
+                            : 'None'
                         }
                     </h3>
                 </div>

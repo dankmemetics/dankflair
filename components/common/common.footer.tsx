@@ -15,6 +15,7 @@ export const FooterStyles = styled.div`
     z-index: 1111;
     background: ${Gradient2};
     width: 100%;
+    box-shadow: 0 0 10px 15px rgba(0, 0, 0, 0.25);
 
     div.wrap {
         width: 100%;
@@ -32,9 +33,17 @@ export const FooterStyles = styled.div`
         padding: 15px;
 
         h3 {
+            display: flex;
+            align-items: center;
+
+            img {
+                height: 42px;
+                margin: 0 15px 0 0;
+            }
+
             font-size: 32px;
             font-weight: 300;
-            padding: 0 0 5px 0;
+            padding: 0 0 15px 0;
         }
 
         div.accent {
@@ -83,7 +92,10 @@ export function Footer() {
         <FooterStyles>
             <div className="wrap">
                 <div className="heading">
-                    <h3>Dank Flair</h3>
+                    <h3>
+                        <img src="/images/logo.png"/>
+                        Dank Flair
+                    </h3>
                     <div className="accent"/>
                 </div>
                 <div className="links">

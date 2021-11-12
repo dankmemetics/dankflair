@@ -11,7 +11,8 @@ export function makeStore() {
       profile: profileSlice.reducer,
       contract: contractSlice.reducer,
       mint: mintSlice.reducer,
-    }
+    },
+    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }),
   });
 }
 

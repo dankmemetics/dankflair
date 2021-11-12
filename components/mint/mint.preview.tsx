@@ -191,7 +191,7 @@ export function MintPreviewComponent({
                                     <BsFillPatchCheckFill className="icon"/>
                                     {mintName} 
                                     <Badge label={`#${mintId}`}/>
-                                </> : ''
+                                </> : 'None'
                             }</h3>
                     </div>
                 </div>

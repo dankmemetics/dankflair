@@ -19,6 +19,7 @@ export class AppComponent extends App<AppInitialProps> {
       <AppContainer>
         <Head>
           <title>Dank Flair</title>
+          <link rel="icon" type="image/png" href="/images/logo.png"/>
           <link rel="stylesheet" href="/css/reset.css"/>
         </Head>
         <Component {...pageProps}/>

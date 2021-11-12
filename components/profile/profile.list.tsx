@@ -18,7 +18,7 @@ export function ProfileList({ dankflair, dankfusion }) {
         <ProfileListStyles>
             {
                 dankflair.map(flair => {
-                    return(<Card buttonLabel="View NFT" type="feature" url={`/nft/${flair.id}`} nft={flairpedia[flair.id]}/>)
+                    return(<Card key={flair.id} buttonLabel="View NFT" type="feature" url={`/nft/${flair.id}`} nft={flairpedia[flair.id]}/>)
                 })
             }
             

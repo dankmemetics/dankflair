@@ -32,7 +32,7 @@ export function FlairpediaListComponent({ ownership }) {
                     const owner = matchOwner(flair.id);
 
                     return(
-                        <Card buttonLabel="View NFT" type="feature" nft={flair} url={`/nft/${flair.id}`} owner={owner}/>
+                        <Card key={flair.id} buttonLabel="View NFT" type="feature" nft={flair} url={`/nft/${flair.id}`} owner={owner}/>
                     )
                 })
             }

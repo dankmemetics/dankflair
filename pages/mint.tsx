@@ -1,3 +1,4 @@
+import { Metadata } from '../components/common/common.metadata';
 import { PageContainer } from "../components/brand/brand.app";
 import { Header } from '../components/common/common.header';
 import { Footer } from '../components/common/common.footer';
@@ -7,6 +8,7 @@ import { MintParams } from '../components/mint/mint.params';
 export function Mint() {
   return (
     <>
+      <Metadata/>
       <Header tab="mint"/>
       <PageContainer>
         <MintPreview/>
