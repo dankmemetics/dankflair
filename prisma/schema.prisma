@@ -14,15 +14,15 @@ model DankFlair {
 }
 
 model DankFusion {
-  id              Int @id @map("_id")
+  id              String @id @default(dbgenerated()) @map("_id") @db.ObjectId
   owner           String
   name            String
   description     String
   dankId          Int
-  fusionUrl       String
-  fusionContract  String
-  fusionId        Int
-  fusionX         String
-  fusionY         String
-  fusionClip      Int
+  fusionId        Int?
+  mintContract    String
+  mintUrl         String
+  mintId          Int
+  mintName        String
+  mintKey         String
 }

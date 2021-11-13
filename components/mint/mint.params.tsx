@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import confetti from 'canvas-confetti';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { get, post } from 'superagent';
 import { Button } from '../common/common.button';
@@ -15,12 +16,15 @@ import {
     setFusionX,
     setFusionY,
     setFusionClip,
+    setMintError,
     resetForm,
 } from '../../redux/redux.mint';
 import { MintFlair } from './mint.flair';
 import { ConfigureCustomContract } from '../../dankflair';
+import { Success } from '../brand/brand.colors';
 
 declare const window;
+declare const web3;
 
 export const MintParamsStyles = styled.div`
     padding: 60px 15px 90px 15px;
@@ -62,27 +66,81 @@ export const MintParamsStyles = styled.div`
     div.inputs {
         display: flex;
         align-items: center;
+        
+        @media (max-width: 1158px) { 
+            flex-wrap: wrap;
+        }
 
         div.input.json {
             width: calc(100% - 320px);
+
+            @media (max-width: 1158px) {
+                width: 100%;
+            }
         }
         div.input.id {
             width: 320px;
+
+            @media (max-width: 1158px) {
+                width: 100%;
+            }
+        }
+    }
+
+    div.success-mint {
+        position: fixed;
+        left: calc(50% - 160px);
+        top: calc(50% - 160px);
+        width: 320px;
+        height: 90px;
+        background: ${Success};
+        z-index: 1112;
+        border-radius: 10px;
+        box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.25);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 24px;
+        font-family: Arvo;
+        font-weight: bold;
+
+        opacity: 0;
+        pointer-events: none;
+
+        &.active {
+            opacity: 1;
+        }
+    }
+
+    div.mint-wrapper {
+        opacity: 0.5;
+        pointer-events: none;
+
+        &.active {
+            opacity: 1;
+            pointer-events: inherit;
         }
     }
 `;
 
 export interface MintParamsI {
+    accounts: string[],
+    fusionContract: any,
+
     name: string,
     description: string,
     dankId: number,
     mintUrl: string,
     mintContract: string,
     mintId: number,
+    mintName: string,
     mintKey: string,
     fusionX: string,
     fusionY: string,
     fusionClip: number,
+    mintError: number;
 
     setName(payload: string): void,
     setDescription(payload: string): void,
@@ -95,6 +153,7 @@ export interface MintParamsI {
     setFusionX(payload: string): void,
     setFusionY(payload: string): void,
     setFusionClip(payload: number): void,
+    setMintError(payload: number): void,
     resetForm(payload: boolean): void;
 }
 
@@ -102,16 +161,21 @@ export let timeout;
 
 export function MintParamsComponent(
     {
+        accounts,
+        fusionContract,
+
         name,
         description,
         dankId,
         mintUrl,
         mintContract,
         mintId,
+        mintName,
         mintKey,
         fusionX,
         fusionY,
         fusionClip,
+        mintError,
 
         setName,
         setDescription,
@@ -123,6 +187,7 @@ export function MintParamsComponent(
         setFusionX,
         setFusionY,
         setFusionClip,
+        setMintError,
         resetForm,
     }
     : MintParamsI
@@ -133,6 +198,9 @@ export function MintParamsComponent(
             if (mintContract && mintId !== null) {
                 timeout = setTimeout(async () => {
                     try {
+                        const info = await fusionContract.methods.fusionInfo(0).call();
+                        console.log(info);
+
                         const Contract = ConfigureCustomContract(window.web3, window.ethereum, mintContract);
                         console.log('Customized URI Contract', Contract);
                         console.log('Checking URI for', mintId);
@@ -141,7 +209,7 @@ export function MintParamsComponent(
                         const name = await Contract.methods.name().call();
                         console.log('Name', name);
                         setMintName(name);
-                        const payload = await get(uri);
+                        const payload = await get(`/api/test/${mintId}`);
                         console.log('data', payload.body);
 
                         if (mintKey) {
@@ -151,13 +219,26 @@ export function MintParamsComponent(
                             const image = payload.body.image;
                             setMintUrl(image);
                         }
+
+                        const owner = await Contract.methods.ownerOf(mintId).call();
+
+                        if (owner === accounts[0]) {
+                            setMintError(0);
+                        } else {
+                            setMintError(2);
+                        }                        
                     } catch (error) {
                         console.error(error);
+                        setMintName('');
+                        setMintUrl('');
+                        setMintError(1);
                     }
                 }, 500);
             }
         })();
     }, [mintContract, mintId, mintKey]);
+
+    const [success, setSuccess] = useState(false);
 
     return(
         <MintParamsStyles>
@@ -200,45 +281,59 @@ export function MintParamsComponent(
                 </div>
             </div>
 
-            <p className="label">ERC721 Position</p>
-            <div className="inputs">
-                <div className="input">
-                    <p className="label">X</p>
-                    <input type="text" placeholder="Can use CSS rules" value={fusionX} onChange={e => setFusionX(e.target.value)}/>
-                </div>
-                <div className="input">
-                    <p className="label">Y</p>
-                    <input type="text" placeholder="Can use CSS rules" value={fusionY} onChange={e => setFusionY(e.target.value)}/>
-                </div>
+            <div className={`success-mint ${success ? 'active' : ''}`}>
+                GREAT SUCCESS!
             </div>
 
-            <p className="label">Clip Style</p>
-            <div className="buttons">
-                <div onClick={e => setFusionClip(0)}>
-                    <Button label="Clipped" width="180px" height="40px" fontSize="14px" margin="15px"/>
-                </div>
-                <div onClick={e => setFusionClip(1)}>
-                    <Button label="Unclipped" width="180px" height="40px" fontSize="14px" margin="15px"/>
-                </div>
-            </div>
+            <div
+                className={`mint-wrapper ${mintError === 0 && name && description && mintId !== null && mintContract && dankId !== null ? 'active' : ''}`}
+                onClick={async e => {
+                    try {
+                        const owner = accounts[0];
 
-            <div onClick={async e => {
-                const result = await post(`/api/mint`)
-                    .send({
-                        nftId: 0,
-                        name,
-                        description,
-                        dankId: 0,
-                        fusionUrl: 'http://fusion.com',
-                        fusionContract: '0x42069',
-                        fusionId: 0,
-                        fusionX,
-                        fusionY,
-                        fusionClip,
-                    });
-                
-                resetForm(true);
-                console.log(result.body);
+                        const payload = await post(`/api/mint`)
+                            .send({
+                                owner,
+                                name,
+                                description,
+                                dankId,
+                                mintContract,
+                                mintUrl,
+                                mintId,
+                                mintName,
+                                mintKey,
+                            });
+
+                        const encoding = new TextEncoder();
+                        const uuid = web3.utils.stringToHex(payload.body.id);
+
+                        console.log('UUID encoding', payload.body.id, uuid);
+                        console.log(fusionContract);
+
+                        const mint = await fusionContract.methods.safeMintFusion(owner, mintContract, dankId, mintId, uuid).send({
+                            from: owner,
+                            value: 10000000000000000,
+                        });
+
+                        console.log('Mint Successful', mint);
+                        
+                        confetti({
+                            particleCount: 200,
+                            spread: 100,
+                        })
+                        resetForm(true);
+                        setSuccess(true);
+                        
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 2500);                        
+                    } catch (error) {
+                        console.error(error);
+                        setMintError(3);
+                        setTimeout(() => {
+                            setMintError(0);
+                        }, 5000);
+                    }
             }}>
                 <Button label="Mint" width="calc(100% - 30px)" margin="45px 15px" padding="5px 15px" height="60px" fontSize="24px"/>
             </div>            
@@ -247,16 +342,21 @@ export function MintParamsComponent(
 }
 
 export const MintParamsState = state => ({
+    accounts: state.profile.accounts,
+    fusionContract: state.contract.fusionContract,
+
     name: state.mint.name,
     description: state.mint.description,
     dankId: state.mint.dankId,
     mintUrl: state.mint.mintUrl,
     mintKey: state.mint.mintKey,
+    mintName: state.mint.mintName,
     mintContract: state.mint.mintContract,
     mintId: state.mint.mintId,
     fusionX: state.mint.fusionX,
     fusionY: state.mint.fusionY,
     fusionClip: state.mint.fusionClip,
+    mintError: state.mint.mintError,
 });
 
 export const MintParams = connect(MintParamsState, {
@@ -271,5 +371,6 @@ export const MintParams = connect(MintParamsState, {
     setFusionX,
     setFusionY,
     setFusionClip,
+    setMintError,
     resetForm,
 })(MintParamsComponent);

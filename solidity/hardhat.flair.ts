@@ -10,17 +10,16 @@ import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import contracts from '../contracts.json';
 
 dotenv.config();
 
-export const contracts = {
-    development: `0xe98eD67295F0158107e7501dd86118Daf7B12154`,
-    development_test: `0x425E168888Fd63C56e4d3537f67330EE675D55B9`,
-}
 
 export async function configureContract(taskArgs: any, hre: HardhatRuntimeEnvironment): Promise<DankFlair | DankTest> {
   const testContract = taskArgs.test;
-  const address = testContract ? contracts.development_test : contracts.development;
+  const network: string = hre.network.name;
+  
+  const address = testContract ? contracts[network].danktest : contracts[network].dankflair;
   const factory = testContract ? hre.ethers.getContractFactory('DankTest') : hre.ethers.getContractFactory('DankFlair'); 
 
   const Contract = await factory;

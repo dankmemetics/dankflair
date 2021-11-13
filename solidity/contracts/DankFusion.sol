@@ -23,6 +23,8 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
     mapping(uint256 => uint256) private _dankId;
     // The token id of the reference NFT
     mapping(uint256 => uint256) private _fusionId;
+    // The token uuid for the new NFT
+    mapping(uint256 => bytes32) private _fusionUUID;
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() initializer {}
@@ -37,7 +39,7 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
     }
 
     // Dank Fusion specific function to map contract and ids to each other for the mint.
-    function _fusion(ERC721 fusionContract, uint256 dankId, uint256 fusionId) internal {
+    function _fusion(ERC721 fusionContract, uint256 dankId, uint256 fusionId, bytes32 fusionUUID) internal {
         // Ensure Minter has approval to mint said fused NFT.
         require(msg.sender == fusionContract.ownerOf(fusionId), "Dank Fusion: you do not have minting rights for this fusion nft");
         require(msg.sender == _dankContract.ownerOf(dankId), "Dank Fusion: you do not have minting rights for this dank nft");
@@ -46,22 +48,23 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
         _fusionContract[_tokenIdCounter.current()] = fusionContract;
         _dankId[_tokenIdCounter.current()] = dankId;
         _fusionId[_tokenIdCounter.current()] = fusionId;
+        _fusionUUID[_tokenIdCounter.current()] = fusionUUID;
     }
 
-    function safeMint(address to, ERC721 fusionContract, uint256 dankId, uint256 fusionId) public onlyOwner {
+    function safeMint(address to, ERC721 fusionContract, uint256 dankId, uint256 fusionId, bytes32 fusionUUID) public onlyOwner {
         _safeMint(to, _tokenIdCounter.current());
-        _fusion(fusionContract, dankId, fusionId);
+        _fusion(fusionContract, dankId, fusionId, fusionUUID);
         _tokenIdCounter.increment();
     }
 
-    function safeMintFusion(address to, ERC721 fusionContract, uint256 dankId, uint256 fusionId) public payable {
+    function safeMintFusion(address to, ERC721 fusionContract, uint256 dankId, uint256 fusionId, bytes32 fusionUUID) public payable {
         // 0.01 ETH
         if (msg.value < 10000000000000000) {
             revert();
         }
 
         _safeMint(to, _tokenIdCounter.current());
-        _fusion(fusionContract, dankId, fusionId);
+        _fusion(fusionContract, dankId, fusionId, fusionUUID);
         _tokenIdCounter.increment();
     }
 
@@ -79,13 +82,15 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
         1. Fusion contract address
         2. Dank Flair NFT ID
         3. Fusion NFT ID
+        4. The Fusion UUID as a bytearray
     */
-    function fusionInfo(uint256 tokenId) public view virtual returns (ERC721, uint256, uint256) {
+    function fusionInfo(uint256 tokenId) public view virtual returns (ERC721, uint256, uint256, bytes32) {
         ERC721 fusionContract = _fusionContract[tokenId];
         uint256 dankId = _dankId[tokenId];
         uint256 fusionId = _fusionId[tokenId];
+        bytes32 fusionUUID = _fusionUUID[tokenId];
 
-        return (fusionContract, dankId, fusionId);
+        return (fusionContract, dankId, fusionId, fusionUUID);
     }
 
     function _authorizeUpgrade(address newImplementation)

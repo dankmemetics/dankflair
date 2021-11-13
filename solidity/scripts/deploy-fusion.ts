@@ -1,15 +1,25 @@
+import { join } from 'path';
+import { read, write } from 'fs-jetpack';
 import { ethers, upgrades } from "hardhat";
 
 async function main() {
-  // We get the contract to deploy
+  const network = process.env.HARDHAT_NETWORK as string;
+
+  const filePath = join(process.cwd(), '..', 'contracts.json');
+  const file = JSON.parse(read(filePath) as string);
+
+  const dankAddress = file[network].dankflair;
+  
   const DankFusion = await ethers.getContractFactory("DankFusion");
-
-  // Make sure to update the address based on which network.
-  const dankfusion = await upgrades.deployProxy(DankFusion, ["0xe98eD67295F0158107e7501dd86118Daf7B12154"]);
-
+  const dankfusion = await upgrades.deployProxy(DankFusion, [dankAddress]);
   await dankfusion.deployed();
 
+  const upgrade = await upgrades.upgradeProxy(dankfusion.address, DankFusion);
+
   console.log("DankFusion deployed to:", dankfusion.address);
+
+  file[network].dankfusion = dankfusion.address;
+  write(filePath, JSON.stringify(file, null, 2));
 }
 
 // We recommend this pattern to be able to use async/await everywhere

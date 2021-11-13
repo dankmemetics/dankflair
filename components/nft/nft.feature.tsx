@@ -127,12 +127,12 @@ export const NftFeatureStyles = styled.div`
 `;
 
 export function NftFeature({ activeNft }) {
-    const nft = flairpedia[activeNft.id || 0];
+    const nft = flairpedia[activeNft?.id || 0];
 
     return(
         <NftFeatureStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={flairpedia[activeNft.id || 0]} owner={activeNft.owner}/>
+                <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeNft?.owner}/>
             </div>
             <div className="text">
                 <h2>{nft.name}</h2>
@@ -167,7 +167,7 @@ export function NftFeature({ activeNft }) {
                     <div className="label full">
                         <p>Owner</p>
                         <h3>
-                            {activeNft.owner}
+                            {activeNft?.owner}
                         </h3>
                     </div>
                 </div>

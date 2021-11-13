@@ -1,33 +1,42 @@
 import prisma from '../../prisma/prisma';
 
+/*
+    @Minting Schema
+    -----
+    owner           String
+    name            String
+    description     String
+    dankId          Int
+    mintContract    String
+    mintUrl         String
+    mintId          Int
+    mintKey         String
+*/
+
 export default async function MintNFT(req, res) {
     const {
-        id,
-        name,
         owner,
+        name,
         description,
         dankId,
-        fusionUrl,
-        fusionContract,
-        fusionId,
-        fusionX,
-        fusionY,
-        fusionClip,
+        mintContract,
+        mintUrl,
+        mintId,
+        mintName,
+        mintKey,
     } = req.body;
 
     const result = await prisma.dankFusion.create({
         data: {
-            id,
-            name,
             owner,
+            name,
             description,
             dankId,
-            fusionUrl,
-            fusionContract,
-            fusionId,
-            fusionX,
-            fusionY,
-            fusionClip,
+            mintContract,
+            mintUrl,
+            mintId,
+            mintName,
+            mintKey,
         }
     })
 

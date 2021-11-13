@@ -4,6 +4,7 @@ import { Header } from '../components/common/common.header';
 import { Footer } from '../components/common/common.footer';
 import { MintPreview } from '../components/mint/mint.preview';
 import { MintParams } from '../components/mint/mint.params';
+import { MintError } from '../components/mint/mint.error';
 
 export function Mint() {
   return (
@@ -13,6 +14,7 @@ export function Mint() {
       <PageContainer>
         <MintPreview/>
         <MintParams/>
+        <MintError/>
       </PageContainer>
       <Footer/>
     </>

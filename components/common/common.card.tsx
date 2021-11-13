@@ -113,6 +113,7 @@ export function Card(
         nft = null,
         flairImage = '',
         flairName = '',
+        name = '',
     }
     :
     {
@@ -122,7 +123,8 @@ export function Card(
         owner?: string,
         nft?: FlairI | null,
         flairImage?: string,
-        flairName?: string
+        flairName?: string,
+        name?: string,
     }
 ) {
     return(
@@ -141,7 +143,7 @@ export function Card(
                 flairUrl={`/flair/${nft?.id}${nft?.suffix}`}
                 nftUrl={flairImage}
             />
-            <h3>{nft?.name || '~'}</h3>
+            <h3>{name ? name : (nft?.name || '~')}</h3>
             <div className="labels">
                 <div className="label">
                     <p>Flair NFT</p>

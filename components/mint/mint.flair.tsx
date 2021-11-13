@@ -4,11 +4,39 @@ import { flairpedia } from '../../flairpedia';
 import { Primary, Card } from '../brand/brand.colors';
 import { Flair } from '../common/common.flair';
 import { setDankId } from '../../redux/redux.mint';
+import { HiOutlineExclamation } from 'react-icons/hi';
 
 export const MintFlairStyles = styled.div`
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 15px 0;
+
+    div.no-flair {
+        position: relative;
+        background: ${Card};
+        border-radius: 9px;
+        width: 100%;
+        height: 210px;
+        margin: 15px;
+        padding: 15px 15px 30px 15px;
+        box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.25);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 18px;
+        font-family: Arvo;
+        font-weight: bold;
+        text-align: center;
+
+        .icon {
+            margin: 5px;
+            font-size: 42px;
+        }
+    }
 
     div.flair {
         position: relative;
@@ -18,7 +46,7 @@ export const MintFlairStyles = styled.div`
         height: 210px;
         margin: 15px;
         padding: 15px;
-        box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.25);
 
         display: flex;
         flex-direction: column;
@@ -59,6 +87,15 @@ export const MintFlairStyles = styled.div`
 export function MintFlairComponent({ dankflair, setDankId }) {
     return(
         <MintFlairStyles>
+            {
+                dankflair.length === 0 ?
+                <div className="no-flair">
+                    <HiOutlineExclamation className="icon"/>
+                    You need to own Dank Flair to mint Rare, Exotic Dank NFTs.
+                </div>
+                : ''
+            }
+
             {
                 dankflair.map(flair => {
                     const nft = flairpedia[flair.id];

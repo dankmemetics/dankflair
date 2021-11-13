@@ -4,8 +4,8 @@ export default async function DankfusionID(req, res) {
     const { id } = req.query;
 
     try {
-        const results = await prisma.dankFusion.findUnique({
-            where: { id: parseInt(id) },
+        const results = await prisma.dankFusion.findFirst({
+            where: { fusionId: parseInt(id) },
         });
 
         return res.json(results);

@@ -18,15 +18,15 @@ export const FlairStyles = styled.div`
     img.nft {
         position: relative;
         left: 5px;
-        height: 100%;
+        width: 100%;
     }
 `;
 
 export function Flair({
     flairUrl,
     nftUrl,
-    width = 256,
-    height = 256,
+    width = 256 as number | string,
+    height = 'auto' as number | string,
     border = 'round',
     margin = '15px'
 }) {

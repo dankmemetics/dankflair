@@ -35,6 +35,7 @@ export const FooterStyles = styled.div`
         h3 {
             display: flex;
             align-items: center;
+            font-family: Arvo;
 
             img {
                 height: 42px;

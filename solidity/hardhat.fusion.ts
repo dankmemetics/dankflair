@@ -2,7 +2,7 @@ import * as dotenv from "dotenv";
 
 import { DankFusion } from "./typechain";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { types, task } from "hardhat/config";
+import { task } from "hardhat/config";
 import '@openzeppelin/hardhat-upgrades';
 import '@nomiclabs/hardhat-web3';
 import "@nomiclabs/hardhat-etherscan";
@@ -10,15 +10,13 @@ import "@nomiclabs/hardhat-waffle";
 import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import contracts from '../contracts.json';
 
 dotenv.config();
 
-export const contracts = {
-    development: `0xe03c03710322bF28bDA75e7De2BEC2150ceA2c2B`,
-}
-
 export async function configureContract(taskArgs: any, hre: HardhatRuntimeEnvironment): Promise<DankFusion> {
-  const address = contracts.development;
+  const network: string = hre.network.name;
+  const address = contracts[network].dankfusion;
 
   const Contract = await hre.ethers.getContractFactory('DankFusion');
   const contract = await Contract.attach(address);

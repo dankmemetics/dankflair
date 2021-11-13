@@ -714,8 +714,8 @@
       ]
     },
     "/home/fortytwo/Projects/dankflair/solidity/contracts/DankFusion.sol": {
-      "lastModificationDate": 1636652083357,
-      "contentHash": "5e21319a64f94de0d9ce9b230207eaf6",
+      "lastModificationDate": 1636765457422,
+      "contentHash": "ad2eb2d541e33224d3d96a57f9cf8a09",
       "sourceName": "contracts/DankFusion.sol",
       "solcConfig": {
         "version": "0.8.2",

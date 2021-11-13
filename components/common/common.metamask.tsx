@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { ConfigureContract, ConfigureFusion } from '../../dankflair';
 import { setAccounts, setDankflair, setDankfusion } from '../../redux/redux.profile';
 import { setContract, setFusionContract } from '../../redux/redux.contract';
+import { resetForm } from '../../redux/redux.mint';
 
 declare const window;
 declare const ethereum;
@@ -52,14 +53,20 @@ export interface MetamaskI {
     setFusionContract(payload: any): void;
     setDankflair(payload: any): void;
     setDankfusion(payload: any): void;
+    resetForm(payload: boolean): void;
 }
 
-export function MetamaskComponent({ accounts, setAccounts, setContract, setFusionContract, setDankflair, setDankfusion }: MetamaskI) {
+export function MetamaskComponent({ accounts, setAccounts, setContract, setFusionContract, setDankflair, setDankfusion, resetForm }: MetamaskI) {
     async function updateAccount(accounts) {
         const account = accounts[0];
         const payload = await get(`/api/profile/${account}`);
 
-        setDankflair(payload.body);
+        const dankFlairs = payload.body.dankFlairs;
+        const dankFusions = payload.body.dankFusions;
+
+        setDankflair(dankFlairs);
+        setDankfusion(dankFusions);
+        resetForm(true);
     }
 
     useLayoutEffect(() => {
@@ -126,4 +133,4 @@ export const MetamaskState = state => ({
     accounts: state.profile.accounts,
 });
 
-export const Metamask = connect(MetamaskState, { setAccounts, setContract, setFusionContract, setDankflair, setDankfusion })(MetamaskComponent);
+export const Metamask = connect(MetamaskState, { setAccounts, setContract, setFusionContract, setDankflair, setDankfusion, resetForm })(MetamaskComponent);

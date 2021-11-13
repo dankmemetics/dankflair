@@ -1,14 +1,16 @@
 import Web3 from 'web3';
+import contracts from './contracts.json';
 import DankFlair from './abi/dankflair.abi.json';
 import DankFusion from './abi/dankfusion.abi.json';
 import GenericABI from './abi/generic.abi.json';
 
+export const environment = process.env.ENVIRONMENT || 'development';
 export const web3Provider = new Web3.providers.WebsocketProvider(process.env.PROVIDER || 'ws://localhost:7545');
 
-export const ContractAddress = process.env.DANKCONTRACT || `0xe98eD67295F0158107e7501dd86118Daf7B12154`;
+export const ContractAddress = contracts[environment].dankflair;
 export const ContractABI = DankFlair.abi;
 
-export const FusionAddress = process.env.FUSIONCONTRACT || `0xe03c03710322bF28bDA75e7De2BEC2150ceA2c2B`;
+export const FusionAddress = contracts[environment].dankfusion;
 export const FusionABI = DankFusion.abi;
 
 export function ConfigureContract(web3, provider) {

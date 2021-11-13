@@ -112,7 +112,7 @@ export function NftBid({ contract, activeNft, accounts }) {
     let connected = false;
 
     if (accounts.length > 0) {
-        owned = activeNft.owner === accounts[0];
+        owned = activeNft?.owner === accounts[0];
         connected = true;
     }
 

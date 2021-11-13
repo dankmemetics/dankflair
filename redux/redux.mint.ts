@@ -3,15 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
     name: '',
     description: '',
-    dankId: 0,
+    dankId: null,
     mintUrl: '',
     mintContract: '',
     mintName: '',
-    mintId: 0,
+    mintId: null,
     mintKey: '',
     fusionX: '',
     fusionY: '',
     fusionClip: 0,
+    mintError: 0,
 }
 
 export const mintSlice = createSlice({
@@ -25,7 +26,7 @@ export const mintSlice = createSlice({
         state.description = action.payload ?? '';
     },
     setDankId(state, action) {
-        state.dankId = action.payload ?? 0;
+        state.dankId = action.payload ?? null;
     },
     setMintUrl(state, action) {
         state.mintUrl = action.payload ?? '';
@@ -37,7 +38,7 @@ export const mintSlice = createSlice({
         state.mintName = action.payload ?? '';
     },
     setMintId(state, action) {
-        state.mintId = action.payload ?? 0;
+        state.mintId = action.payload ?? null;
     },
     setMintKey(state, action) {
         state.mintKey = action.payload ?? '';
@@ -51,8 +52,24 @@ export const mintSlice = createSlice({
     setFusionClip(state, action) {
         state.fusionClip = action.payload ?? 0;
     },
+    setMintError(state, action) {
+        state.mintError = action.payload ?? 0;
+    },
     resetForm(state, action) {
-        state = initialState;
+        state = {
+            name: '',
+            description: '',
+            dankId: null,
+            mintUrl: '',
+            mintContract: '',
+            mintName: '',
+            mintId: null,
+            mintKey: '',
+            fusionX: '',
+            fusionY: '',
+            fusionClip: 0,
+            mintError: 0,
+        };
     }
   }
 });
@@ -69,5 +86,6 @@ export const {
     setFusionX,
     setFusionY,
     setFusionClip,
+    setMintError,
     resetForm,
 } = mintSlice.actions;

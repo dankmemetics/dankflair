@@ -16,13 +16,18 @@ dotenv.config();
 const config: HardhatUserConfig = {
   solidity: "0.8.2",
   networks: {
-    development: {
-      url: 'http://localhost:7545',
-    },
+    development: { url: 'http://localhost:7545' },
     ropsten: {
       url: process.env.ROPSTEN_URL || "",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    rinkeby: {
+      url: process.env.RINKEBY_URL || "",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+    },
+    mainnet: {
+      url: process.env.MAINNET_URL || "",
+      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
   },
   gasReporter: {

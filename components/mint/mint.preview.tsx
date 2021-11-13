@@ -163,7 +163,7 @@ export function MintPreviewComponent({
     return(
         <MintPreviewStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={dankId ? nft : null} owner={owner} flairImage={mintUrl} flairName={mintName} />
+                <Card type="feature" nft={dankId !== null ? nft : null} owner={owner} flairImage={mintUrl} flairName={mintName} />
             </div>
             <div className="text">
                 <h2>{name ? name : 'No Name'}</h2>
@@ -173,7 +173,7 @@ export function MintPreviewComponent({
                         <p>Flair NFT</p>
                         <h3>
                             {
-                                dankId ?
+                                dankId !== null ?
                                 <>
                                     <BsFillPatchCheckFill className="icon"/>
                                     {nft.name} 
