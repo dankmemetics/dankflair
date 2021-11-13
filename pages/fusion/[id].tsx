@@ -9,27 +9,26 @@ import { Footer } from '../../components/common/common.footer';
 import { NftFeature } from '../../components/nft/nft.feature';
 import { NftBid } from '../../components/nft/nft.bid';
 import { NftHistory } from '../../components/nft/nft.history';
-import { setActiveNft } from '../../redux/redux.contract';
+import { FlairOwnership, FusionNft, setActiveNft, setActiveFusionNft } from '../../redux/redux.contract';
 
 export interface NFTI {
   contract: any;
   fusionContract: any;
-  activeNft: {
-    id: number | null,
-    owner: string | null,
-  },
+  activeNft: FlairOwnership,
+  activeFusionNft: FusionNft,
   accounts: string[],
   setActiveNft(payload: any): void;
+  setActiveFusionNft(payload: any): void;
 }
 
-export function NFTComponent({ contract, fusionContract, activeNft, accounts, setActiveNft }: NFTI) {
+export function FusionNFTComponent({ contract, fusionContract, activeNft, activeFusionNft, accounts, setActiveNft, setActiveFusionNft }: NFTI) {
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     (async () => {
-      const payload = await get(`/api/owner/dank/${id}`);
-      setActiveNft(payload.body);
+      const fusionPayload = await get(`/api/owner/fusion/${id}`);
+      setActiveFusionNft(fusionPayload.body);
     })();
   }, [id])
 
@@ -38,8 +37,8 @@ export function NFTComponent({ contract, fusionContract, activeNft, accounts, se
       <Metadata/>
       <Header/>
       <PageContainer>
-        <NftFeature activeNft={activeNft}/>
-        <NftBid contract={contract} fusionContract={fusionContract} activeNft={activeNft} accounts={accounts}/>
+        <NftFeature activeFusionNft={activeFusionNft}/>
+        <NftBid contract={contract} fusionContract={fusionContract} activeFusionNft={activeFusionNft} accounts={accounts}/>
         <NftHistory/>
       </PageContainer>
       <Footer/>
@@ -47,13 +46,14 @@ export function NFTComponent({ contract, fusionContract, activeNft, accounts, se
   )
 }
 
-export const NFTState = state => ({
+export const FusionNFTState = state => ({
   contract: state.contract.contract,
   fusionContract: state.contract.fusionContract,
   activeNft: state.contract.activeNft,
+  activeFusionNft: state.contract.activeFusionNft,
   accounts: state.profile.accounts,
 });
 
-export const NFT = connect(NFTState, { setActiveNft })(NFTComponent);
+export const FusionNFT = connect(FusionNFTState, { setActiveNft, setActiveFusionNft })(FusionNFTComponent);
 
-export default NFT;
+export default FusionNFT;

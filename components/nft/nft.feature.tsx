@@ -3,6 +3,7 @@ import { Primary } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { flairpedia } from '../../flairpedia';
+import { FlairOwnership, FusionNft } from '../../redux/redux.contract';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
@@ -126,13 +127,25 @@ export const NftFeatureStyles = styled.div`
     }
 `;
 
-export function NftFeature({ activeNft }) {
-    const nft = flairpedia[activeNft?.id || 0];
+export interface NftFeatureI {
+    activeNft?: FlairOwnership;
+    activeFusionNft?: FusionNft;
+}
+
+export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
+    const nft = activeNft ? flairpedia[activeNft?.id || 0] : flairpedia[activeFusionNft?.dankId || 0];
+
+    console.log(activeFusionNft);
 
     return(
         <NftFeatureStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeNft?.owner}/>
+                {
+                    activeFusionNft ?
+                    <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeFusionNft.owner} flairImage={activeFusionNft.mintUrl} flairName={activeFusionNft.mintName} flairId={activeFusionNft.fusionId}/>
+                    :
+                    <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeNft?.owner}/>
+                }
             </div>
             <div className="text">
                 <h2>{nft.name}</h2>
@@ -148,7 +161,17 @@ export function NftFeature({ activeNft }) {
                     </div>
                     <div className="label">
                         <p>Content NFT</p>
-                        <h3>None</h3>
+                        <h3>
+                            {
+                                activeFusionNft ?
+                                <>
+                                    <BsFillPatchCheckFill className="icon"/>
+                                    {activeFusionNft.mintName} 
+                                    <Badge label={`#${activeFusionNft.mintId}`}/>
+                                </>
+                                : 'None'
+                            }
+                        </h3>
                     </div>
                     <div className="label">
                         <p>Ask Price</p>
@@ -167,14 +190,14 @@ export function NftFeature({ activeNft }) {
                     <div className="label full">
                         <p>Owner</p>
                         <h3>
-                            {activeNft?.owner}
+                            {activeFusionNft?.owner || activeNft?.owner || 'Unknown'}
                         </h3>
                     </div>
                 </div>
 
                 <p>Description</p>
                 <p className="description">
-                    {nft.description}
+                    {activeFusionNft?.description || nft.description}
                 </p>
             </div>
         </NftFeatureStyles>

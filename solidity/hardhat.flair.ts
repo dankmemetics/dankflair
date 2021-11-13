@@ -14,7 +14,6 @@ import contracts from '../contracts.json';
 
 dotenv.config();
 
-
 export async function configureContract(taskArgs: any, hre: HardhatRuntimeEnvironment): Promise<DankFlair | DankTest> {
   const testContract = taskArgs.test;
   const network: string = hre.network.name;

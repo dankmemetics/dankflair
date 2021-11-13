@@ -22,11 +22,11 @@ export const NftHistoryStyles = styled.div`
             align-items: center;
 
             div.column {
-                &:nth-child(1) { width: 20%; }
-                &:nth-child(2) { width: 20%; }
-                &:nth-child(3) { width: 20%; }
-                &:nth-child(4) { width: 20%; }
-                &:nth-child(5) { width: 20%; }
+                &:nth-child(1) { width: 10%; }
+                &:nth-child(2) { width: 15%; }
+                &:nth-child(3) { width: 30%; }
+                &:nth-child(4) { width: 30%; }
+                &:nth-child(5) { width: 15%; }
 
                 @media (max-width: 1158px) {
                     width: 100% !important;

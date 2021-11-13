@@ -113,6 +113,7 @@ export function Card(
         nft = null,
         flairImage = '',
         flairName = '',
+        flairId = null,
         name = '',
     }
     :
@@ -124,17 +125,25 @@ export function Card(
         nft?: FlairI | null,
         flairImage?: string,
         flairName?: string,
+        flairId?: number | null,
         name?: string,
     }
 ) {
     return(
         <CardStyles className={`card ${type}`}>
             {
-                nft ? 
+                flairId !== null ?
                 <div className="badge">
-                    #{nft?.id}
+                    F#{flairId}
                 </div>
-                : ''
+                :
+                (
+                    nft ? 
+                    <div className="badge">
+                        DF#{nft?.id}
+                    </div>
+                    : ''
+                )
             }
             <Flair
                 width={180}

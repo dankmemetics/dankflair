@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Primary, Background, Card } from '../brand/brand.colors';
 import { Button } from '../common/common.button';
+import { FlairOwnership, FusionNft } from '../../redux/redux.contract';
 
 export const NftBidStyles = styled.div`
     padding: 0 15px 15px 15px;
@@ -67,7 +68,7 @@ export const NftBidStyles = styled.div`
 
         @media (max-width: 1158px) {
             width: 100%;
-            margin: 15px 0;
+            margin: 15px 0 90px 0;
         }
 
         div.bid {
@@ -80,10 +81,10 @@ export const NftBidStyles = styled.div`
             div.bid-column {
                 padding: 5px 5px 7.5px 5px;
 
-                &:nth-child(1) { width: 40%; }
-                &:nth-child(2) { width: 20%; }
+                &:nth-child(1) { width: 50%; }
+                &:nth-child(2) { width: 15%; }
                 &:nth-child(3) { width: 20%; }
-                &:nth-child(4) { width: 20%; }
+                &:nth-child(4) { width: 15%; }
 
                 @media (max-width: 1158px) {
                     width: 100% !important;
@@ -105,14 +106,32 @@ export const NftBidStyles = styled.div`
     }
 `;
 
-export function NftBid({ contract, activeNft, accounts }) {
+export interface NftBidI {
+    contract: any;
+    fusionContract: any;
+    activeNft?: FlairOwnership;
+    activeFusionNft?: FusionNft;
+    accounts: string[];
+}
+
+export function NftBid({ contract, fusionContract, activeNft, activeFusionNft, accounts }: NftBidI) {
     const [transfer, setTransfer] = useState('');
 
     let owned = false;
     let connected = false;
+    let fusion = false;
+
+    if (activeFusionNft) {
+        fusion = true;
+    }
 
     if (accounts.length > 0) {
-        owned = activeNft?.owner === accounts[0];
+        if (fusion) {
+            owned = activeFusionNft?.owner === accounts[0];
+        } else {
+            owned = activeNft?.owner === accounts[0];
+        }
+        
         connected = true;
     }
 
@@ -140,8 +159,13 @@ export function NftBid({ contract, activeNft, accounts }) {
                         <h3>Transfer NFT</h3>
                         <input type="text" placeholder="Address" value={transfer} onChange={e => setTransfer(e.target.value)}/>
                         <div onClick={async e => {
-                            await contract.methods.safeTransferFrom(activeNft.owner, transfer, activeNft.id).send({ from: activeNft.owner });
-                            setTransfer('');
+                            if (fusion) {
+                                await fusionContract.methods.safeTransferFrom(activeFusionNft?.owner, transfer, activeFusionNft?.fusionId).send({ from: activeFusionNft?.owner });
+                                setTransfer('');
+                            } else {
+                                await contract.methods.safeTransferFrom(activeNft.owner, transfer, activeNft.id).send({ from: activeNft.owner });
+                                setTransfer('');
+                            }                            
 
                             setTimeout(() => {
                                 window.location.reload();
