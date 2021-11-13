@@ -17,8 +17,8 @@ export const FlairStyles = styled.div`
 
     img.nft {
         position: relative;
-        left: 5px;
-        width: 100%;
+        width: calc(100% - 45px);
+        border-radius: 50%;
     }
 `;
 

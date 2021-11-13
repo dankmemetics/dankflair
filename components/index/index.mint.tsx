@@ -89,13 +89,31 @@ export function IndexMint() {
                 <div className="graphic">
                     {
                         uris.map((uri, i) => {
+                            const key = (i % 5) * 5;
+                            let suffix = '.gif';
+
+                            if (key > 4 && key < 10) {
+                                suffix = '.png'
+                            }
+
+                            if (key > 19) {
+                                suffix = '.png';
+                            }
+
+                            const sample = (Math.floor(Math.random() * 69) % 5);
+                            let sampleSuffix = '.png';
+
+                            if (sample === 3) {
+                                sampleSuffix = '.gif';
+                            }
+
                             return(
                                 <Flair
                                     key={i}
                                     width={120}
                                     height={120}
-                                    flairUrl="/images/flair1.gif"
-                                    nftUrl="/images/sample.png"
+                                    flairUrl={`/flair/${key}${suffix}`}
+                                    nftUrl={`/test/${sample}${sampleSuffix}`}
                                 />
                             )
                         })
@@ -105,8 +123,8 @@ export function IndexMint() {
                     <h2>Mint Rare, Exotic Flair</h2>
                     <p>
                         Endless variety and novelty when minting new flair for your NFTs.
-                        Make your Flair NFT rare and burned when fused with another NFT. You can also
-                        add any type of GIF or PNG as the background.
+                        Give your NFT some Flair and make it even more Rare, Dank and Exotic.
+                        You have control over the size and position of the NFT in the flair too!
                     </p>
                     <Button label="Mint Flair" link="/mint" width="280px" margin="30px 0 0 0"/>
                 </div>
