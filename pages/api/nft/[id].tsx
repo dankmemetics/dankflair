@@ -1,7 +1,14 @@
+import NextCors from 'nextjs-cors';
 import { flairpedia } from "../../../flairpedia";
 
-export default function Image(req, res) {
+export default async function Image(req, res) {
     try {
+        await NextCors(req, res, {
+            methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+            origin: '*',
+            optionsSuccessStatus: 200,
+        });
+
         const { id } = req.query;
         const fid = parseInt(id as string);
         const item = flairpedia[fid];

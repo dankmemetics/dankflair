@@ -4,7 +4,7 @@ import Web3 from 'web3';
 import { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { web3Provider, ConfigureContract, ConfigureFusion } from '../../dankflair';
+import { ConfigureContract, ConfigureFusion } from '../../dankflair';
 import { setAccounts, setDankflair, setDankfusion } from '../../redux/redux.profile';
 import { setContract, setFusionContract } from '../../redux/redux.contract';
 import { resetForm } from '../../redux/redux.mint';
@@ -73,15 +73,15 @@ export function MetamaskComponent({ accounts, setAccounts, setContract, setFusio
         (async () => {
             if (typeof ethereum !== 'undefined') {
                 try {
-                    web3 = new Web3(web3Provider);
+                    web3 = new Web3(ethereum);
                     window.web3 = web3;
                     const web3Accounts = await web3.eth.getAccounts();
                     setAccounts(web3Accounts);
 
-                    const Contract = ConfigureContract(web3, web3Provider);
+                    const Contract = ConfigureContract(web3, ethereum);
                     setContract(Contract);
 
-                    const FusionContract = ConfigureFusion(web3, web3Provider);
+                    const FusionContract = ConfigureFusion(web3, ethereum);
                     setFusionContract(FusionContract);
 
                     await updateAccount(web3Accounts);

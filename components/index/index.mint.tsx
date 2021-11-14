@@ -114,6 +114,8 @@ export function IndexMint() {
                                     height={120}
                                     flairUrl={`/flair/${key}${suffix}`}
                                     nftUrl={`/test/${sample}${sampleSuffix}`}
+                                    mintWidth={70}
+                                    mintBorder="50%"
                                 />
                             )
                         })

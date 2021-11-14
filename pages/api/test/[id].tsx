@@ -1,5 +1,13 @@
-export default function Image(req, res) {
+import NextCors from 'nextjs-cors';
+
+export default async function Image(req, res) {
     try {
+        await NextCors(req, res, {
+            methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+            origin: '*',
+            optionsSuccessStatus: 200,
+        });
+
         const { id } = req.query;
 
         return res.status(200).send({

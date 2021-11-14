@@ -161,7 +161,7 @@ export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
                 }
             </div>
             <div className="text">
-                <h2>{activeFusionNft.name || nft.name}</h2>
+                <h2>{activeFusionNft?.name || nft?.name || '~'}</h2>
                 
                 <div className="labels">
                     <div className="label">
