@@ -5,7 +5,7 @@ import DankFusion from './abi/dankfusion.abi.json';
 import GenericABI from './abi/generic.abi.json';
 
 export const environment = process.env.ENVIRONMENT || 'development';
-export const web3Provider = new Web3.providers.WebsocketProvider(process.env.PROVIDER || 'ws://localhost:7545');
+export const web3Provider = new Web3.providers.WebsocketProvider(process.env.PROVIDER || 'wss://rinkeby.infura.io/ws/v3/a98fb9412dcc41048e32586addfe3d29');
 
 export const ContractAddress = contracts[environment].dankflair;
 export const ContractABI = DankFlair.abi;

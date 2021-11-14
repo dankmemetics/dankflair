@@ -23,7 +23,7 @@ import {
     resetForm,
 } from '../../redux/redux.mint';
 import { MintFlair } from './mint.flair';
-import { ConfigureCustomContract } from '../../dankflair';
+import { web3Provider, ConfigureCustomContract } from '../../dankflair';
 import { Success } from '../brand/brand.colors';
 
 declare const window;
@@ -213,10 +213,7 @@ export function MintParamsComponent(
             if (mintContract && mintId !== null) {
                 timeout = setTimeout(async () => {
                     try {
-                        const info = await fusionContract.methods.fusionInfo(0).call();
-                        console.log(info);
-
-                        const Contract = ConfigureCustomContract(window.web3, window.ethereum, mintContract);
+                        const Contract = ConfigureCustomContract(window.web3, web3Provider, mintContract);
                         console.log('Customized URI Contract', Contract);
                         console.log('Checking URI for', mintId);
                         const uri = await Contract.methods.tokenURI(mintId).call();
@@ -224,7 +221,7 @@ export function MintParamsComponent(
                         const name = await Contract.methods.name().call();
                         console.log('Name', name);
                         setMintName(name);
-                        const payload = await get(`/api/test/${mintId}`);
+                        const payload = await get(`${uri}/${mintId}`);
                         console.log('data', payload.body);
 
                         if (mintKey) {
