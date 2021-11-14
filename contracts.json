@@ -1,13 +1,13 @@
 {
   "development": {
-    "dankflair": "0xDDA6A903A4fbC1b03459cEe6280cF8F162E43e51",
-    "danktest": "0x05a9062c0B777Ec9f3eF12a7a434D2904e010914",
-    "dankfusion": "0x8e6e0A5c4A281aB6B6f85C2028D03Ae742C45476"
+    "dankflair": "0xB542f79ceDb9FA45C2c39A4Dde2b2517Cfe25bDD",
+    "danktest": "0xF6D6318c98aC1C1cD5F49Fb113693EaF591A4873",
+    "dankfusion": "0x8C28FeC900c0080342233b021e675eC13E8B265a"
   },
   "rinkeby": {
-    "dankflair": "",
-    "danktest": "",
-    "dankfusion": ""
+    "dankflair": "0x554A98217c548Ce74CB1de64b72727388aB30449",
+    "danktest": "0xdaddB91333554E8b6AaFF1B80eC41999b63850d7",
+    "dankfusion": "0x35B40f84B07B26010486DB2E95A0D628D32b344c"
   },
   "mainnet": {
     "dankflair": "",

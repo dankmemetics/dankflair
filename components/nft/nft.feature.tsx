@@ -142,13 +142,26 @@ export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
             <div className="card-wrap">
                 {
                     activeFusionNft ?
-                    <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeFusionNft.owner} flairImage={activeFusionNft.mintUrl} flairName={activeFusionNft.mintName} flairId={activeFusionNft.fusionId}/>
+                    <Card
+                        type="feature"
+                        nft={nft}
+                        owner={activeFusionNft.owner}
+                        flairImage={activeFusionNft.mintUrl}
+                        flairName={activeFusionNft.mintName}
+                        flairId={activeFusionNft.mintId}
+                        mintWidth={activeFusionNft.mintWidth}
+                        mintHeight={activeFusionNft.mintHeight}
+                        mintX={activeFusionNft.mintX}
+                        mintY={activeFusionNft.mintY}
+                        mintBorder={activeFusionNft.mintBorder}
+                        name={activeFusionNft.name}
+                    />
                     :
-                    <Card type="feature" nft={flairpedia[activeNft?.id || 0]} owner={activeNft?.owner}/>
+                    <Card type="feature" nft={nft} owner={activeNft?.owner}/>
                 }
             </div>
             <div className="text">
-                <h2>{nft.name}</h2>
+                <h2>{activeFusionNft.name || nft.name}</h2>
                 
                 <div className="labels">
                     <div className="label">

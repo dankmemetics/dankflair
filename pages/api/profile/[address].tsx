@@ -17,6 +17,8 @@ export default async function Profile(req, res) {
             dankFusions,
         });
     } catch (error) {
+        console.error(error);
+
         return res.status(500).send({
             message: 'Profile Metadata not found',
             error,

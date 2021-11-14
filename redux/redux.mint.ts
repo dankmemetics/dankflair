@@ -9,9 +9,12 @@ export const initialState = {
     mintName: '',
     mintId: null,
     mintKey: '',
-    fusionX: '',
-    fusionY: '',
-    fusionClip: 0,
+    mintWidth: null,
+    mintHeight: null,
+    mintX: null,
+    mintY: null,
+    mintBorder: '',
+    mintClip: 0,
     mintError: 0,
 }
 
@@ -43,14 +46,23 @@ export const mintSlice = createSlice({
     setMintKey(state, action) {
         state.mintKey = action.payload ?? '';
     },
-    setFusionX(state, action) {
-        state.fusionX = action.payload ?? '';
+    setMintWidth(state, action) {
+        state.mintWidth = action.payload ?? null;
     },
-    setFusionY(state, action) {
-        state.fusionY = action.payload ?? '';
+    setMintHeight(state, action) {
+        state.mintHeight = action.payload ?? null;
     },
-    setFusionClip(state, action) {
-        state.fusionClip = action.payload ?? 0;
+    setMintX(state, action) {
+        state.mintX = action.payload ?? null;
+    },
+    setMintY(state, action) {
+        state.mintY = action.payload ?? null;
+    },
+    setMintBorder(state, action) {
+        state.mintBorder = action.payload ?? '';
+    },
+    setMintClip(state, action) {
+        state.mintClip = action.payload ?? 0;
     },
     setMintError(state, action) {
         state.mintError = action.payload ?? 0;
@@ -65,9 +77,12 @@ export const mintSlice = createSlice({
             mintName: '',
             mintId: null,
             mintKey: '',
-            fusionX: '',
-            fusionY: '',
-            fusionClip: 0,
+            mintWidth: null,
+            mintHeight: null,
+            mintX: null,
+            mintY: null,
+            mintBorder: '',
+            mintClip: 0,
             mintError: 0,
         };
     }
@@ -83,9 +98,12 @@ export const {
     setMintName,
     setMintId,
     setMintKey,
-    setFusionX,
-    setFusionY,
-    setFusionClip,
+    setMintWidth,
+    setMintHeight,
+    setMintX,
+    setMintY,
+    setMintBorder,
+    setMintClip,
     setMintError,
     resetForm,
 } = mintSlice.actions;

@@ -5,7 +5,7 @@ export default async function DankfusionID(req, res) {
 
     try {
         const results = await prisma.dankFusion.findFirst({
-            where: { fusionId: parseInt(id) },
+            where: { mintId: parseInt(id) },
         });
 
         return res.json(results);

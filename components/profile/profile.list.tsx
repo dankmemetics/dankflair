@@ -28,7 +28,22 @@ export function ProfileList({ dankflair, dankfusion }) {
             {
                 dankfusion.map(fusion => {
                     const item = flairpedia[fusion.dankId];
-                    return(<Card key={fusion.id} buttonLabel="View NFT" type="feature" url={`/fusion/${fusion.fusionId}`} nft={item} flairImage={fusion.mintUrl} flairName={fusion.mintName} name={fusion.name}/>)
+                    return(<Card
+                        key={fusion.id}
+                        buttonLabel="View NFT"
+                        type="feature"
+                        url={`/fusion/${fusion.mintId}`}
+                        nft={item}
+                        flairImage={fusion.mintUrl}
+                        flairName={fusion.mintName}
+                        flairId={fusion.mintId}
+                        name={fusion.name}
+                        mintWidth={fusion.mintWidth}
+                        mintHeight={fusion.mintHeight}
+                        mintX={fusion.mintX}
+                        mintY={fusion.mintY}
+                        mintBorder={fusion.mintBorder}
+                    />)
                 })
             }
         </ProfileListStyles>

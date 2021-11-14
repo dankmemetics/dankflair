@@ -17,6 +17,11 @@ export interface FusionNft {
   fusionId: number;
   mintUrl: string;
   mintName: string;
+  mintWidth?: number | null,
+  mintHeight?: number | null,
+  mintBorder?: string | null,
+  mintX?: number | null,
+  mintY?: number | null,
 }
 
 export const initialState = {

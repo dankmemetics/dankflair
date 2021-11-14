@@ -13,9 +13,12 @@ import {
     setMintName,
     setMintId,
     setMintKey,
-    setFusionX,
-    setFusionY,
-    setFusionClip,
+    setMintWidth,
+    setMintHeight,
+    setMintX,
+    setMintY,
+    setMintBorder,
+    setMintClip,
     setMintError,
     resetForm,
 } from '../../redux/redux.mint';
@@ -137,9 +140,12 @@ export interface MintParamsI {
     mintId: number,
     mintName: string,
     mintKey: string,
-    fusionX: string,
-    fusionY: string,
-    fusionClip: number,
+    mintWidth: number,
+    mintHeight: number,
+    mintX: number,
+    mintY: number,
+    mintBorder: string,
+    mintClip: number,
     mintError: number;
 
     setName(payload: string): void,
@@ -150,9 +156,12 @@ export interface MintParamsI {
     setMintName(payload: string): void,
     setMintId(payload: number): void,
     setMintKey(payload: string): void,
-    setFusionX(payload: string): void,
-    setFusionY(payload: string): void,
-    setFusionClip(payload: number): void,
+    setMintWidth(payload: number): void,
+    setMintHeight(payload: number): void,
+    setMintX(payload: number): void,
+    setMintY(payload: number): void,
+    setMintBorder(payload: string): void,
+    setMintClip(payload: number): void,
     setMintError(payload: number): void,
     resetForm(payload: boolean): void;
 }
@@ -172,9 +181,12 @@ export function MintParamsComponent(
         mintId,
         mintName,
         mintKey,
-        fusionX,
-        fusionY,
-        fusionClip,
+        mintWidth,
+        mintHeight,
+        mintX,
+        mintY,
+        mintBorder,
+        mintClip,
         mintError,
 
         setName,
@@ -184,9 +196,12 @@ export function MintParamsComponent(
         setMintContract,
         setMintName,
         setMintId,
-        setFusionX,
-        setFusionY,
-        setFusionClip,
+        setMintWidth,
+        setMintHeight,
+        setMintX,
+        setMintY,
+        setMintBorder,
+        setMintClip,
         setMintError,
         resetForm,
     }
@@ -281,10 +296,35 @@ export function MintParamsComponent(
                 </div>
             </div>
 
+            <div className="inputs">
+                <div className="input">
+                    <p className="label">Width</p>
+                    <input type="number" placeholder="% based, default 100%" value={mintWidth} onChange={e => setMintWidth(parseInt(e.target.value))}/>
+                </div>
+                <div className="input">
+                    <p className="label">Height</p>
+                    <input type="number" placeholder="% based, default auto" value={mintHeight} onChange={e => setMintHeight(parseInt(e.target.value))}/>
+                </div>
+                <div className="input">
+                    <p className="label">Border Radius</p>
+                    <input type="text" placeholder="Can use CSS rules" value={mintBorder} onChange={e => setMintBorder(e.target.value)}/>
+                </div>
+            </div>
+
+            <div className="inputs">
+                <div className="input">
+                    <p className="label">X</p>
+                    <input type="number" placeholder="relative % based" value={mintX} onChange={e => setMintX(parseInt(e.target.value))}/>
+                </div>
+                <div className="input">
+                    <p className="label">Y</p>
+                    <input type="number" placeholder="relative % based" value={mintY} onChange={e => setMintY(parseInt(e.target.value))}/>
+                </div>
+            </div>
+
             <div className={`success-mint ${success ? 'active' : ''}`}>
                 GREAT SUCCESS!
             </div>
-
             <div
                 className={`mint-wrapper ${mintError === 0 && name && description && mintId !== null && mintContract && dankId !== null ? 'active' : ''}`}
                 onClick={async e => {
@@ -302,6 +342,12 @@ export function MintParamsComponent(
                                 mintId,
                                 mintName,
                                 mintKey,
+                                mintWidth,
+                                mintHeight,
+                                mintX,
+                                mintY,
+                                mintBorder,
+                                mintClip,
                             });
 
                         const encoding = new TextEncoder();
@@ -353,9 +399,12 @@ export const MintParamsState = state => ({
     mintName: state.mint.mintName,
     mintContract: state.mint.mintContract,
     mintId: state.mint.mintId,
-    fusionX: state.mint.fusionX,
-    fusionY: state.mint.fusionY,
-    fusionClip: state.mint.fusionClip,
+    mintWidth: state.mint.mintWidth,
+    mintHeight: state.mint.mintHeight,
+    mintX: state.mint.mintX,
+    mintY: state.mint.mintY,
+    mintBorder: state.mint.mintBorder,
+    mintClip: state.mint.mintClip,
     mintError: state.mint.mintError,
 });
 
@@ -368,9 +417,12 @@ export const MintParams = connect(MintParamsState, {
     setMintContract,
     setMintName,
     setMintId,
-    setFusionX,
-    setFusionY,
-    setFusionClip,
+    setMintWidth,
+    setMintHeight,
+    setMintX,
+    setMintY,
+    setMintBorder,
+    setMintClip,
     setMintError,
     resetForm,
 })(MintParamsComponent);

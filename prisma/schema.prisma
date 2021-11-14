@@ -25,4 +25,9 @@ model DankFusion {
   mintId          Int
   mintName        String
   mintKey         String
+  mintWidth       Int?
+  mintHeight      Int?
+  mintX           Int?
+  mintY           Int?
+  mintBorder      String?
 }

@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next --port 4200",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next start",
     "lint": "eslint ./**/*.{ts,tsx,js,jsx}",
     "tsc": "tsc --outDir dist",

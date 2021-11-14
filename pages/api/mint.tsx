@@ -11,6 +11,11 @@ import prisma from '../../prisma/prisma';
     mintUrl         String
     mintId          Int
     mintKey         String
+    mintWidth       Int
+    mintHeight      Int
+    mintX           Int
+    mintY           Int
+    mintBorder      String
 */
 
 export default async function MintNFT(req, res) {
@@ -24,6 +29,11 @@ export default async function MintNFT(req, res) {
         mintId,
         mintName,
         mintKey,
+        mintWidth,
+        mintHeight,
+        mintX,
+        mintY,
+        mintBorder,
     } = req.body;
 
     const result = await prisma.dankFusion.create({
@@ -37,6 +47,11 @@ export default async function MintNFT(req, res) {
             mintId,
             mintName,
             mintKey,
+            mintWidth,
+            mintHeight,
+            mintX,
+            mintY,
+            mintBorder,
         }
     })
 

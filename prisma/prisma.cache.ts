@@ -2,33 +2,19 @@ import 'colors';
 import Web3 from 'web3';
 import { config } from 'dotenv';
 import { PrismaClient } from "@prisma/client";
-import { ConfigureContract, ConfigureFusion } from '../dankflair';
+import { ConfigureContract, ConfigureFusion, environment, web3Provider } from '../dankflair';
 
 config();
 
 export const prisma = new PrismaClient();
-
-export const network = process.env.NETWORK || 'development';
-
-export const networks = {
-    development: process.env.ETH_DEV,
-    rinkeby: process.env.ETH_RINKEBY,
-    mainnet: process.env.ETH_MAINNET,
-}
-
-export const development = process.env.ETH_DEV;
-export const rinkeby = process.env.ETH_RINKEBY;
-export const mainnet = process.env.ETH_MAINNET;
-
-const provider = networks[network] || `ws://localhost:7545`;
-
-console.log(`Connecting to`, provider);
-
-export const web3Provider = new Web3.providers.WebsocketProvider(provider);
 export const web3 = new Web3(web3Provider);
+
+console.log(`Connecting to`, environment);
 
 export const contract = ConfigureContract(web3, web3Provider);
 export const fusionContract = ConfigureFusion(web3, web3Provider);
+
+export const startBlock = 9630028;
 
 let queue = [];
 
@@ -55,7 +41,7 @@ export async function queueSync() {
 
         contract.events.Transfer({
             filter: { value: [] },
-            fromBlock: 0,
+            fromBlock: startBlock,
         })
         .on('data', async e => {
             console.log(`DankFlair: Transfer`);
@@ -83,7 +69,7 @@ export async function queueSync() {
 
         fusionContract.events.Transfer({
             filter: { value: [] },
-            fromBlock: 0,
+            fromBlock: startBlock,
         })
         .on('data', async e => {
             console.log(`DankFusion: Transfer`);

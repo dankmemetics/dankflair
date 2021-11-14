@@ -133,9 +133,12 @@ export interface MintPreviewI {
     mintName: string,
     mintId: number,
     mintKey: string,
-    fusionX: string,
-    fusionY: string,
-    fusionClip: number,
+    mintWidth: number,
+    mintHeight: number,
+    mintX: number,
+    mintY: number,
+    mintBorder: string,
+    mintClip: number,
     accounts: string[],
 }
 
@@ -148,9 +151,12 @@ export function MintPreviewComponent({
     mintName,
     mintId,
     mintKey,
-    fusionX,
-    fusionY,
-    fusionClip,
+    mintWidth,
+    mintHeight,
+    mintX,
+    mintY,
+    mintBorder,
+    mintClip,
     accounts,
 }: MintPreviewI) {
     const nft = flairpedia[dankId || 0];
@@ -163,7 +169,7 @@ export function MintPreviewComponent({
     return(
         <MintPreviewStyles>
             <div className="card-wrap">
-                <Card type="feature" nft={dankId !== null ? nft : null} owner={owner} flairImage={mintUrl} flairName={mintName} />
+                <Card type="feature" nft={dankId !== null ? nft : null} owner={owner} flairImage={mintUrl} flairName={mintName} mintWidth={mintWidth} mintHeight={mintHeight} mintX={mintX} mintY={mintY} mintBorder={mintBorder} name={name} />
             </div>
             <div className="text">
                 <h2>{name ? name : 'No Name'}</h2>
@@ -214,9 +220,12 @@ export const MintPreviewState = state => ({
     mintName: state.mint.mintName,
     mintKey: state.mint.mintKey,
     mintId: state.mint.mintId,
-    fusionX: state.mint.fusionX,
-    fusionY: state.mint.fusionY,
-    fusionClip: state.mint.fusionClip,
+    mintWidth: state.mint.mintWidth,
+    mintHeight: state.mint.mintHeight,
+    mintX: state.mint.mintX,
+    mintY: state.mint.mintY,
+    mintBorder: state.mint.mintBorder,
+    mintClip: state.mint.mintClip,
     accounts: state.profile.accounts,
 });
 

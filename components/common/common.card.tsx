@@ -115,6 +115,11 @@ export function Card(
         flairName = '',
         flairId = null,
         name = '',
+        mintWidth = 100,
+        mintHeight = null,
+        mintBorder = null,
+        mintX = 0,
+        mintY = 0,
     }
     :
     {
@@ -127,6 +132,11 @@ export function Card(
         flairName?: string,
         flairId?: number | null,
         name?: string,
+        mintWidth?: number | null,
+        mintHeight?: number | null,
+        mintBorder?: string | null,
+        mintX?: number | null,
+        mintY?: number | null,
     }
 ) {
     return(
@@ -151,8 +161,13 @@ export function Card(
                 margin="0 0 10px 0"
                 flairUrl={`/flair/${nft?.id}${nft?.suffix}`}
                 nftUrl={flairImage}
+                mintWidth={mintWidth}
+                mintHeight={mintHeight}
+                mintX={mintX}
+                mintY={mintY}
+                mintBorder={mintBorder}
             />
-            <h3>{name ? name : (nft?.name || '~')}</h3>
+            <h3>{name || (nft?.name || '~')}</h3>
             <div className="labels">
                 <div className="label">
                     <p>Flair NFT</p>

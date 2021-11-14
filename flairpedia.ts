@@ -91,5 +91,11 @@ for (let i = 0; i < 25; i++) {
             image: `https://dankflair.cloud/flair/${i}${generics[4].suffix}`,
             ...generics[4],
         });
+    } else {
+        flairpedia.push({
+            id: i,
+            image: `https://dankflair.cloud/flair/${i}${generics[0].suffix}`,
+            ...generics[0],
+        });
     }
 }
