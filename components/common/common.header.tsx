@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Background } from '../brand/brand.colors';
 import { Gradient2 } from '../brand/brand.gradients';
 import { Metamask } from './common.metamask';
+import { auctionUrl } from '../../dankflair';
 
 import { BiStoreAlt } from 'react-icons/bi';
 import { HiPrinter } from 'react-icons/hi';
@@ -161,12 +162,10 @@ export function Header({ tab = '' }) {
               Mint
             </a>
           </Link>
-          <Link href="/auction">
-            <a className={`item ${tab === 'auction' ? 'active' : ''}`}>
-              <BiStoreAlt className="icon" />
-              Auctions
-            </a>
-          </Link>
+          <a className={`item ${tab === 'auction' ? 'active' : ''}`} href={auctionUrl} target="opensea">
+            <BiStoreAlt className="icon" />
+            Auctions
+          </a>
           <Metamask/>
         </div>        
       </div>

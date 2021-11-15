@@ -12,9 +12,10 @@ export interface ProfileI {
   accounts: string[],
   dankflair: any[],
   dankfusion: any[],
+  profileInput: string;
 }
 
-export function ProfileComponent({ accounts, dankflair, dankfusion }: ProfileI) {
+export function ProfileComponent({ accounts, dankflair, dankfusion, profileInput }: ProfileI) {
   return (
     <>
       <Metadata/>
@@ -23,7 +24,7 @@ export function ProfileComponent({ accounts, dankflair, dankfusion }: ProfileI) 
         <ProfileHeader address={accounts[0]}/>
         <ProfileStats dankflair={dankflair} dankfusion={dankfusion}/>
         <ProfileNavigation/>
-        <ProfileList dankflair={dankflair} dankfusion={dankfusion}/>
+        <ProfileList dankflair={dankflair} dankfusion={dankfusion} filter={profileInput}/>
       </PageContainer>
       <Footer/>
     </>
@@ -34,6 +35,7 @@ export const ProfileState = state => ({
   accounts: state.profile.accounts,
   dankflair: state.profile.dankflair,
   dankfusion: state.profile.dankfusion,
+  profileInput: state.profile.profileInput,
 })
 
 export const Profile = connect(ProfileState)(ProfileComponent);

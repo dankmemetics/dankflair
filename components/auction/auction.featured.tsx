@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Primary, Background, Card as CardBg} from '../brand/brand.colors';
 import { Card } from '../common/common.card';
@@ -8,12 +9,32 @@ import { flairpedia } from '../../flairpedia';
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
 
+declare const web3;
+
 export const AuctionFeaturedStyles = styled.div`
-    display: flex;
-    align-items: center;
-    margin: 30px;
-    padding: 15px;
-    width: calc(100% - 60px);
+    position: relative;
+    width: 100%;
+    height: 550px;
+
+    div.feature-wrap {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        display: flex;
+        align-items: center;
+        margin: 30px;
+        padding: 15px;
+        width: calc(100% - 60px);
+        height: 100%;
+
+        opacity: 0;
+        pointer-events: none;
+        &.active {
+            opacity: 1;
+            pointer-events: inherit;
+        }
+    }
 
     @media (max-width: 1158px) {
         flex-wrap: wrap;
@@ -103,7 +124,7 @@ export const AuctionFeaturedStyles = styled.div`
             font-weight: 400;
             font-size: 18px;
             line-height: 2;
-            padding: 0 0 15px 0;
+            padding: 0 0 30px 0;
         }
 
         h3 {
@@ -127,55 +148,84 @@ export const AuctionFeaturedStyles = styled.div`
     }
 `;
 
-export function AuctionFeatured() {
-    const nft = flairpedia[0];
+export interface AuctionFeaturedI {
+    slide: number;
+    auctions: any[];
+}
+
+export function AuctionFeaturedComponent({ slide, auctions }: AuctionFeaturedI) {
+    console.log('auctions', auctions);
 
     return(
         <AuctionFeaturedStyles>
-            <div className="card-wrap">
-                <Card type="feature" nft={flairpedia[0]}/>
-            </div>
-            <div className="text">
-                <h2>{nft.name}</h2>
-                
-                <div className="labels">
-                    <div className="label">
-                        <p>Flair NFT</p>
-                        <h3>
-                            <BsFillPatchCheckFill className="icon"/>
-                            {nft.name} 
-                            <Badge label={`#${nft.id}`}/>
-                        </h3>
-                    </div>
-                    <div className="label">
-                        <p>Content NFT</p>
-                        <h3>None</h3>
-                    </div>
-                    <div className="label">
-                        <p>Ask Price</p>
-                        <h3>
-                            <SiEthereum className="icon"/>
-                            420 ETH
-                        </h3>
-                    </div>
-                    <div className="label">
-                        <p>Highest Bid</p>
-                        <h3>
-                            <SiEthereum className="icon"/>
-                            69 ETH
-                        </h3>
-                    </div>
-                </div>
+            {
+                auctions.map((auction, i) => {
+                    const id = parseInt(auction.asset.tokenId || '0');
+                    const nft = flairpedia[id];
 
-                <p>Description</p>
-                <p className="description">
-                    {nft.description}
-                </p>
+                    const bn = web3.utils.toBN(auction.basePrice);
+                    const price = Number(bn.toString()) /  Math.pow(10, 18);
 
-                <div className="button-wrap">
-                    <Button label="View Auction" link="/nft/0" width="100%"/>
-                </div>
-            </div>
+                    const bn2 = web3.utils.toBN(auction.currentPrice);
+                    const highest = Number(bn2.toString()) / Math.pow(10, 18);
+
+                    return(
+                        <div className={`feature-wrap ${slide === i ? 'active' : ''}`}>
+                            <div className="card-wrap">
+                                <Card type="feature" nft={nft}/>
+                            </div>
+                            <div className="text">
+                                <h2>{nft.name}</h2>
+                                
+                                <div className="labels">
+                                    <div className="label">
+                                        <p>Flair NFT</p>
+                                        <h3>
+                                            <BsFillPatchCheckFill className="icon"/>
+                                            {nft.name} 
+                                            <Badge label={`#${nft.id}`}/>
+                                        </h3>
+                                    </div>
+                                    <div className="label">
+                                        <p>Content NFT</p>
+                                        <h3>None</h3>
+                                    </div>
+                                    <div className="label">
+                                        <p>Ask Price</p>
+                                        <h3>
+                                            <SiEthereum className="icon"/>
+                                            {price} WETH
+                                        </h3>
+                                    </div>
+                                    <div className="label">
+                                        <p>Highest Bid</p>
+                                        <h3>
+                                            <SiEthereum className="icon"/>
+                                            {highest} WETH
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <p>Description</p>
+                                <p className="description">
+                                    {nft.description}
+                                </p>
+
+                                <div className="button-wrap">
+                                    <Button label="View Auction" link="/nft/0" width="100%"/>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </AuctionFeaturedStyles>
     )
 }
+
+export const AuctionFeaturedState = state => ({
+    slide: state.auction.slide,
+    auctions: state.auction.auctions,
+});
+
+export const AuctionFeatured = connect(AuctionFeaturedState)(AuctionFeaturedComponent);

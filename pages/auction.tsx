@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import { useEffect } from 'react';
 import { PageContainer } from "../components/brand/brand.app";
 import { Metadata } from '../components/common/common.metadata';
 import { Header } from '../components/common/common.header';
@@ -7,7 +9,19 @@ import { AuctionCarousel } from '../components/auction/auction.carousel';
 import { AuctionNavigation } from '../components/auction/auction.navigation';
 import { AuctionList } from '../components/auction/auction.list';
 
-export function Auction() {
+export interface AuctionI {
+
+}
+
+export function AuctionComponent({ }: AuctionI) {
+  useEffect(() => {
+    (
+      async () => {
+
+      }
+    )();
+  }, []);
+
   return (
     <>
       <Metadata/>
@@ -22,5 +36,11 @@ export function Auction() {
     </>
   )
 }
+
+export const AuctionState = state => ({
+
+})
+
+export const Auction = connect(AuctionState, { })(AuctionComponent);
 
 export default Auction;

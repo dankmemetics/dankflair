@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Primary } from '../brand/brand.colors';
+import { Primary, Primary3 } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Badge } from '../common/common.badge';
 import { flairpedia } from '../../flairpedia';
@@ -7,6 +7,7 @@ import { FlairOwnership, FusionNft } from '../../redux/redux.contract';
 
 import { BsFillPatchCheckFill } from 'react-icons/bs';
 import { SiEthereum } from 'react-icons/si';
+import { openseaUrl, ContractAddress, FusionAddress } from '../../dankflair';
 
 export const NftFeatureStyles = styled.div`
     display: flex;
@@ -125,15 +126,39 @@ export const NftFeatureStyles = styled.div`
         color: ${Primary};
         margin: 0 10px 0 0;
     }
+
+    a.button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: ${Primary};
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+        box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+        margin: 30px 0;
+
+        &:hover {
+            background: ${Primary3};
+            box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.25);
+        }
+    }
 `;
 
 export interface NftFeatureI {
     activeNft?: FlairOwnership;
     activeFusionNft?: FusionNft;
+    id: string;
 }
 
-export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
+export function NftFeature({ activeNft, activeFusionNft, id }: NftFeatureI) {
     const nft = activeNft ? flairpedia[activeNft?.id || 0] : flairpedia[activeFusionNft?.dankId || 0];
+    const contract = activeNft ? ContractAddress : FusionAddress;
 
     console.log(activeFusionNft);
 
@@ -186,20 +211,6 @@ export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
                             }
                         </h3>
                     </div>
-                    <div className="label">
-                        <p>Ask Price</p>
-                        <h3>
-                            <SiEthereum className="icon"/>
-                            420 ETH
-                        </h3>
-                    </div>
-                    <div className="label">
-                        <p>Highest Bid</p>
-                        <h3>
-                            <SiEthereum className="icon"/>
-                            69 ETH
-                        </h3>
-                    </div>
                     <div className="label full">
                         <p>Owner</p>
                         <h3>
@@ -212,6 +223,10 @@ export function NftFeature({ activeNft, activeFusionNft }: NftFeatureI) {
                 <p className="description">
                     {activeFusionNft?.description || nft.description}
                 </p>
+
+                <a className="button" href={`${openseaUrl}/assets/${contract}/${id}`} target="opensea">
+                    View on OpenSea
+                </a>
             </div>
         </NftFeatureStyles>
     )

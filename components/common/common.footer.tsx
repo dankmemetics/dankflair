@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Background } from '../brand/brand.colors';
 import { Gradient2 } from '../brand/brand.gradients';
+import { auctionUrl } from '../../dankflair';
 
 import { FiTwitter } from 'react-icons/fi';
 import { FaDiscord } from 'react-icons/fa';
@@ -138,12 +138,10 @@ export function Footer() {
                             Flairpedia
                         </a>
                     </Link>
-                    <Link href="/auction">
-                        <a className="link">
-                            <BiStoreAlt className="icon"/>
-                            Auctions
-                        </a>
-                    </Link>
+                    <a className="link" href={auctionUrl} target="opensea">
+                        <BiStoreAlt className="icon"/>
+                        Auctions
+                    </a>
                 </div>
             </div>
         </FooterStyles>

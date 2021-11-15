@@ -38,6 +38,10 @@ contract DankFusion is Initializable, ERC721Upgradeable, ERC721BurnableUpgradeab
         banker = msg.sender;
     }
 
+    function _baseURI() internal pure override returns (string memory) {
+        return "https://dankflair.cloud/api/fusion/";
+    }
+
     // Dank Fusion specific function to map contract and ids to each other for the mint.
     function _fusion(ERC721 fusionContract, uint256 dankId, uint256 fusionId, bytes32 fusionUUID) internal {
         // Ensure Minter has approval to mint said fused NFT.

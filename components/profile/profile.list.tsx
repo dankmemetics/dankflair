@@ -17,16 +17,42 @@ export const ProfileListStyles = styled.div`
     }
 `;
 
-export function ProfileList({ dankflair, dankfusion }) {
+export function ProfileList({ dankflair, dankfusion, filter = '' }) {
     return(
         <ProfileListStyles>
             {
-                dankflair.map(flair => {
+                dankflair
+                .filter(flair => {
+                    if (filter) {
+                        const nft = flairpedia[flair.id];
+
+                        if (nft.name.includes(filter)) {
+                            return true;
+                        }
+
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
+                .map(flair => {
                     return(<Card key={flair.id} buttonLabel="View NFT" type="feature" url={`/nft/${flair.id}`} nft={flairpedia[flair.id]}/>)
                 })
             }
             {
-                dankfusion.map(fusion => {
+                dankfusion
+                .filter(flair => {
+                    if (filter) {
+                        if (flair.name.includes(filter)) {
+                            return true;
+                        }
+
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
+                .map(fusion => {
                     const item = flairpedia[fusion.dankId];
                     return(<Card
                         key={fusion.id}

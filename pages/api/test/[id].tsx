@@ -10,11 +10,17 @@ export default async function Image(req, res) {
 
         const { id } = req.query;
 
+        let suffix = '.png';
+
+        if (id == '3') {
+            suffix = '.gif';
+        }
+
         return res.status(200).send({
             id,
             name: 'Test NFT',
             description: 'Test NFT for Dank Flair',
-            image: `https://dankflair.cloud/test/${id}.png`
+            image: `https://dankflair.cloud/test/${id}${suffix}`
         })
     } catch (error) {
         return res.status(404).send({

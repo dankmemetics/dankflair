@@ -1,5 +1,6 @@
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Primary, Background } from '../brand/brand.colors';
+import { setFlairpediaInput } from '../../redux/redux.profile';
 
 export const FlairpediaSearchStyles = styled.div`
     padding: 60px 30px;
@@ -20,10 +21,21 @@ export const FlairpediaSearchStyles = styled.div`
     }
 `;
 
-export function FlairpediaSearch() {
+export interface FlairpediaSearchI {
+    flairpediaInput: string;
+    setFlairpediaInput(payload: string): void;
+}
+
+export function FlairpediaSearchComponent({ flairpediaInput, setFlairpediaInput }: FlairpediaSearchI) {
     return(
         <FlairpediaSearchStyles>
-            <input type="text" placeholder="Search Dank Flair"/>
+            <input type="text" placeholder="Search Dank Flair" value={flairpediaInput} onChange={e => setFlairpediaInput(e.target.value)}/>
         </FlairpediaSearchStyles>
     )
 }
+
+export const FlairpediaSearchState = state => ({
+    flairpediaInput: state.profile.flairpediaInput,
+})
+
+export const FlairpediaSearch = connect(FlairpediaSearchState, { setFlairpediaInput })(FlairpediaSearchComponent);

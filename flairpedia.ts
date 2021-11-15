@@ -58,9 +58,10 @@ const generics = [
     }
 ]
 
+export const mintCount = 25;
 export const flairpedia: FlairI[] = [];
 
-for (let i = 0; i < 25; i++) {
+for (let i = 0; i < mintCount; i++) {
     if (i < 5) {
         flairpedia.push({
             id: i,

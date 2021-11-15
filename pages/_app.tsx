@@ -21,6 +21,7 @@ export class AppComponent extends App<AppInitialProps> {
           <title>Dank Flair</title>
           <link rel="icon" type="image/png" href="/images/logo.png"/>
           <link rel="stylesheet" href="/css/reset.css"/>
+          <script src="https://unpkg.com/embeddable-nfts/dist/nft-card.min.js"/>
         </Head>
         <Component {...pageProps}/>
       </AppContainer>

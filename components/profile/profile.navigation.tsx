@@ -1,5 +1,7 @@
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Primary, Background } from '../brand/brand.colors';
+import { setProfileInput } from '../../redux/redux.profile';
 
 export const ProfileNavigationStyles = styled.div`
     padding: 30px;
@@ -20,10 +22,16 @@ export const ProfileNavigationStyles = styled.div`
     }
 `;
 
-export function ProfileNavigation() {
+export function ProfileNavigationComponent({ profileInput, setProfileInput }) {
     return(
         <ProfileNavigationStyles>
-            <input type="text" placeholder="Search Dank Flair"/>
+            <input type="text" placeholder="Search Dank Flair" value={profileInput} onChange={e => setProfileInput(e.target.value)}/>
         </ProfileNavigationStyles>
     )
 }
+
+export const ProfileNavigationState = state => ({
+    profileInput: state.profile.profileInput,
+});
+
+export const ProfileNavigation = connect(ProfileNavigationState, { setProfileInput })(ProfileNavigationComponent);

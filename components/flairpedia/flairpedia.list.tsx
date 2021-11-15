@@ -7,14 +7,14 @@ export const FlairpediaListStyles = styled.div`
     padding: 15px 15px 90px 15px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 
     @media (max-width: 1158px) {
         justify-content: center;
     }
 `;
 
-export function FlairpediaListComponent({ ownership }) {
+export function FlairpediaListComponent({ ownership, flairpediaInput }) {
     function matchOwner(id: number) {
         for (let i = 0; i < ownership.length; i++) {
             if (ownership[i].id === id) {
@@ -28,7 +28,25 @@ export function FlairpediaListComponent({ ownership }) {
     return(
         <FlairpediaListStyles>
             {
-                flairpedia.map(flair => {
+                flairpedia
+                .filter(flair => {
+                    if (flairpediaInput) {
+                        if (flair.name.includes(flairpediaInput)) {
+                            return true;
+                        }
+
+                        const owner = matchOwner(flair.id);
+
+                        if (owner === flairpediaInput) {
+                            return true;
+                        }
+
+                        return false;
+                    } else {
+                        return true;
+                    }
+                })
+                .map(flair => {
                     const owner = matchOwner(flair.id);
 
                     return(
@@ -41,6 +59,7 @@ export function FlairpediaListComponent({ ownership }) {
 }
 
 export const FlairpediaListState = state => ({
+    flairpediaInput: state.profile.flairpediaInput,
     ownership: state.contract.ownership,
 })
 

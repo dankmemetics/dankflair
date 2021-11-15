@@ -10,8 +10,16 @@ export const NftBidStyles = styled.div`
     flex-wrap: wrap;
 
     div.form {
-        width: calc(35% - 30px);
+        width: calc(100% - 30px);
         margin: 15px;
+
+        opacity: 0.25;
+        pointer-events: none;
+
+        &.owned {
+            opacity: 1;
+            pointer-events: inherit;
+        }
 
         @media (max-width: 1158px) {
             width: 100%;
@@ -49,59 +57,11 @@ export const NftBidStyles = styled.div`
             padding: 0 15px;
             margin: 0 0 15px 0;
         }
-    }
 
-    div.bids {
-        background: ${Card};
-        padding: 15px;
-        margin: 15px;
-        width: calc(65% - 30px);
-        height: 420px;
-        border-radius: 5px;
-        box-shadow: 0 0 45px 15px rgba(0, 0, 0, 0.1);
-
-        h3 {
-            font-size: 24px;
-            font-weight: 400;
-            padding: 0 0 15px 0;
-        }
-
-        @media (max-width: 1158px) {
-            width: 100%;
-            margin: 15px 0 90px 0;
-        }
-
-        div.bid {
+        div.button-wrapper {
             display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+            justify-content: flex-end;
             width: 100%;
-            padding: 0 10px;
-
-            div.bid-column {
-                padding: 5px 5px 7.5px 5px;
-
-                &:nth-child(1) { width: 50%; }
-                &:nth-child(2) { width: 15%; }
-                &:nth-child(3) { width: 20%; }
-                &:nth-child(4) { width: 15%; }
-
-                @media (max-width: 1158px) {
-                    width: 100% !important;
-                    padding: 5px;
-                }
-            }
-
-            font-size: 12px;
-
-            &.header {
-                border-bottom: 1px solid white;
-                font-weight: bold;
-            }
-
-            &:nth-child(even) {
-                background: rgba(0, 0, 0, 0.2);
-            }
         }
     }
 `;
@@ -137,27 +97,11 @@ export function NftBid({ contract, fusionContract, activeNft, activeFusionNft, a
 
     return(
         <NftBidStyles>
-            {
-                connected && !owned ?
-                <div className="form">
-                    <div className="form-wrap">
-                        <h4>420 ETH</h4>
-                        <Button label="Buy Now" width="100%" height="40px"/>
-                    </div>
-                    <div className="form-wrap">
-                        <h3>Make a Bid</h3>
-                        <input type="number" placeholder="in ETH" min={0}/>
-                        <Button label="Make Bid" width="100%" height="40px"/>
-                    </div>
-                </div>
-                : ''
-            }
-            {
-                connected && owned ?
-                <div className="form">
-                    <div className="form-wrap">
-                        <h3>Transfer NFT</h3>
-                        <input type="text" placeholder="Address" value={transfer} onChange={e => setTransfer(e.target.value)}/>
+            <div className={`form ${owned ? 'owned' : ''}`}>
+                <div className="form-wrap">
+                    <h3>Transfer NFT</h3>
+                    <input type="text" placeholder="Address" value={transfer} onChange={e => setTransfer(e.target.value)}/>
+                    <div className="button-wrapper">
                         <div onClick={async e => {
                             if (fusion) {
                                 await fusionContract.methods.safeTransferFrom(activeFusionNft?.owner, transfer, activeFusionNft?.fusionId).send({ from: activeFusionNft?.owner });
@@ -171,49 +115,9 @@ export function NftBid({ contract, fusionContract, activeNft, activeFusionNft, a
                                 window.location.reload();
                             }, 1000);
                         }}>
-                            <Button label="Transfer" width="100%" height="40px"/>
-                        </div>                        
-                    </div>
-                </div>
-                : ''
-            }
-            {
-                !connected ?
-                <div className="form">
-                    <div className="form-wrap">
-                        <h4>420 ETH</h4>
-                        <Button label="Buy Now" width="100%" height="40px"/>
-                    </div>
-                </div>
-                : ''
-            }
-            <div className="bids">
-                <div className="bid-heading">
-                    <h3>Current Bids</h3>
-                </div>
-                <div className="bid header">
-                    <div className="bid-column">Address</div>
-                    <div className="bid-column">Amount</div>
-                    <div className="bid-column">Time</div>
-                    <div className="bid-column">Expiry</div>
-                </div>
-                <div className="bid">
-                    <div className="bid-column">0x42069</div>
-                    <div className="bid-column">69 ETH</div>
-                    <div className="bid-column">69 minutes ago</div>
-                    <div className="bid-column">In 6.9 days</div>
-                </div>
-                <div className="bid">
-                    <div className="bid-column">0x42069</div>
-                    <div className="bid-column">69 ETH</div>
-                    <div className="bid-column">69 minutes ago</div>
-                    <div className="bid-column">In 6.9 days</div>
-                </div>
-                <div className="bid">
-                    <div className="bid-column">0x42069</div>
-                    <div className="bid-column">69 ETH</div>
-                    <div className="bid-column">69 minutes ago</div>
-                    <div className="bid-column">In 6.9 days</div>
+                            <Button label="Transfer" width="240px" height="40px"/>
+                        </div>      
+                    </div>                  
                 </div>
             </div>
         </NftBidStyles>

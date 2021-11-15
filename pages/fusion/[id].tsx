@@ -37,9 +37,8 @@ export function FusionNFTComponent({ contract, fusionContract, activeNft, active
       <Metadata/>
       <Header/>
       <PageContainer>
-        <NftFeature activeFusionNft={activeFusionNft}/>
+        <NftFeature activeFusionNft={activeFusionNft} id={id as string}/>
         <NftBid contract={contract} fusionContract={fusionContract} activeFusionNft={activeFusionNft} accounts={accounts}/>
-        <NftHistory/>
       </PageContainer>
       <Footer/>
     </>
