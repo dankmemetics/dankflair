@@ -27,7 +27,7 @@ export function FusionNFTComponent({ contract, fusionContract, activeNft, active
 
   useEffect(() => {
     (async () => {
-      const fusionPayload = await get(`/api/owner/fusion/${id}`);
+      const fusionPayload = await get(`/api/fusion/${id}`);
       setActiveFusionNft(fusionPayload.body);
     })();
   }, [id])
