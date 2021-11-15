@@ -100,11 +100,11 @@ export function Footer() {
                     <div className="accent"/>
                 </div>
                 <div className="links">
-                    <a className="link">
+                    <a className="link" href="https://twitter.com/DankFlair" target="twitter">
                         <FiTwitter className="icon"/>
                         Twitter
                     </a>
-                    <a className="link">
+                    <a className="link" href="https://discord.gg/dgDPr8dvrF" target="discord">
                         <FaDiscord className="icon"/>
                         Discord
                     </a>

@@ -19,7 +19,7 @@ export async function configureContract(taskArgs: any, hre: HardhatRuntimeEnviro
   const network: string = hre.network.name;
   
   const address = testContract ? contracts[network].danktest : contracts[network].dankflair;
-  const factory = testContract ? hre.ethers.getContractFactory('DankTest') : hre.ethers.getContractFactory('DankFlair'); 
+  const factory = testContract ? hre.ethers.getContractFactory('DankTest') : hre.ethers.getContractFactory('DankFlair');
 
   const Contract = await factory;
   const contract = await Contract.attach(address);

@@ -17,10 +17,10 @@ export function Metadata({ title, description, image }: MetadataI) {
             <meta name="description" content={description ? description : defaultDescription} />
             
             <meta name="twitter:card" content="summary"/> 
-            <meta name="twitter:site" content="@dankmemetics"/>
+            <meta name="twitter:site" content="@dankflair"/>
             <meta name="twitter:title" content={title ? title : defaultTitle}/>
             <meta name="twitter:description" content={description ? description : defaultDescription}/>
-            <meta name="twitter:creator" content="@dankmemetics"/>
+            <meta name="twitter:creator" content="@dankflair"/>
             <meta name="twitter:image" content={image ? image : defaultImage}/>
 
             <meta property="og:type" content="article" />
