@@ -15,6 +15,7 @@ export const ButtonStyles = styled.a`
     cursor: pointer;
     width: 100%;
     box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 `;
 
 export function Button({
@@ -43,7 +44,13 @@ export function Button({
         padding,
     };
 
-    if (link) {
+    if (link && link.includes('http')) {
+        return(
+            <ButtonStyles href={link} target={link} style={styleParams} onMouseEnter={e => setHover(true)} onMouseLeave={e => setHover(false)}>
+                {label}
+            </ButtonStyles>
+        )        
+    } else if (link) {
         return(
             <Link href={link}>
                 <ButtonStyles style={styleParams} onMouseEnter={e => setHover(true)} onMouseLeave={e => setHover(false)}>

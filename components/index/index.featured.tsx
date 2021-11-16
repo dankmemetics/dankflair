@@ -4,6 +4,7 @@ import { Background } from '../brand/brand.colors';
 import { Card } from '../common/common.card';
 import { Button } from '../common/common.button';
 
+import { auctionUrl } from '../../dankflair';
 import { flairpedia } from '../../flairpedia';
 
 export const IndexFeaturedStyles = styled.div`
@@ -182,7 +183,7 @@ export function IndexFeatured() {
                         Dank Flair
                     </h2>
                     <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
-                    <Button label="View Auctions" link="/auction" width="280px" margin="30px 0 0 0"/>
+                    <Button label="View Auctions" link={auctionUrl} width="280px" margin="30px 0 0 0"/>
                 </div>
                 <div className="featured" style={{ opacity: preload }}>
                     <div className="card-wrap">
