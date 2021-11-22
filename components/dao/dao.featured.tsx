@@ -94,8 +94,8 @@ export const DaoFeaturedStyles = styled.div`
 `;
 
 export const data = [
-    { name: '', value: 80, fill: '#3CD237' },
-    { name: '', value: 20, fill: '#D13636' },
+    { name: '', value: 1337, fill: '#3CD237' },
+    { name: '', value: 21, fill: '#D13636' },
 ];
 
 export function DaoFeatured() {
@@ -108,7 +108,7 @@ export function DaoFeatured() {
                 <div className="column">
                     <h3>Current Motion</h3>
                     <p>
-                        Should we mint 1000 new Dank Flairs with Crypto Kitties?
+                        Should we mint the top 3 highest voted designs (in Discord) to mainnet?
                     </p>
 
                     <div className="buttons">
@@ -117,8 +117,8 @@ export function DaoFeatured() {
                     </div>
                 </div>
                 <div className="column vote">
-                    <p className="yes">420 Yes</p>
-                    <p className="no">69 No</p>
+                    <p className="yes">1337 Yes</p>
+                    <p className="no">21 No</p>
                     <ResponsiveContainer width="100%" height={200}>
                         <PieChart>
                             <Pie data={data} dataKey="value" cx="50%" cy="50%" outerRadius={100} innerRadius={70}/>

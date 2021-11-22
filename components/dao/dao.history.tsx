@@ -63,25 +63,25 @@ export function DaoHistory() {
                     <div className="column">Time</div>
                 </div>
                 <div className="row">
-                    <div className="column">Mint new flair kittens</div>
+                    <div className="column">Mint top 3 voted flairs</div>
                     <div className="column">Yes</div>
-                    <div className="column">420</div>
-                    <div className="column">69</div>
-                    <div className="column">69 Minutes Ago</div>
+                    <div className="column">1337</div>
+                    <div className="column">21</div>
+                    <div className="column">21 Minutes Ago</div>
                 </div>
                 <div className="row">
-                    <div className="column">Mint new flair kittens</div>
+                    <div className="column">Mint top 3 voted flairs</div>
                     <div className="column">Yes</div>
-                    <div className="column">420</div>
-                    <div className="column">69</div>
-                    <div className="column">69 Minutes Ago</div>
+                    <div className="column">1337</div>
+                    <div className="column">21</div>
+                    <div className="column">21 Minutes Ago</div>
                 </div>
                 <div className="row">
-                    <div className="column">Mint new flair kittens</div>
+                    <div className="column">Mint top 3 voted flairs</div>
                     <div className="column">Yes</div>
-                    <div className="column">420</div>
-                    <div className="column">69</div>
-                    <div className="column">69 Minutes Ago</div>
+                    <div className="column">1337</div>
+                    <div className="column">21</div>
+                    <div className="column">21 Minutes Ago</div>
                 </div>
             </div>
         </DaoHistoryStyles>
