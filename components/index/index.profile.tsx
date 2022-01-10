@@ -72,7 +72,7 @@ export const IndexProfileStyles = styled.div`
         left: -25%;
         top: 30%;
         width: 900px;
-        height: 640px;
+        height: 800px;
         background: ${Frame};
         border-radius: 9px;
         box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.25);
@@ -87,7 +87,7 @@ export const IndexProfileStyles = styled.div`
 
         div.graphic-buttons {
             position: absolute;
-            right: 0;
+            left: 0;
             top: 0;
             display: flex;
             padding: 7.5px 15px;
@@ -106,12 +106,11 @@ export const IndexProfileStyles = styled.div`
 
         div.graphic-inner {
             position: absolute;
-            left: 10px;
+            left: 0;
             top: 40px;
             background: rgba(0, 0, 0, 0.5);
-            width: calc(100% - 20px);
+            width: 100%;
             height: 100%;
-            border-radius: 9px;
             overflow: hidden;
 
             div.profile-header {

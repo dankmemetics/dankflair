@@ -166,14 +166,6 @@ export const IndexFeaturedStyles = styled.div`
 `;
 
 export function IndexFeatured() {
-    const [preload, setPreload] = useState(0);
-    
-    useLayoutEffect(() => {
-        setTimeout(() => {
-            setPreload(1);
-        }, 1600);
-    }, []);
-
     return(
         <IndexFeaturedStyles>
             <div className="wrap">
@@ -185,7 +177,7 @@ export function IndexFeatured() {
                     <p>Buy, Mint and Trade Dank Flair for your NFTs</p>
                     <Button label="View Auctions" link={auctionUrl} width="280px" margin="30px 0 0 0"/>
                 </div>
-                <div className="featured" style={{ opacity: preload }}>
+                <div className="featured">
                     <div className="card-wrap">
                         <Card type="feature" nft={flairpedia[1]} owner={`0x311544BD01996727084951af2154E64fD5006537`}/>
                     </div>

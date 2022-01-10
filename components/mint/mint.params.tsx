@@ -74,6 +74,10 @@ export const MintParamsStyles = styled.div`
             flex-wrap: wrap;
         }
 
+        div.input {
+            width: 50%;
+        }
+
         div.input.json {
             width: calc(100% - 320px);
 
